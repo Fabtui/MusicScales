@@ -6,7 +6,5 @@ export function Scale ({notes, selected_note_index, scale_intervals}) {
   scale_intervals.forEach(scale_interval => {
     scale_notes.push(ordered_notes[scale_interval])
   })
-  return <div className="notes-displayer">
-    {scale_notes.join("-")}
-  </div>
+  return scale_notes
 }

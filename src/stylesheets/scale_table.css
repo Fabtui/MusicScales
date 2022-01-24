@@ -1,0 +1,7 @@
+.in-scale {
+  color: red;
+}
+
+.not-in-scale {
+  color: rgba(128, 128, 128, 0.788);
+}
