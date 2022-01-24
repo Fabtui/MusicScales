@@ -31,11 +31,16 @@ export class Selector extends Component {
     this.state = {
       selected_note: 0
     }
+    this.handleNoteChange = this.handleNoteChange.bind(this)
+  }
+
+  handleNoteChange (note) {
+    this.setState({selected_note: note})
   }
 
   render () {
     return <div className='note-selector'>
-      <DropDown notes={NOTES}/>
+      <DropDown notes={NOTES} onChange={this.handleNoteChange}/>
     </div>
   }
 }
