@@ -1,10 +1,10 @@
-import './App.css';
-import {Clock} from './Clock'
+import './stylesheets/App.css';
+import {Selector} from './Selector'
 
 function App() {
   return (
     <div className="App">
-      <Clock/>
+      <Selector/>
     </div>
   );
 }
