@@ -9,6 +9,7 @@ import { NOTES } from './data'
 import { SCALES } from './data'
 import { SCALES_LIST } from './data'
 import { Title } from './Title'
+import { Intervals } from './Intervals'
 
 export class Selector extends Component {
   constructor (props) {
@@ -43,6 +44,7 @@ export class Selector extends Component {
     return <div className='container'>
       <Title selected_note={selected_note} selected_scale_name={this.state.selected_scale_name}/>
       <ScaleDisplay notes={NOTES} selected_note_index={this.state.selected_note_index} scale_intervals={SCALES_LIST[this.state.selected_scale_name]} />
+      <Intervals selected_scale={this.state.selected_scale}/>
       <ScaleTable notes={NOTES} selected_scale_notes={this.state.selected_scale_notes} selected_note={selected_note} selected_note_index={this.state.selected_note_index} selected_scale_notes={selected_scale_notes}/>
       <div className="selectors">
         <NoteDropDown className="note-selector" selected_note={selected_note} notes={NOTES} onChange={this.handleNoteChange}/>
