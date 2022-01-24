@@ -3,6 +3,7 @@ import './stylesheets/selector.css'
 import {NoteDropDown} from './NoteDropdown'
 import {ScaleDropDown} from './ScaleDropDown'
 import {Scale} from './Scale'
+import {ScaleTable} from './ScaleTable'
 
 const NOTES = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
 const SCALES = ["Major", "Minor"]
@@ -39,6 +40,7 @@ export class Selector extends Component {
         <ScaleDropDown className="scale-selector" selected_scale={this.state.selected_scale_name} scales={SCALES} onChange={this.handleScaleChange}/>
       </div>
       <Scale notes={NOTES} selected_note_index={this.state.selected_note_index} scale_intervals={SCALES_LIST[this.state.selected_scale_name]}/>
+      <ScaleTable notes={NOTES} selected_note_index={this.state.selected_note_index} selected_note={selected_note} selected_scale={this.state.selected_scale_name} scale_intervals={SCALES_LIST[this.state.selected_scale_name]}/>
     </div>
   }
 }
