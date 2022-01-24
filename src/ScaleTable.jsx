@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Scale} from './Scale'
 import './stylesheets/scale_table.css'
 
 const INTERVALS = {
@@ -21,56 +20,59 @@ function IntervalRow ({interval}) {
   return <th>{interval}</th>
 }
 
+class NotesRow extends React.Component {
+  render () {
+    if (this.props.inScale) {
+      return <th className='in-scale'>{this.props.interval}</th>
+    } else {
+      return <th className='not-in-scale'>{this.props.interval}</th>
+    }
+  }
+}
+
 function IntervalNameRows ({intervals}) {
   const rows = []
   intervals.forEach(interval => {
     rows.push(<IntervalRow key={interval} interval={interval}/>)
   })
   return <thead>
-        <tr>
-          {rows}
-        </tr>
-      </thead>
+          <tr>
+            {rows}
+          </tr>
+         </thead>
 }
 
-function IntervalNotesRows ({notes}) {
+function IntervalNotesRows ({selected_note_index, selected_scale_notes, notes}) {
+  const ordered_notes = [...notes.slice(selected_note_index), ...notes.slice(0, selected_note_index)]
   const rows = []
-  notes.forEach(note => {
-    rows.push(<IntervalRow key={note} interval={note}/>)
+  ordered_notes.forEach(note => {
+    if (selected_scale_notes.includes(note)) {
+      rows.push(<NotesRow inScale={true} key={note} interval={note}/>)
+    } else {
+      rows.push(<NotesRow inScale={false} key={note} interval={note}/>)
+    }
   })
   return <tbody>
           <tr>
-        {rows}
-      </tr>
-    </tbody>
+            {rows}
+          </tr>
+        </tbody>
 }
 
 export class Table extends React.Component {
-  constructor (props) {
-    super (props)
-    // const SCALE_NOTES = Scale({notes, selected_note_index, scale_intervals})
-  }
   render () {
   const intervals_name = Object.values(INTERVALS)
   return <table className='table'>
     <IntervalNameRows intervals={intervals_name}/>
-    <IntervalNotesRows notes={this.props.notes}/>
+    <IntervalNotesRows selected_note_index={this.props.selected_note_index} selected_scale_notes={this.props.selected_scale_notes} notes={this.props.notes}/>
   </table>
 }
 }
 
 export class ScaleTable extends React.Component {
-  constructor (props) {
-    super (props)
-    // const notes = this.props.notes
-    // const selected_note_index = this.props.selected_note_index
-    // const scale_intervals = this.props.scale_intervals
-    // const scale_notes = Scale({notes, selected_note_index, scale_intervals})
-    // console.log(scale_notes);
-  }
   render () {
     return <div>
-      <Table selected_note={this.props.selected_note} intervals={INTERVALS} notes={this.props.notes}/>
+      <Table selected_note_index={this.props.selected_note_index} selected_scale_notes={this.props.selected_scale_notes} selected_note={this.props.selected_note} intervals={INTERVALS} notes={this.props.notes}/>
     </div>
   }
 }
