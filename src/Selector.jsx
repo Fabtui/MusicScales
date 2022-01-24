@@ -29,7 +29,7 @@ export class Selector extends Component {
   constructor (props) {
     super (props)
     this.state = {
-      selected_note: 0
+      selected_note_index: 0
     }
     this.handleNoteChange = this.handleNoteChange.bind(this)
   }
@@ -39,8 +39,10 @@ export class Selector extends Component {
   }
 
   render () {
+    const selected_note = NOTES[this.state.selected_note_index]
     return <div className='note-selector'>
       <DropDown notes={NOTES} onChange={this.handleNoteChange}/>
+      <h1>{selected_note}</h1>
     </div>
   }
 }
