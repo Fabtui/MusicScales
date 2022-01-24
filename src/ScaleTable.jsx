@@ -1,20 +1,6 @@
 import React, {Component} from 'react'
+import { INTERVALS } from './data'
 import './stylesheets/scale_table.css'
-
-const INTERVALS = {
-  0: "T",
-  1: "2m",
-  2: "2M",
-  3: "3m",
-  4: "3M",
-  5: "4",
-  6: "5-",
-  7: "5",
-  8: "6m",
-  9: "6M",
-  10: "7m",
-  11: "7M"
-}
 
 function IntervalRow ({interval}) {
   return <th>{interval}</th>

@@ -4,13 +4,9 @@ import {NoteDropDown} from './NoteDropdown'
 import {ScaleDropDown} from './ScaleDropDown'
 import {Scale} from './Scale'
 import {ScaleTable} from './ScaleTable'
-
-const NOTES = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
-const SCALES = ["Major", "Minor"]
-const SCALES_LIST = {
-  Major: [0, 2, 4, 5, 7, 9, 11],
-  Minor: [0, 2, 3, 5, 7, 8, 10]
-}
+import { NOTES } from './data'
+import { SCALES } from './data'
+import { SCALES_LIST } from './data'
 
 export class Selector extends Component {
   constructor (props) {
