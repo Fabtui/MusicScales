@@ -6,3 +6,15 @@
     font-size: 28px;
     color: rgba(0, 0, 0, 0.616);
 }
+
+.wrapper-interval {
+  padding: 0 64px;
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-gap: 4px;
+  grid-auto-rows: minmax(32px, auto);
+}
+
+.col-interval-items-hidden {
+  opacity: 0;
+}

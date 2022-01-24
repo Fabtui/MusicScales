@@ -20,7 +20,12 @@ export function Intervals ({selected_scale}) {
       intervals.push(createHalf((selected_scale[i + 1] - selected_scale[i])/2))
     }
   }
-  return <div className='intervals'>
-        <h2>{intervals.join(' - ')}</h2>
-      </div>
+  let rows = []
+  intervals.forEach(interval => {
+    rows.push(<div className="col-interval-items-hidden">-</div>)
+    rows.push(<div className="col-interval-items">{interval}</div>)
+  })
+  return <div className="wrapper-interval">
+          {rows}
+        </div>
 }

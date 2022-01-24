@@ -15,7 +15,15 @@ export function ScaleDisplay ({notes, selected_note_index, scale_intervals}) {
   scale_intervals.forEach(scale_interval => {
     scale_notes.push(ordered_notes[scale_interval])
   })
+  let rows = []
+  scale_notes.forEach(scale_note => {
+    rows.push(<div className="col-items">{scale_note}</div>)
+    rows.push(<div className="col-items">-</div>)
+  })
+  rows.pop()
   return <div className="notes-displayer">
-    {scale_notes.join(" - ")}
+        <div className="wrapper">
+        {rows}
+    </div>
   </div>
 }
