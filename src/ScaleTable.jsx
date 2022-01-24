@@ -31,6 +31,7 @@ function IntervalNameRows ({intervals}) {
 function IntervalNotesRows ({selected_note_index, selected_scale_notes, notes}) {
   const ordered_notes = [...notes.slice(selected_note_index), ...notes.slice(0, selected_note_index)]
   const rows = []
+  console.log(selected_scale_notes);
   ordered_notes.forEach(note => {
     if (selected_scale_notes.includes(note)) {
       rows.push(<NotesRow inScale={true} key={note} interval={note}/>)

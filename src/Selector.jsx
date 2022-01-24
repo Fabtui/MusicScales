@@ -26,22 +26,22 @@ export class Selector extends Component {
     this.setState({
       selected_note_index: note,
     })
-    console.log(this.state);
   }
 
-  handleScaleChange (scale) {
+  handleScaleChange (scale_index) {
+    const scale_name = SCALES[scale_index]
     this.setState({
-      selected_scale_name: SCALES[scale],
-      selected_scale_notes: Scale({notes: NOTES, selected_note_index: this.state.selected_note_index, scale_intervals: this.state.selected_scale})
+      selected_scale_name: SCALES[scale_index],
+      selected_scale: SCALES_LIST[scale_name],
     })
-    console.log(this.state);
   }
 
   render () {
+    const selected_scale_notes =  Scale({notes: NOTES, selected_note_index: this.state.selected_note_index, scale_intervals: this.state.selected_scale})
     const selected_note = NOTES[this.state.selected_note_index]
     return <div className='container'>
-      <ScaleDisplay notes={NOTES} selected_note_index={this.state.selected_note_index} scale_intervals={SCALES_LIST[this.state.selected_scale_name]}/>
-      <ScaleTable notes={NOTES} selected_scale_notes={this.state.selected_scale_notes} selected_note={selected_note} selected_note_index={this.state.selected_note_index}/>
+      <ScaleDisplay notes={NOTES} selected_note_index={this.state.selected_note_index} scale_intervals={SCALES_LIST[this.state.selected_scale_name]} />
+      <ScaleTable notes={NOTES} selected_scale_notes={this.state.selected_scale_notes} selected_note={selected_note} selected_note_index={this.state.selected_note_index} selected_scale_notes={selected_scale_notes}/>
       <div className="selectors">
         <NoteDropDown className="note-selector" selected_note={selected_note} notes={NOTES} onChange={this.handleNoteChange}/>
         <ScaleDropDown className="scale-selector" selected_scale={this.state.selected_scale_name} scales={SCALES} onChange={this.handleScaleChange}/>
