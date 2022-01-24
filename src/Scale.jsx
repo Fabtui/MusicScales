@@ -16,6 +16,6 @@ export function ScaleDisplay ({notes, selected_note_index, scale_intervals}) {
     scale_notes.push(ordered_notes[scale_interval])
   })
   return <div className="notes-displayer mb-4">
-    {scale_notes.join("-")}
+    {scale_notes.join(" - ")}
   </div>
 }
