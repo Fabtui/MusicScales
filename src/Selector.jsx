@@ -8,6 +8,7 @@ import {ScaleTable} from './ScaleTable'
 import { NOTES } from './data'
 import { SCALES } from './data'
 import { SCALES_LIST } from './data'
+import { Title } from './Title'
 
 export class Selector extends Component {
   constructor (props) {
@@ -31,7 +32,7 @@ export class Selector extends Component {
   handleScaleChange (scale_index) {
     const scale_name = SCALES[scale_index]
     this.setState({
-      selected_scale_name: SCALES[scale_index],
+      selected_scale_name: scale_name,
       selected_scale: SCALES_LIST[scale_name],
     })
   }
@@ -40,6 +41,7 @@ export class Selector extends Component {
     const selected_scale_notes =  Scale({notes: NOTES, selected_note_index: this.state.selected_note_index, scale_intervals: this.state.selected_scale})
     const selected_note = NOTES[this.state.selected_note_index]
     return <div className='container'>
+      <Title selected_note={selected_note} selected_scale_name={this.state.selected_scale_name}/>
       <ScaleDisplay notes={NOTES} selected_note_index={this.state.selected_note_index} scale_intervals={SCALES_LIST[this.state.selected_scale_name]} />
       <ScaleTable notes={NOTES} selected_scale_notes={this.state.selected_scale_notes} selected_note={selected_note} selected_note_index={this.state.selected_note_index} selected_scale_notes={selected_scale_notes}/>
       <div className="selectors">
