@@ -1,49 +1,17 @@
 import React, {Component} from 'react'
-import './stylesheets/clock.css'
+import './stylesheets/selector.css'
+import {DropDown} from './Dropdown'
 
 const NOTES = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
+const maj_scale = [0, 2, 4, 5, 7, 9, 11]
 
-class DropdownItems extends React.Component {
-  constructor (props) {
-    super (props)
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  handleClick (e) {
-    this.props.onChange(e.target.id)
-  }
-
-  render () {
-    return <li><a className="dropdown-item" id={this.props.index} href="#" onClick={this.handleClick}>{this.props.note}</a></li>
-  }
-}
-
-class DropDown extends React.Component {
-  constructor (props) {
-    super (props)
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange (index) {
-    this.props.onChange(index)
-  }
-
-  render () {
-    const items = []
-    this.props.notes.forEach((note, index) => {
-      items.push(<DropdownItems key={index} index={index} note={note} onChange={this.handleChange}/>)
-    })
-      return <div className='note-selector'>
-      <div className="dropdown">
-        <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Note
-        </button>
-        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          {items}
-        </ul>
-      </div>
-    </div>
-  }
+function Scale ({notes, selected_note_index, scale_intervals}) {
+  const ordered_notes = [...NOTES.slice(selected_note_index), ...NOTES.slice(0, selected_note_index)]
+  let scale_notes = []
+  scale_intervals.forEach(scale_interval => {
+    scale_notes.push(ordered_notes[scale_interval])
+  })
+  return scale_notes
 }
 
 export class Selector extends Component {
@@ -62,8 +30,8 @@ export class Selector extends Component {
   render () {
     const selected_note = NOTES[this.state.selected_note_index]
     return <div className='note-selector'>
-      <h1>{selected_note}</h1>
-      <DropDown notes={NOTES} onChange={this.handleNoteChange}/>
+      <DropDown selected_note={selected_note} notes={NOTES} onChange={this.handleNoteChange}/>
+      <Scale notes={NOTES} selected_note_index={this.state.selected_note_index} scale_intervals={maj_scale}/>
     </div>
   }
 }
