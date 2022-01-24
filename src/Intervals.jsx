@@ -1,6 +1,10 @@
+import './stylesheets/intervals.css'
+
 function createHalf (number) {
   if (number === 0.5) {
-    return "1/2"
+    return "½"
+  } else if (number === 1.5) {
+    return "1½"
   } else {
     return "1"
   }
@@ -16,5 +20,7 @@ export function Intervals ({selected_scale}) {
       intervals.push(createHalf((selected_scale[i + 1] - selected_scale[i])/2))
     }
   }
-  return <h1 className='mt-4'>{intervals.join(' - ')}</h1>
+  return <div className='intervals'>
+        <h2>{intervals.join(' - ')}</h2>
+      </div>
 }
