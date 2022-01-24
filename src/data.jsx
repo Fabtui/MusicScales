@@ -15,9 +15,12 @@ export const INTERVALS = {
 
 export const NOTES = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
 
-export const SCALES = ["Major", "Minor"]
 
 export const SCALES_LIST = {
-  Major: [0, 2, 4, 5, 7, 9, 11],
-  Minor: [0, 2, 3, 5, 7, 8, 10]
+  "Major": [0, 2, 4, 5, 7, 9, 11],
+  "Minor": [0, 2, 3, 5, 7, 8, 10],
+  "Minor Harmonic": [0, 2, 3, 5, 7, 8, 11],
+  "Minor Melodic": [0, 2, 3, 5, 7, 9, 11],
 }
+
+export const SCALES = Object.keys(SCALES_LIST)
