@@ -1,7 +1,6 @@
-import { GUITAR_NECK_NOTES, NOTES } from './data'
+import { NOTES } from './data'
 import './stylesheets/guitar_neck.css'
 import { IntervalNotesRows } from './ScaleTable'
-
 
 function GuitarNeckRows (guitarStrings, selected_scale_notes, notes) {
   let rows = []
@@ -12,8 +11,8 @@ function GuitarNeckRows (guitarStrings, selected_scale_notes, notes) {
   return rows
 }
 
-export function GuitarNeck ({selected_scale_notes}) {
-  const rows = GuitarNeckRows(GUITAR_NECK_NOTES, selected_scale_notes, NOTES)
+export function GuitarNeck ({tuning, selected_scale_notes}) {
+  const rows = GuitarNeckRows(tuning, selected_scale_notes, NOTES)
   return <table className="table guitar-neck-table">
             {rows}
           </table>

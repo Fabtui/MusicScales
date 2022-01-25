@@ -8,6 +8,7 @@ class ScaleDropdownItems extends React.Component {
   }
 
   handleClick (e) {
+    e.preventDefault()
     this.props.onChange(e.target.id)
   }
 
