@@ -1,10 +1,12 @@
 import './stylesheets/triads.css'
+import { TriadsChordsShape } from './TriadsChordsShape'
 
-function MakeTriads(selected_scale_notes) {
+function MakeTriads(selected_scale_notes, selected_scale) {
+  const chrodsShapes = TriadsChordsShape(selected_scale= {selected_scale})
   let triads = []
   const extend = selected_scale_notes.concat(selected_scale_notes);
   for (let i = 0; i < selected_scale_notes.length; i++) {
-        triads.push([extend[i], extend[i + 2], extend[i + 4]])
+        triads.push([extend[i], extend[i + 2], extend[i + 4], `${extend[i]} ${chrodsShapes[i]}`])
     }
   return triads
 }
@@ -33,8 +35,8 @@ function TriadsColumn(triads_array) {
   return triad_column
 }
 
-export function Triads ({selected_scale_notes}) {
-  const triads = MakeTriads(selected_scale_notes)
+export function Triads ({selected_scale_notes, selected_scale}) {
+  const triads = MakeTriads(selected_scale_notes, selected_scale)
   return <table className="table triads-table">
   <thead>
     <tr>
@@ -42,6 +44,7 @@ export function Triads ({selected_scale_notes}) {
       <th scope="col">Root</th>
       <th scope="col">Third</th>
       <th scope="col">Fifth</th>
+      <th scope="col">Chord Shape</th>
     </tr>
   </thead>
   <tbody>
