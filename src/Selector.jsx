@@ -5,12 +5,11 @@ import {ScaleDropDown} from './ScaleDropDown'
 import {Scale} from './Scale'
 import {ScaleDisplay} from './Scale'
 import {ScaleTable} from './ScaleTable'
-import { NOTES } from './data'
-import { SCALES } from './data'
-import { SCALES_LIST } from './data'
+import { NOTES, GUITAR_NECK_NOTES, SCALES, SCALES_LIST } from './data'
 import { Title } from './Title'
 import { Intervals } from './Intervals'
 import { Triads } from './Triads'
+import { GuitarNeck } from './GuitarNeck'
 
 export class Selector extends Component {
   constructor (props) {
@@ -57,6 +56,9 @@ export class Selector extends Component {
       </div>
       <div className="triads-container">
         <Triads selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
+      </div>
+      <div className="neck-table">
+        <GuitarNeck selected_scale_notes={selected_scale_notes}/>
       </div>
     </div>
   }

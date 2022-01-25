@@ -1,0 +1,11 @@
+.neck-table {
+  margin-top: 50px;
+}
+
+.guitar-neck-table {
+  background-color: rgba(210, 105, 30, 0.685);
+}
+
+.guitar-neck-table .not-in-scale {
+  color: rgba(255, 255, 255, 0.723);
+}
