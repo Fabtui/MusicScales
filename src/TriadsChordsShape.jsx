@@ -28,29 +28,7 @@ function MakeChordsShape(triads_scale) {
   return triadsChordsShape
 }
 
-function ChordsShapeRow (chordShape, index) {
-  return  <tr key={index}><th>{chordShape}</th></tr>
-}
-
-function ChordsShapeTable (chordShapes) {
-  const rows = []
-  chordShapes.forEach((chordShape, index) => {
-    rows.push(ChordsShapeRow(chordShape, index))
-  })
-  return <table className="table chords-shape">
-  <thead>
-    <tr>
-      <th scope="col">Chord Shape</th>
-    </tr>
-  </thead>
-  <tbody>
-    {rows}
-  </tbody>
-</table>
-}
-
 export function TriadsChordsShape ({selected_scale}) {
   const triads = MakeTriads(selected_scale)
-  const chordsShapes = MakeChordsShape(triads)
-  return ChordsShapeTable(chordsShapes)
+  return MakeChordsShape(triads)
 }
