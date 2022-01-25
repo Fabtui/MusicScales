@@ -28,7 +28,7 @@ function IntervalNameRows ({intervals}) {
          </thead>
 }
 
-function IntervalNotesRows ({selected_note_index, selected_scale_notes, notes}) {
+export function IntervalNotesRows ({selected_note_index, selected_scale_notes, notes}) {
   const ordered_notes = [...notes.slice(selected_note_index), ...notes.slice(0, selected_note_index)]
   const rows = []
   ordered_notes.forEach(note => {
