@@ -11,6 +11,7 @@ import { SCALES_LIST } from './data'
 import { Title } from './Title'
 import { Intervals } from './Intervals'
 import { Triads } from './Triads'
+import { TriadsChordsShape } from './TriadsChordsShape'
 
 export class Selector extends Component {
   constructor (props) {
@@ -55,8 +56,9 @@ export class Selector extends Component {
       <div className="scale-table">
         <ScaleTable notes={NOTES} selected_scale_notes={selected_scale_notes} selected_note={selected_note} selected_note_index={this.state.selected_note_index} selected_scale_notes={selected_scale_notes}/>
       </div>
-      <div className="triads">
+      <div className="triads-container">
         <Triads selected_scale_notes={selected_scale_notes}/>
+        <TriadsChordsShape selected_scale={this.state.selected_scale}/>
       </div>
     </div>
   }
