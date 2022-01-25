@@ -48,13 +48,4 @@ export function Triads ({selected_scale_notes}) {
     <TriadsColumn triads_array={triads}/>
   </tbody>
 </table>
-
-
-
-
-
-
-  // <div className="triads-displayer">
-  //   {rows}
-  // </div>
 }

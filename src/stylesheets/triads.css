@@ -1,3 +1,7 @@
+.triads-container {
+  display: flex;
+}
+
 .triads-table {
   margin-top: 72px;
 }
