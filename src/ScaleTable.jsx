@@ -45,17 +45,17 @@ export function IntervalNotesRows ({selected_note_index, selected_scale_notes, n
         </tbody>
 }
 
-export class Table extends React.Component {
+export class Table extends React.PureComponent {
   render () {
   const intervals_name = Object.values(INTERVALS)
   return <table className='table'>
-    <IntervalNameRows intervals={intervals_name}/>
-    <IntervalNotesRows selected_note_index={this.props.selected_note_index} selected_scale_notes={this.props.selected_scale_notes} notes={this.props.notes}/>
-  </table>
-}
+      <IntervalNameRows intervals={intervals_name}/>
+      <IntervalNotesRows selected_note_index={this.props.selected_note_index} selected_scale_notes={this.props.selected_scale_notes} notes={this.props.notes}/>
+    </table>
+  }
 }
 
-export class ScaleTable extends React.Component {
+export class ScaleTable extends React.PureComponent {
   render () {
     return <div>
       <Table selected_note_index={this.props.selected_note_index} selected_scale_notes={this.props.selected_scale_notes} selected_note={this.props.selected_note} intervals={INTERVALS} notes={this.props.notes}/>
