@@ -15,7 +15,12 @@ export const INTERVALS = {
 
 export const NOTES = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
 
-export const GUITAR_NECK_NOTES = [7, 0, 5, 10, 2, 7]
+export const GUITAR_TUNING = {
+  "E": [7, 2, 10, 5, 0, 7],
+  "Eb": [6, 1, 9, 4, 11, 6],
+  "D": [5, 0, 8, 3, 10, 5],
+  "DropD": [7, 2, 10, 5, 0, 5]
+}
 
 export const SCALES_LIST = {
   "Major": [0, 2, 4, 5, 7, 9, 11],

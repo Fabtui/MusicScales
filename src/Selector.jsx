@@ -5,11 +5,12 @@ import {ScaleDropDown} from './ScaleDropDown'
 import {Scale} from './Scale'
 import {ScaleDisplay} from './Scale'
 import {ScaleTable} from './ScaleTable'
-import { NOTES, GUITAR_NECK_NOTES, SCALES, SCALES_LIST } from './data'
+import { NOTES, SCALES, SCALES_LIST, GUITAR_TUNING } from './data'
 import { Title } from './Title'
 import { Intervals } from './Intervals'
 import { Triads } from './Triads'
 import { GuitarNeck } from './GuitarNeck'
+import { TuningDropDown } from './TuningDropDown'
 
 export class Selector extends Component {
   constructor (props) {
@@ -18,15 +19,25 @@ export class Selector extends Component {
       selected_note_index: 0,
       selected_scale: SCALES_LIST["Major"],
       selected_scale_name: SCALES[0],
-      selected_scale_notes: ["A", "B", "C#", "D", "E", "F#", "G#"]
+      selected_scale_notes: ["A", "B", "C#", "D", "E", "F#", "G#"],
+      selected_tuning: GUITAR_TUNING["E"],
+      selected_tuning_name: "E"
     }
     this.handleNoteChange = this.handleNoteChange.bind(this)
     this.handleScaleChange = this.handleScaleChange.bind(this)
+    this.handleTuningChange = this.handleTuningChange.bind(this)
   }
 
   handleNoteChange (note) {
     this.setState({
       selected_note_index: note,
+    })
+  }
+
+  handleTuningChange (tuning) {
+    this.setState({
+      selected_tuning: GUITAR_TUNING[tuning],
+      selected_tuning_name: tuning
     })
   }
 
@@ -58,7 +69,11 @@ export class Selector extends Component {
         <Triads selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
       </div>
       <div className="neck-table">
-        <GuitarNeck selected_scale_notes={selected_scale_notes}/>
+        <div className="tuning-select">
+          <h4>Tuning selector: </h4>
+          <TuningDropDown className="scale-selector" tunings={GUITAR_TUNING} selected_tuning_name={this.state.selected_tuning_name} selected_tuning={this.state.selected_tuning} onChange={this.handleTuningChange}/>
+        </div>
+        <GuitarNeck tuning={this.state.selected_tuning} selected_scale_notes={selected_scale_notes}/>
       </div>
     </div>
   }
