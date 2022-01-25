@@ -1,7 +1,11 @@
 .in-scale {
-  color: red;
+  color: rgba(255, 0, 0, 0.9);
+}
+
+.root-note {
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .not-in-scale {
-  color: rgba(128, 128, 128, 0.788);
+  color: rgba(128, 128, 128, 0.8);
 }
