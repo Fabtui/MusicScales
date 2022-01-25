@@ -1,0 +1,13 @@
+.triads-table {
+  margin-top: 72px;
+}
+
+.triads-table tr {
+  background-color: rgba(0, 0, 0, 0.103);
+  border: 1px solid black;
+}
+
+.triads-table th {
+  background-color: rgba(0, 0, 0, 0.103);
+  border: 1px solid black;
+}
