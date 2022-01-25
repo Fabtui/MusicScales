@@ -6,13 +6,18 @@
 }
 
 .neck-table {
-  margin-top: 50px;
+  margin: 70px 0;
 }
 
 .guitar-neck-table {
-  background-color: rgba(210, 105, 30, 0.685);
+  background-color: rgba(210, 105, 30, 0.7);
 }
 
 .guitar-neck-table .not-in-scale {
-  color: rgba(255, 255, 255, 0.723);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.guitar-neck-table > tbody > tr > th:nth-of-type(1) {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-right: 1px solid black;
 }
