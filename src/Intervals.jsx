@@ -12,7 +12,6 @@ function createHalf (number) {
 
 export function Intervals ({selected_scale}) {
   let intervals = []
-  let interval = null
   for (let i = 0; i < selected_scale.length; i++) {
     if (i === selected_scale.length - 1) {
       intervals.push(createHalf((12 - selected_scale[i])/2))
