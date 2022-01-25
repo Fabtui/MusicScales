@@ -21,9 +21,10 @@ export function Intervals ({selected_scale}) {
     }
   }
   let rows = []
-  intervals.forEach(interval => {
-    rows.push(<div className="col-interval-items-hidden">-</div>)
-    rows.push(<div className="col-interval-items">{interval}</div>)
+  intervals.forEach((interval, index) => {
+    const key = `${interval}-${index}`
+    rows.push(<div key={index} className="col-interval-items-hidden">-</div>)
+    rows.push(<div key={key} className="col-interval-items">{interval}</div>)
   })
   return <div className="wrapper-interval">
           {rows}
