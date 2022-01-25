@@ -9,7 +9,11 @@ function IntervalRow ({interval}) {
 class NotesRow extends React.Component {
   render () {
     if (this.props.inScale) {
-      return <th className='in-scale'>{this.props.interval}</th>
+      if (this.props.root) {
+        return <th className='in-scale root-note'>{this.props.interval}</th>
+      } else {
+        return <th className='in-scale'>{this.props.interval}</th>
+      }
     } else {
       return <th className='not-in-scale'>{this.props.interval}</th>
     }
@@ -33,9 +37,13 @@ export function IntervalNotesRows ({selected_note_index, selected_scale_notes, n
   const rows = []
   ordered_notes.forEach(note => {
     if (selected_scale_notes.includes(note)) {
-      rows.push(<NotesRow inScale={true} key={note} interval={note}/>)
+      if (note === selected_scale_notes[0]) {
+        rows.push(<NotesRow root={true} inScale={true} key={note} interval={note}/>)
+      } else {
+        rows.push(<NotesRow root={false} inScale={true} key={note} interval={note}/>)
+      }
     } else {
-      rows.push(<NotesRow inScale={false} key={note} interval={note}/>)
+      rows.push(<NotesRow root={false} inScale={false} key={note} interval={note}/>)
     }
   })
   return <tbody>
