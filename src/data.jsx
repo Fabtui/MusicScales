@@ -1,16 +1,16 @@
 export const INTERVALS = {
   0: "T",
   1: "2m",
-  2: "2M",
+  2: "2",
   3: "3m",
-  4: "3M",
+  4: "3",
   5: "4",
   6: "5-",
   7: "5",
   8: "6m",
-  9: "6M",
+  9: "6",
   10: "7m",
-  11: "7M"
+  11: "7"
 }
 
 export const NOTES = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
@@ -30,3 +30,4 @@ export const SCALES_LIST = {
 }
 
 export const SCALES = Object.keys(SCALES_LIST)
+export const INTERVALS_NAMES = Object.values(INTERVALS)
