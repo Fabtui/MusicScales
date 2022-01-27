@@ -9,3 +9,7 @@
 .not-in-scale {
   color: rgba(128, 128, 128, 0.8);
 }
+
+.scale-table .table tbody tr th:last-child {
+  display: none;
+}
