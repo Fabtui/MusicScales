@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { INTERVALS } from './data'
+import { INTERVALS, INTERVALS_NAMES, NOTES } from './data'
 import './stylesheets/scale_table.css'
 
 function IntervalRow ({interval}) {
@@ -44,6 +44,33 @@ export function IntervalNotesRows ({selected_note_index, selected_scale_notes, n
       }
     } else {
       rows.push(<NotesRow root={false} inScale={false} key={note} interval={note}/>)
+    }
+  })
+  return <tbody>
+          <tr>
+            {rows}
+          </tr>
+        </tbody>
+}
+
+export function IntervalNamesRows ({selected_note_index, guitarString, selected_scale, selected_scale_notes, notes}) {
+  const ordered_notes = [...notes.slice(guitarString), ...notes.slice(0, guitarString)]
+  const rows = []
+  const tonic = NOTES[selected_note_index]
+  const indexofT = (ordered_notes.indexOf(tonic));
+  const ordered_names = [...INTERVALS_NAMES.slice((12 - indexofT)), ...INTERVALS_NAMES.slice(0, (12 - indexofT))]
+  const scale_names = []
+  selected_scale.forEach(scale => {scale_names.push(INTERVALS_NAMES[scale])})
+  ordered_names.forEach((note, index) => {
+    const key = `${note}-${index}`
+    if (scale_names.includes(note)) {
+      if (note === scale_names[0]) {
+        rows.push(<NotesRow root={true} inScale={true} key={key} interval={note}/>)
+      } else {
+        rows.push(<NotesRow root={false} inScale={true} key={key} interval={note}/>)
+      }
+    } else {
+      rows.push(<NotesRow root={false} inScale={false} key={key} interval={note}/>)
     }
   })
   return <tbody>

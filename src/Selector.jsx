@@ -52,7 +52,7 @@ export class Selector extends Component {
         <Intervals selected_scale={this.state.selected_scale}/>
       </div>
       <div className="scale-table">
-        <ScaleTable notes={NOTES} selected_scale_notes={selected_scale_notes} selected_note={selected_note} selected_note_index={this.state.selected_note_index} selected_scale_notes={selected_scale_notes}/>
+        <ScaleTable selected_scale={this.state.selected_scale} notes={NOTES} selected_scale_notes={selected_scale_notes} selected_note={selected_note} selected_note_index={this.state.selected_note_index} selected_scale_notes={selected_scale_notes}/>
       </div>
       <div className="triads-container">
         <Triads selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
