@@ -35,15 +35,17 @@ function IntervalNameRows ({intervals}) {
 export function IntervalNotesRows ({selected_note_index, selected_scale_notes, notes}) {
   const ordered_notes = [...notes.slice(selected_note_index), ...notes.slice(0, selected_note_index)]
   const rows = []
-  ordered_notes.forEach(note => {
+  const ordered_notes_extend = ordered_notes.push(ordered_notes[0])
+  ordered_notes.forEach((note, index) => {
+    const key = `${note}-${index}`
     if (selected_scale_notes.includes(note)) {
       if (note === selected_scale_notes[0]) {
-        rows.push(<NotesRow root={true} inScale={true} key={note} interval={note}/>)
+        rows.push(<NotesRow root={true} inScale={true} key={key} interval={note}/>)
       } else {
-        rows.push(<NotesRow root={false} inScale={true} key={note} interval={note}/>)
+        rows.push(<NotesRow root={false} inScale={true} key={key} interval={note}/>)
       }
     } else {
-      rows.push(<NotesRow root={false} inScale={false} key={note} interval={note}/>)
+      rows.push(<NotesRow root={false} inScale={false} key={key} interval={note}/>)
     }
   })
   return <tbody>
@@ -59,6 +61,7 @@ export function IntervalNamesRows ({selected_note_index, guitarString, selected_
   const tonic = NOTES[selected_note_index]
   const indexofT = (ordered_notes.indexOf(tonic));
   const ordered_names = [...INTERVALS_NAMES.slice((12 - indexofT)), ...INTERVALS_NAMES.slice(0, (12 - indexofT))]
+  const ordered_names_extend = ordered_names.push(ordered_names[0])
   const scale_names = []
   selected_scale.forEach(scale => {scale_names.push(INTERVALS_NAMES[scale])})
   ordered_names.forEach((note, index) => {
