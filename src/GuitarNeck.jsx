@@ -19,5 +19,22 @@ export function GuitarNeck ({notes_displayed, selected_scale, selected_note_inde
   const rows = GuitarNeckRows(notes_displayed, selected_scale, selected_note_index, tuning, selected_scale_notes, NOTES)
   return <table className="table guitar-neck-table">
             {rows}
+          <tbody>
+          <tr className='fretboard-marks'>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>o</th>
+            <th></th>
+            <th>o</th>
+            <th></th>
+            <th>o</th>
+            <th></th>
+            <th>o</th>
+            <th></th>
+            <th></th>
+            <th>oo</th>
+          </tr>
+          </tbody>
           </table>
 }
