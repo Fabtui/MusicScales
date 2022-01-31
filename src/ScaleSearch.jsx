@@ -52,7 +52,7 @@ class MakeNotesCheckbox extends React.Component  {
   }
 }
 
-export class ScaleSearch extends React.Component {
+export class ScaleSearch extends React.PureComponent {
   constructor (props) {
     super (props)
     this.state = {
