@@ -1,0 +1,9 @@
+.scale-search {
+  margin: 50px 0;
+}
+
+.notes-checkboxes {
+  display: flex;
+  padding: 0 20%;
+  justify-content: space-between;
+}

@@ -25,10 +25,10 @@ function FindTriadsName(root, third, fifth) {
       return `${root}-Aug`
     } else if ((third - root) === 5 && (fifth - third) === 2) {
       root >= 12 ? root = (root - 12) : root = root
-      return `${root}-Sus4`
+      return `${root}-(Sus4)`
     } else if ((third - root) === 2 && (fifth - third) === 5) {
       root >= 12 ? root = (root - 12) : root = root
-      return `${root}-Sus2`
+      return `${root}-(Sus2)`
     } else {
       return "-"
     }

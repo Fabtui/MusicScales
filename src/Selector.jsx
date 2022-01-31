@@ -10,6 +10,7 @@ import { Title } from './Title'
 import { Intervals } from './Intervals'
 import { Triads } from './Triads'
 import { NeckTable } from './NeckTable'
+import { ScaleSearch } from './ScaleSearch'
 
 export class Selector extends Component {
   constructor (props) {
@@ -57,6 +58,9 @@ export class Selector extends Component {
         <NeckTable selected_scale_notes={selected_scale_notes} selected_note_index={this.state.selected_note_index} selected_scale={this.state.selected_scale} />
       <div className="triads-container">
         <Triads selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
+      </div>
+      <div className="scale-search">
+        <ScaleSearch/>
       </div>
     </div>
   }
