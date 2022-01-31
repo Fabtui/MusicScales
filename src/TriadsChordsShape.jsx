@@ -54,7 +54,6 @@ function MakeChordsShape(triads_scale) {
       }
     }
   });
-  console.log(triadsChordsShape);
   return triadsChordsShape
 }
 
