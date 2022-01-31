@@ -2,11 +2,22 @@ import './stylesheets/triads.css'
 import { TriadsChordsShape } from './TriadsChordsShape'
 
 function MakeTriads(selected_scale_notes, selected_scale) {
-  const chrodsShapes = TriadsChordsShape(selected_scale= {selected_scale})
+  const chordsShapes = TriadsChordsShape({selected_scale})
+  let chordsShapesArray = []
+  chordsShapes.forEach(chord => {
+    const splitedChord = chord.split('-');
+    splitedChord[0] >= 12 ? splitedChord[0] = splitedChord[0] - 12 : splitedChord[0] = splitedChord[0]
+    selected_scale.forEach((scale, index) => {
+      if (scale === parseInt(splitedChord[0])) {
+        splitedChord[0] = selected_scale_notes[index]
+      }
+    })
+  chordsShapesArray.push(splitedChord)
+  })
   let triads = []
   const extend = selected_scale_notes.concat(selected_scale_notes);
   for (let i = 0; i < selected_scale_notes.length; i++) {
-        triads.push([extend[i], extend[i + 2], extend[i + 4], `${extend[i]} ${chrodsShapes[i]}`])
+        triads.push([extend[i], extend[i + 2], extend[i + 4], `${chordsShapesArray[i][0]} ${chordsShapesArray[i][1]}`])
     }
   return triads
 }

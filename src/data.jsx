@@ -23,7 +23,8 @@ export const GUITAR_TUNING = {
   "D": [5, 0, 8, 3, 10, 5],
   "Drop C": [5, 0, 8, 3, 10, 3],
   "Db": [4, 11, 7, 2, 9, 4],
-  "Drop Cb": [4, 11, 7, 2, 9, 2]
+  "Drop B": [4, 11, 7, 2, 9, 2],
+  "Open B": [7, 2, 10, 2, 9, 2],
 }
 
 export const SCALES_LIST = {
@@ -33,6 +34,7 @@ export const SCALES_LIST = {
   "Minor Penta": [0, 3, 5, 7, 10],
   "Minor Harmonic": [0, 2, 3, 5, 7, 8, 11],
   "Minor Melodic": [0, 2, 3, 5, 7, 9, 11],
+  "Blues": [0, 3, 5, 6, 7, 10]
 }
 
 export const SCALES = Object.keys(SCALES_LIST)
