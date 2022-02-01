@@ -13,3 +13,22 @@
 .scale-table .table tbody tr th:last-child {
   display: none;
 }
+
+.notes-displayer {
+  font-size: 32px;
+  margin-top: 32px;
+  display: flex;
+}
+
+.wrapper {
+  padding: 0 64px;
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-gap: 4px;
+  grid-auto-rows: minmax(32px, auto);
+}
+
+.wrapper-interval {
+  color: rgba(0, 0, 0, 0.705);
+  font-size: 1.5rem;
+}
