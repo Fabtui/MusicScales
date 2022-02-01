@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { GuitarNeck } from './GuitarNeck'
 import { TuningDropDown } from './TuningDropDown'
 import { GUITAR_TUNING, NOTES } from './data'
-import { ScaleNotes } from './Scale'
+import { ScaleNotes } from './ScaleDisplay'
 
 export class NeckTable extends React.Component {
   constructor (props) {

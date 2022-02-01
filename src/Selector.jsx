@@ -2,12 +2,11 @@ import './stylesheets/selector.css'
 import React, {Component} from 'react'
 import {NoteDropDown} from './NoteDropdown'
 import {ScaleDropDown} from './ScaleDropDown'
-import {ScaleNotes} from './Scale'
-import {ScaleDisplay} from './Scale'
+import {ScaleNotes} from './ScaleDisplay'
+import {ScaleDisplay} from './ScaleDisplay'
 import {ScaleTable} from './ScaleTable'
 import { NOTES, SCALES, SCALES_LIST } from './data'
 import { Title } from './Title'
-import { Intervals } from './Intervals'
 import { Triads } from './Triads'
 import { NeckTable } from './NeckTable'
 import { ScaleSearch } from './ScaleSearch'
@@ -49,8 +48,7 @@ export class Selector extends Component {
         <ScaleDropDown className="scale-selector" selected_scale={this.state.selected_scale_name} scales={SCALES} onChange={this.handleScaleChange}/>
       </div>
       <div className="scale-display">
-        <ScaleDisplay notes={NOTES} selected_note_index={this.state.selected_note_index} scale_intervals={SCALES_LIST[this.state.selected_scale_name]} />
-        <Intervals selected_scale={this.state.selected_scale}/>
+        <ScaleDisplay selected_scale={this.state.selected_scale} notes={NOTES} selected_note_index={this.state.selected_note_index} scale_intervals={SCALES_LIST[this.state.selected_scale_name]} />
       </div>
       <div className="scale-table">
         <ScaleTable selected_scale={this.state.selected_scale} notes={NOTES} selected_scale_notes={selected_scale_notes} selected_note={selected_note} selected_note_index={this.state.selected_note_index} selected_scale_notes={selected_scale_notes}/>
