@@ -52,13 +52,13 @@ export class Selector extends Component {
         <ScaleDisplay notes={NOTES} selected_note_index={this.state.selected_note_index} scale_intervals={SCALES_LIST[this.state.selected_scale_name]} />
         <Intervals selected_scale={this.state.selected_scale}/>
       </div>
-      {/* <div className="scale-table">
+      <div className="scale-table">
         <ScaleTable selected_scale={this.state.selected_scale} notes={NOTES} selected_scale_notes={selected_scale_notes} selected_note={selected_note} selected_note_index={this.state.selected_note_index} selected_scale_notes={selected_scale_notes}/>
       </div>
         <NeckTable selected_scale_notes={selected_scale_notes} selected_note_index={this.state.selected_note_index} selected_scale={this.state.selected_scale} />
       <div className="triads-container">
         <Triads selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
-      </div> */}
+      </div>
       <div className="scale-search">
         <ScaleSearch/>
       </div>

@@ -38,13 +38,26 @@ class MakeNotesCheckbox extends React.Component  {
   }
 
   handleCheckChange (note, checked) {
-    console.log(note, checked);
+    if (checked) {
+      const selectedNotes = [...this.state.selectedNotes, note]
+      this.setState({
+        selectedNotes: selectedNotes
+      })
+      this.props.onChange(selectedNotes)
+    } else {
+      const selectedNotes = this.state.selectedNotes;
+      selectedNotes.splice(selectedNotes.indexOf(note), 1);
+      this.setState({
+        selectedNotes: selectedNotes
+      })
+      this.props.onChange(selectedNotes)
+    }
   }
 
   render () {
     const items = []
     NOTES.forEach(note => {
-      items.push( <MakeCheckbox isChecked={this.state.isChecked} key={note} note={note} onChange={this.handleCheckChange}/>)
+      items.push( <MakeCheckbox key={note} note={note} onChange={this.handleCheckChange}/>)
     })
     return <React.Fragment>
         {items}
@@ -52,19 +65,26 @@ class MakeNotesCheckbox extends React.Component  {
   }
 }
 
-export class ScaleSearch extends React.PureComponent {
+export class ScaleSearch extends React.Component {
   constructor (props) {
     super (props)
     this.state = {
       selectedNotes: []
     }
+    this.handleSelectedNotesChange = this.handleSelectedNotesChange.bind(this)
+  }
+
+  handleSelectedNotesChange (selectedNotesArray) {
+    this.setState({
+      selectedNotes: selectedNotesArray
+    })
   }
 
   render () {
     return <div className="scale-search">
       <h1>Scale Search</h1>
       <div className="notes-checkboxes">
-        <MakeNotesCheckbox/>
+        <MakeNotesCheckbox onChange={this.handleSelectedNotesChange}/>
       </div>
     </div>
   }
