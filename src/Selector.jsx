@@ -10,7 +10,6 @@ import { Title } from './Title'
 import { Triads } from './Triads'
 import { NeckTable } from './NeckTable'
 import { ScaleSearch } from './ScaleSearch'
-import { AllScales } from './AllScales'
 
 export class Selector extends Component {
   constructor (props) {
@@ -61,9 +60,6 @@ export class Selector extends Component {
       {/* <div className="scale-search">
         <ScaleSearch/>
       </div> */}
-      <div className="all-scales">
-        <AllScales/>
-      </div>
     </div>
   }
 }

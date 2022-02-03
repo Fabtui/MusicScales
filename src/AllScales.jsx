@@ -82,12 +82,14 @@ export function AllScales () {
 
   const styles = scaleVisible ? {opacity: '1'} : {opacity: '0'}
 
-  return <div>
+  return <div className='container'>
+          <div className='all-scales-table'>
             <label className="scaleCheckbox">
             <input htmlFor="scaleCheckbox" type="checkbox" onChange={toggleScale} checked={scaleVisible}></input>
             All Scales</label>
             <div className='all-scales' style={styles}>
             {scaleVisible && <ScaleTable/>}
             </div>
+          </div>
           </div>
 }
