@@ -13,10 +13,10 @@
   transition: all 0.6s;
 }
 
-.all-scales-table {
-  height: 60vh;
+/* .all-scales-table {
+  height: 80vh;
   overflow-Y: scroll;
-}
+} */
 
 .all-scales-table table {
   position: relative;
