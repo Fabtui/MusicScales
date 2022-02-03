@@ -29,17 +29,26 @@
   top: 0;
 }
 
+.up-arrow-container {
+  height: 41px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: end;
+}
+
 .fa-arrow-circle-up {
-  transform: translate(66vw, 35px);
+  color: rgba(0, 0, 0, 0.8);
   z-index: 99;
   font-size: 24px;
-  position: sticky;
-  top: -30px;
+  transform: translate(30px, 8px);
   display: none;
   opacity: 0;
   transition: all 0.2s;
 }
 
 .fa-arrow-circle-up:hover {
+  color: black;
   cursor: pointer;
 }

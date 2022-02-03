@@ -1,3 +1,8 @@
+.wrapper {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
 .intervals {
   margin-bottom: 20px;
   padding-left: 2.5rem;
