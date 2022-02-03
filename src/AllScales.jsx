@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import { ScaleNotes } from './ScaleDisplay'
 import './stylesheets/all_scales.css'
 
 function useFetch (url) {
@@ -46,12 +45,14 @@ function ScaleTable () {
   }
 
   return <div className='all-scales-table'>
-  <UpArrow/>
+  <div className='up-arrow-container'>
+    <UpArrow/>
+  </div>
   <table className='table'>
     <thead>
       <tr>
         <th scope="col">Name</th>
-        <th scope="col">Value</th>
+        <th scope="col">Intervals</th>
         <th scope="col">Group</th>
       </tr>
     </thead>
