@@ -46,6 +46,7 @@ function ScaleTable () {
   }
 
   return <div className='all-scales-table'>
+  <UpArrow/>
   <table className='table'>
     <thead>
       <tr>
@@ -63,6 +64,25 @@ function ScaleTable () {
     </tbody>
   </table>
   </div>
+}
+
+function UpArrow () {
+  function scrollToTop () {
+    window.scrollTo(0, 0)
+  }
+
+  window.addEventListener('scroll', (e) => {
+    const arrow = document.querySelector('.fa-arrow-circle-up')
+    if ( window.pageYOffset > 200 ) {
+      arrow.style.opacity= '1'
+      arrow.style.pointerEvents= ''
+    } else {
+      arrow.style.opacity= '0'
+      arrow.style.pointerEvents= 'none';
+    }
+  })
+
+  return <i onClick={scrollToTop} className="fas fa-arrow-circle-up"></i>
 }
 
 

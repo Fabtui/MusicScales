@@ -12,7 +12,7 @@ function App() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
           <Tabs>
-            <Tab title={"My scale"} selected>
+            <Tab title={"My scale"}>
               <Selector/>
             </Tab>
             <Tab title={"All scales"}>
