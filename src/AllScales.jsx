@@ -87,14 +87,9 @@ function UpArrow () {
   return <i onClick={scrollToTop} className="fas fa-arrow-circle-up"></i>
 }
 
-
 export function AllScales () {
   const [scaleVisible, toggleScale] = useToggle(false)
   // const [styles, toggleStyles] = useToggleStyle(false)
-
-  useEffect(function () {
-    // console.log(scaleVisible);
-  })
 
   function useToggle (init = false) {
     const [value, setValue] = useState(init)

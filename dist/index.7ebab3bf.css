@@ -1,0 +1,236 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.scale-display {
+  margin: 50px 0;
+}
+
+.selectors {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 10%;
+}
+
+.wrapper {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.intervals {
+  margin-bottom: 20px;
+  padding-left: 2.5rem;
+}
+.intervals h2 {
+    font-size: 28px;
+    color: rgba(0, 0, 0, 0.616);
+}
+
+.wrapper-interval {
+  padding: 0 64px;
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-gap: 4px;
+  grid-auto-rows: minmax(32px, auto);
+}
+
+.col-interval-items-hidden {
+  opacity: 0;
+}
+
+.in-scale {
+  color: rgba(255, 0, 0, 0.9);
+}
+
+.root-note {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.not-in-scale {
+  color: rgba(128, 128, 128, 0.8);
+}
+
+.scale-table .table tbody tr th:last-child {
+  display: none;
+}
+
+.notes-displayer {
+  font-size: 32px;
+  margin-top: 32px;
+}
+
+.wrapper {
+  padding: 0 64px;
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-gap: 4px;
+  grid-auto-rows: minmax(32px, auto);
+}
+
+.wrapper-interval {
+  color: rgba(0, 0, 0, 0.705);
+  font-size: 1.5rem;
+}
+
+
+.triads-container {
+  display: flex;
+}
+
+.triads-table {
+  /* margin-top: 72px; */
+}
+
+.triads-table tr {
+  background-color: rgba(0, 0, 0, 0.103);
+  border: 1px solid black;
+}
+
+.triads-table th {
+  background-color: rgba(0, 0, 0, 0.103);
+  border: 1px solid black;
+}
+
+.tuning-select {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 12px;
+  padding: 0 30%;
+}
+
+.neck-table {
+  margin: 70px 0;
+}
+
+.guitar-neck-table {
+  background-color: rgba(210, 105, 30, 0.7);
+}
+
+.guitar-neck-table .not-in-scale {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.guitar-neck-table > tbody > tr > th:nth-of-type(1) {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-right: 1px solid black;
+}
+
+.fretboard-marks {
+  background-color: white;
+}
+
+.scale-search {
+  margin: 50px 0;
+}
+
+.notes-checkboxes {
+  display: flex;
+  padding: 0 20%;
+  justify-content: space-between;
+}
+
+.scaleCheckbox {
+  margin-top: 30px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.scaleCheckbox input {
+  margin-right: 12px;
+}
+
+.all-scales {
+  margin-bottom: 32px;
+  transition: all 0.6s;
+  position: relative;
+}
+
+/* .all-scales-table {
+  height: 80vh;
+  overflow-Y: scroll;
+} */
+
+.all-scales-table table {
+  position: relative;
+}
+
+.all-scales-table thead {
+  background: rgb(231, 231, 231);
+  position: sticky;
+  top: 0;
+}
+
+.up-arrow-container {
+  height: 41px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: end;
+}
+
+.fa-arrow-circle-up {
+  color: rgba(0, 0, 0, 0.8);
+  z-index: 99;
+  font-size: 24px;
+  transform: translate(30px, 8px);
+  display: none;
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.fa-arrow-circle-up:hover {
+  color: black;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=index.7ebab3bf.css.map */
