@@ -23,6 +23,7 @@ function useFetch (url) {
           items: data,
           loading: false
         })
+        window.scrollTo(0, 250)
       } else {
         alert(JSON.stringify(responseData))
         setState(state => ({...state, loading: false}))
@@ -90,6 +91,10 @@ function UpArrow () {
 export function AllScales () {
   const [scaleVisible, toggleScale] = useToggle(false)
   // const [styles, toggleStyles] = useToggleStyle(false)
+
+  useEffect(function () {
+    // console.log(scaleVisible);
+  })
 
   function useToggle (init = false) {
     const [value, setValue] = useState(init)
