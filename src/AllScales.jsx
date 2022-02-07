@@ -46,7 +46,17 @@ function useFetch (url) {
 }
 
 function ScaleTable () {
+  
   const [loading, items, groups] = useFetch('https://gist.githubusercontent.com/guitarpickfm/2caf3f4ecc6efd7f07df958b1a245b8e/raw/83d84c61ba6119e7df9257c0bc41d96f03d968f0/Scales.json')
+
+  const [selectedGroups, setselectedGroups] = useState({
+    selectedGroups: []
+  })
+
+  const [filteredItems, setfilteredItems] = useState({
+    filteredItems: [...items]
+  })
+
   if (loading) {
     return <div>
       <div className="spinner-border" role="status">
@@ -55,8 +65,17 @@ function ScaleTable () {
     </div>
   }
 
+  function handleChange (selectedGroups) {
+    setselectedGroups({
+      selectedGroups: [...selectedGroups],
+    })
+    setfilteredItems({
+      filteredItems: items.filter(item => selectedGroups.includes(item.Group))
+    })
+  }
+
   return <div className='all-scales-table'>
-    <GroupDropDown groups={groups}/>
+    <GroupDropDown groups={groups} onChange={handleChange}/>
   <div className='up-arrow-container'>
     <UpArrow/>
   </div>
@@ -69,11 +88,11 @@ function ScaleTable () {
       </tr>
     </thead>
     <tbody>
-      {items.map((item, index) => <tr key={index}>
+      {items.map(function(item, index) { return <tr key={index}>
         <td>{item.Name}</td>
         <td>{item.Value}</td>
         <td>{item.Group}</td>
-      </tr>)}
+      </tr>})}
     </tbody>
   </table>
   </div>

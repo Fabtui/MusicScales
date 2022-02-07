@@ -47,10 +47,10 @@ export class GroupDropDown extends React.Component {
         selectedGroups: selectedGroup
       })
     }
+    this.props.onChange(this.state.selectedGroups)
   }
   
   render () {
-    console.log(this.state.selectedGroups);
     const items = []
     this.props.groups.forEach((group, index) => {
       items.push(<CreateRadioButton key={index} index={index} group={group} onChange={this.handleChange}/>)
