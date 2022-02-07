@@ -5,6 +5,7 @@ import './stylesheets/all_scales.css'
 function useFetch (url) {
   const [state, setState] = useState({
     items: [],
+    groups: [],
     loading: true
   })
 
@@ -20,8 +21,17 @@ function useFetch (url) {
           d.Value = newValuesArray.join(',');
           return d
         });
+        const groups = [];
+        data.map(d => {
+          if (groups.includes(d.Group)) {
+            return
+          } else {
+            groups.push(d.Group)
+          }
+        });
         setState({
           items: data,
+          groups: groups,
           loading: false
         })
         window.scrollTo(0, 250)
@@ -32,12 +42,11 @@ function useFetch (url) {
     })()
   }, [])
 
-  return [state.loading, state.items]
+  return [state.loading, state.items, state.groups]
 }
 
 function ScaleTable () {
-  const [loading, items] = useFetch('https://gist.githubusercontent.com/guitarpickfm/2caf3f4ecc6efd7f07df958b1a245b8e/raw/83d84c61ba6119e7df9257c0bc41d96f03d968f0/Scales.json')
-
+  const [loading, items, groups] = useFetch('https://gist.githubusercontent.com/guitarpickfm/2caf3f4ecc6efd7f07df958b1a245b8e/raw/83d84c61ba6119e7df9257c0bc41d96f03d968f0/Scales.json')
   if (loading) {
     return <div>
       <div className="spinner-border" role="status">
@@ -47,6 +56,7 @@ function ScaleTable () {
   }
 
   return <div className='all-scales-table'>
+    <GroupDropDown groups={groups}/>
   <div className='up-arrow-container'>
     <UpArrow/>
   </div>
@@ -103,10 +113,8 @@ export function AllScales () {
   }
 
   const styles = scaleVisible ? {opacity: '1'} : {opacity: '0'}
-  const groups = ['common', 'asia']
 
   return <div className='container'>
-          <GroupDropDown groups={groups}/>
           <div className='all-scales-table'>
             <label className="scaleCheckbox">
             <input htmlFor="scaleCheckbox" type="checkbox" onChange={toggleScale} checked={scaleVisible}></input>
