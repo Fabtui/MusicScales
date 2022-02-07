@@ -52,3 +52,12 @@
   color: black;
   cursor: pointer;
 }
+
+.groups-radio-buttons {
+  margin: 12px 0;
+  display: flex;
+}
+
+.group-radio-button-item {
+  margin: 0 12px;
+}

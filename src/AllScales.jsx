@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {GroupDropDown} from './GroupDropDown'
 import './stylesheets/all_scales.css'
 
 function useFetch (url) {
@@ -102,8 +103,10 @@ export function AllScales () {
   }
 
   const styles = scaleVisible ? {opacity: '1'} : {opacity: '0'}
+  const groups = ['common', 'asia']
 
   return <div className='container'>
+          <GroupDropDown groups={groups}/>
           <div className='all-scales-table'>
             <label className="scaleCheckbox">
             <input htmlFor="scaleCheckbox" type="checkbox" onChange={toggleScale} checked={scaleVisible}></input>
