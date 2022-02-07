@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {GroupDropDown} from './GroupDropDown'
 import './stylesheets/all_scales.css'
 
-function useFetch (url) {
+function useFetch (url, groupsNames) {
   const [state, setState] = useState({
     items: [],
     groups: [],
@@ -15,11 +15,16 @@ function useFetch (url) {
       const responseData = await response.json()
       if (response.ok) {
         const data = responseData.presets
+        const filteredData = []
         data.map(d => {
-          const valuesArray = d.Value.split(';');
-          const newValuesArray = valuesArray.map(v => v = v -1)
-          d.Value = newValuesArray.join(',');
-          return d
+          if (groupsNames.selectedGroups.includes(d.Group)) {
+            const valuesArray = d.Value.split(';');
+            const newValuesArray = valuesArray.map(v => v = v -1)
+            d.Value = newValuesArray.join(',');
+            filteredData.push(d)
+          } else {
+            return
+          }
         });
         const groups = [];
         data.map(d => {
@@ -30,7 +35,7 @@ function useFetch (url) {
           }
         });
         setState({
-          items: data,
+          items: filteredData,
           groups: groups,
           loading: false
         })
@@ -47,15 +52,11 @@ function useFetch (url) {
 
 function ScaleTable () {
   
-  const [loading, items, groups] = useFetch('https://gist.githubusercontent.com/guitarpickfm/2caf3f4ecc6efd7f07df958b1a245b8e/raw/83d84c61ba6119e7df9257c0bc41d96f03d968f0/Scales.json')
-
   const [selectedGroups, setselectedGroups] = useState({
-    selectedGroups: []
+    selectedGroups: ['Common', "Asia", "Blues", "Chords", "Europe", "India", "Intervals", "Jazz", "Modal", "Other"]
   })
 
-  const [filteredItems, setfilteredItems] = useState({
-    filteredItems: [...items]
-  })
+  const [loading, items, groups] = useFetch('https://gist.githubusercontent.com/guitarpickfm/2caf3f4ecc6efd7f07df958b1a245b8e/raw/83d84c61ba6119e7df9257c0bc41d96f03d968f0/Scales.json', selectedGroups)
 
   if (loading) {
     return <div>
@@ -68,9 +69,6 @@ function ScaleTable () {
   function handleChange (selectedGroups) {
     setselectedGroups({
       selectedGroups: [...selectedGroups],
-    })
-    setfilteredItems({
-      filteredItems: items.filter(item => selectedGroups.includes(item.Group))
     })
   }
 
