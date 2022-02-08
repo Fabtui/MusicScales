@@ -2,6 +2,7 @@ import './stylesheets/App.css';
 import {Selector} from './Selector'
 import {Tabs, Tab} from './Tabs'
 import { AllScales } from './AllScales'
+import { Search } from './Search'
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
             </Tab>
             <Tab title={"All scales"}>
               <AllScales/>
+            </Tab>
+            <Tab title={"Search"}>
+              <Search/>
             </Tab>
           </Tabs>
           </ul>
