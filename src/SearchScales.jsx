@@ -1,7 +1,13 @@
 import React, {Component} from 'react'
-import {NOTES, SCALES_LIST_ARRAY} from './data'
+import {NOTES, SCALES_LIST_ARRAY, SCALES_LIST} from './data'
 import './stylesheets/search.css'
 
+  function DisplayScalesFound () {
+    console.log(this.props);
+    return <div>
+
+    </div>
+  }
 
 export class SearchScales extends React.Component {
   constructor (props) {
@@ -22,12 +28,21 @@ export class SearchScales extends React.Component {
   }
 
   FindScale(allScales, scalesList) {
-
+    const scalesFound = []
+    allScales.forEach(scale => {
+      scalesList.forEach(scalelist => {
+        if (JSON.stringify(scalelist) === JSON.stringify(scale)) {
+          const key = Object.keys(SCALES_LIST).find(key => JSON.stringify(SCALES_LIST[key]) === JSON.stringify(scale))
+          scalesFound.push(key)
+        }
+      });
+    })
+    console.log(scalesFound);
   }
 
   render () {
     const AllScales = this.MakeAllScales(this.props.selectedNotes);
-    this.FindScale(AllScales, SCALES_LIST_ARRAY)
+    const scalesFound = this.FindScale(AllScales, SCALES_LIST_ARRAY)
     return <div>
     </div>
   }

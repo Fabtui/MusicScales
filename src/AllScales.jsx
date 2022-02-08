@@ -39,7 +39,7 @@ function useFetch (url, groupsNames) {
           groups: groups,
           loading: false
         })
-        const scaleCheckbox = document.querySelector('.scaleCheckbox')
+        const scaleCheckbox = document.querySelector('.navbar')
         const scrollPoint = scaleCheckbox.offsetTop + scaleCheckbox.offsetHeight
         window.scrollTo(0, scrollPoint)
       } else {
