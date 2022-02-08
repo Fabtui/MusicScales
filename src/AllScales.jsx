@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {GroupDropDown} from './GroupDropDown'
+import {INTERVALS} from './data'
 import './stylesheets/all_scales.css'
 
 function useFetch (url, groupsNames) {
@@ -20,7 +21,8 @@ function useFetch (url, groupsNames) {
           if (groupsNames.selectedGroups.includes(d.Group)) {
             const valuesArray = d.Value.split(';');
             const newValuesArray = valuesArray.map(v => v = v -1)
-            d.Value = newValuesArray.join(',');
+            const IntervalsArray = newValuesArray.map(v => v = INTERVALS[v])
+            d.Value = IntervalsArray.join(' - ');
             filteredData.push(d)
           }
         });
@@ -37,7 +39,9 @@ function useFetch (url, groupsNames) {
           groups: groups,
           loading: false
         })
-        // window.scrollTo(0, 250)
+        const scaleCheckbox = document.querySelector('.scaleCheckbox')
+        const scrollPoint = scaleCheckbox.offsetTop + scaleCheckbox.offsetHeight
+        window.scrollTo(0, scrollPoint)
       } else {
         alert(JSON.stringify(responseData))
         setState(state => ({...state, loading: false}))
