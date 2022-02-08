@@ -118,28 +118,30 @@ function UpArrow () {
 }
 
 export function AllScales () {
-  const [scaleVisible, toggleScale] = useToggle(false)
-  // const [styles, toggleStyles] = useToggleStyle(false)
+  // const [scaleVisible, toggleScale] = useToggle(false)
 
-  function useToggle (init = false) {
-    const [value, setValue] = useState(init)
+  // function useToggle (init = false) {
+  //   const [value, setValue] = useState(init)
 
-    const toggleScale = function () {
-      setValue(value => !value)
-    }
+  //   const toggleScale = function () {
+  //     setValue(value => !value)
+  //   }
 
-    return [value, toggleScale]
-  }
+  //   return [value, toggleScale]
+  // }
 
-  const styles = scaleVisible ? {opacity: '1'} : {opacity: '0'}
+  // const styles = scaleVisible ? {opacity: '1'} : {opacity: '0'}
 
   return <div className='container'>
           <div className='all-scales-table'>
-            <label className="scaleCheckbox">
+            {/* <label className="scaleCheckbox">
             <input htmlFor="scaleCheckbox" type="checkbox" onChange={toggleScale} checked={scaleVisible}></input>
-            All Scales</label>
-            <div className='all-scales' style={styles}>
-            {scaleVisible && <ScaleTable/>}
+            All Scales</label> */}
+            {/* <div className='all-scales' style={styles}>
+              {scaleVisible && <ScaleTable/>}
+            </div> */}
+            <div className='all-scales'>
+              <ScaleTable/>
             </div>
           </div>
           </div>
