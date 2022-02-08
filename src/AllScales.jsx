@@ -22,8 +22,6 @@ function useFetch (url, groupsNames) {
             const newValuesArray = valuesArray.map(v => v = v -1)
             d.Value = newValuesArray.join(',');
             filteredData.push(d)
-          } else {
-            return
           }
         });
         const groups = [];
@@ -39,19 +37,19 @@ function useFetch (url, groupsNames) {
           groups: groups,
           loading: false
         })
-        window.scrollTo(0, 250)
+        // window.scrollTo(0, 250)
       } else {
         alert(JSON.stringify(responseData))
         setState(state => ({...state, loading: false}))
       }
     })()
-  }, [])
+  }, [url, groupsNames])
 
   return [state.loading, state.items, state.groups]
 }
 
 function ScaleTable () {
-  
+
   const [selectedGroups, setselectedGroups] = useState({
     selectedGroups: ['Common', "Asia", "Blues", "Chords", "Europe", "India", "Intervals", "Jazz", "Modal", "Other"]
   })

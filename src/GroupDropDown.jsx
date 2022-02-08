@@ -37,19 +37,21 @@ export class GroupDropDown extends React.Component {
 
   handleChange (checked, groupName) {
     if (!checked) {
+      const selectedGroups = [...this.state.selectedGroups, groupName]
       this.setState({
-        selectedGroups: [...this.state.selectedGroups, groupName]
+        selectedGroups: selectedGroups
       })
+      this.props.onChange(selectedGroups)
     } else {
-      const selectedGroup = this.state.selectedGroups
-      selectedGroup.splice(selectedGroup.indexOf(groupName), 1)
+      const selectedGroups = this.state.selectedGroups
+      selectedGroups.splice(selectedGroups.indexOf(groupName), 1)
       this.setState({
-        selectedGroups: selectedGroup
+        selectedGroups: selectedGroups
       })
+      this.props.onChange(selectedGroups)
     }
-    this.props.onChange(this.state.selectedGroups)
   }
-  
+
   render () {
     const items = []
     this.props.groups.forEach((group, index) => {
