@@ -14,10 +14,9 @@
   position: relative;
 }
 
-/* .all-scales-table {
-  height: 80vh;
-  overflow-Y: scroll;
-} */
+.all-scales-table {
+  min-height: 100vh;
+}
 
 .all-scales-table table {
   position: relative;
