@@ -35,7 +35,7 @@
   top: 0;
   z-index: 999;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .fa-arrow-circle-up {
