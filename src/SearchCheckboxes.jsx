@@ -15,7 +15,7 @@ class MakeSearchCheckboxes extends React.Component {
     this.setState({
       checked: e.target.checked
     })
-    this.props.onChange(e.target.checked, this.props.note)
+    this.props.onChange(e.target.checked, this.props.index)
   }
 
   render () {
@@ -38,7 +38,6 @@ export class SearchCheckboxes extends React.Component {
   }
 
   handleChange (checked, note) {
-    console.log(checked, note);
     if (checked) {
       const selectedNotes = [...this.state.selectedNotes, note]
       this.setState({
@@ -58,7 +57,7 @@ export class SearchCheckboxes extends React.Component {
 
   render () {
     const items = []
-    NOTES.map((note, index) => items.push(<MakeSearchCheckboxes key={index} note={note} onChange={this.handleChange}/>))
+    NOTES.map((note, index) => items.push(<MakeSearchCheckboxes key={index} index={index} note={note} onChange={this.handleChange}/>))
     return <div className='search-checkboxes'>
       {items}
     </div>
