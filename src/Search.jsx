@@ -20,7 +20,7 @@ export class Search extends React.Component {
   }
 
   render () {
-    return <div className='container'>
+    return <div className='container mt-4'>
       <SearchCheckboxes onChange={this.handleChange}></SearchCheckboxes>
       <SearchScales selectedNotes={this.state.selectedNotes}/>
     </div>

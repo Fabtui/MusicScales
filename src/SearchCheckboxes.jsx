@@ -3,7 +3,7 @@ import {NOTES} from './data'
 import './stylesheets/search.css'
 
 class MakeSearchCheckboxes extends React.Component {
-   constructor (props) {
+  constructor (props) {
     super (props)
     this.state = {
       checked: false
