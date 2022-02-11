@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {SearchCheckboxes} from './SearchCheckboxes'
 import {SearchScales} from './SearchScales'
+import { ToFretApi } from './ToFretApi'
+
 import './stylesheets/search.css'
 
 export class Search extends React.Component {
@@ -23,6 +25,7 @@ export class Search extends React.Component {
     return <div className='container mt-4'>
       <SearchCheckboxes onChange={this.handleChange}></SearchCheckboxes>
       <SearchScales selectedNotes={this.state.selectedNotes}/>
+      <ToFretApi selectedNotes={this.state.selectedNotes}/>
     </div>
   }
 }
