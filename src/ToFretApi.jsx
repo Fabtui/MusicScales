@@ -6,12 +6,12 @@ function displayScales (scales) {
   for (const [key, value] of Object.entries(scales)) {
     allKeys.push(key)
   }
+  const rows = []
   allKeys.forEach(key => {
-    console.log(key, scales[key]);
+    const string = JSON.stringify(scales[key]);
+    rows.push(`${key} ${string}`)
   })
-  return <div>
-
-  </div>
+  return rows
 }
 
 export class ToFretApi extends React.Component {
@@ -44,9 +44,9 @@ export class ToFretApi extends React.Component {
 
   render () {
     const scales = this.state.scales
-    displayScales(scales)
+    const rows = displayScales(scales)
     return <div className='container'>
-
+      {rows}
     </div>
   }
 }
