@@ -31,8 +31,8 @@ export class ToFretApi extends React.Component {
   fetchApi (selectedNotes) {
     let that = this
     const notes = selectedNotes
-    const mutatedNotes = notes.map(note => NOTES[note]).join('+')
-    const url = `http://www.tofret.com/reverse-chord-finder.php?notes=${mutatedNotes}&return-type=json`
+    const mutatedNotes = notes.map(note => NOTES[note].replace('#', '%23'))
+    const url = `http://www.tofret.com/reverse-chord-finder.php?notes=${mutatedNotes.join('+')}&return-type=json`
     fetch(url)
       .then(response => response.json())
       .then(function(response) {
