@@ -25,13 +25,13 @@
 .all-scales-table thead {
   background: rgb(231, 231, 231);
   position: sticky;
-  top: 0;
+  top: 74px;
 }
 
 .up-arrow-container {
   height: 41px;
   position: sticky;
-  top: 0;
+  top: 74px;
   z-index: 999;
   display: flex;
   justify-content: flex-end;
