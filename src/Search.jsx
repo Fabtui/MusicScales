@@ -8,6 +8,7 @@ import './stylesheets/search.css'
 export class Search extends React.Component {
   constructor (props) {
     super (props)
+    console.log(props);
     this.state = ({
       selectedNotes: []
     })
