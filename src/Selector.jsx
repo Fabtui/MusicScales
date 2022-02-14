@@ -8,11 +8,11 @@ import { NOTES, SCALES, SCALES_LIST } from './data'
 import { Title } from './Title'
 import { Triads } from './Triads'
 import { NeckTable } from './NeckTable'
-import { ScaleSearch } from './ScaleSearch'
 
 export class Selector extends Component {
   constructor (props) {
     super (props)
+    console.log(props.location);
     this.state = {
       selected_note_index: 0,
       selected_scale: SCALES_LIST["Major"],
@@ -56,9 +56,6 @@ export class Selector extends Component {
       <div className="triads-container">
         <Triads selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
       </div>
-      {/* <div className="scale-search">
-        <ScaleSearch/>
-      </div> */}
     </div>
   }
 }
