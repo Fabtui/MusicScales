@@ -11,15 +11,15 @@ function displayScales (scales) {
     allKeys.push(key)
   }
   let allKeysKeys = []
-  allKeys.forEach(key => {
+  allKeys.forEach((key, index) => {
     allKeysKeys = Object.keys(scales[key])
-    allKeysKeys.forEach(scalekey => {
-      const scaleNotes = scales[key][scalekey]
-      const scaleKey = scalekey
+    allKeysKeys.forEach(scale => {
+      const scaleNotes = scales[key][scale]
+      const scaleName = scale
       rows.push(
-        <tr>
+        <tr key={key + index + scaleName}>
         <th scope="row">{key}</th>
-        <td>{scaleKey}</td>
+        <td>{scaleName}</td>
         <td>{scaleNotes}</td>
       </tr>
       )
@@ -60,18 +60,18 @@ export class ToFretApi extends React.Component {
     const scales = this.state.scales
     const rows = displayScales(scales)
     return <div className='container'>
-      <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Key</th>
-      <th scope="col">Scale</th>
-      <th scope="col">Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-      {rows}
-  </tbody>
-</table>
-    </div>
+             <table className="table">
+               <thead>
+                 <tr>
+                   <th scope="col">Key</th>
+                   <th scope="col">Scale</th>
+                   <th scope="col">Notes</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 {rows}
+               </tbody>
+             </table>
+           </div>
   }
 }
