@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {SearchCheckboxes} from './SearchCheckboxes'
 import {SearchScales} from './SearchScales'
 import { ToFretApi } from './ToFretApi'
-
 import './stylesheets/search.css'
 
 export class Search extends React.Component {

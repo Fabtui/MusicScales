@@ -1,6 +1,7 @@
 import { Outlet, Link, useMatch, useResolvedPath } from "react-router-dom";
 import './stylesheets/App.css';
 import { Home } from "./Home";
+import Child from "./Child";
 
 function CustomLink({ children, to, ...props }) {
   let resolved = useResolvedPath(to);
@@ -45,6 +46,8 @@ const Layout = () => {
       </nav>
       <Outlet />
       { match && <Home/>}
+      <Link to="/Search" state={{key: 'A', selected_note_index: 2, selected_note: 'E', selected_scale_name:'Major'}}>Search</Link>
+      <Child props={'coucou'}/>
     </>
   )
 };
