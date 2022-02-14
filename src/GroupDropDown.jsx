@@ -58,7 +58,7 @@ export class GroupDropDown extends React.Component {
       items.push(<CreateRadioButton key={index} index={index} group={group} onChange={this.handleChange}/>)
     })
     return <div>
-      <div className="groups-radio-buttons">
+      <div className="groups-radio-buttons mt-4">
         {items}
       </div>
     </div>
