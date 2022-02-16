@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import { Link } from "react-router-dom";
 import {NOTES} from './data'
 
 function displayScales (scales) {
@@ -16,12 +15,12 @@ function displayScales (scales) {
     allKeysKeys = Object.keys(scales[key])
     allKeysKeys.forEach(scale => {
       const scaleNotes = scales[key][scale]
-      const keyIndex = NOTES.indexOf(key)
+      // const keyIndex = NOTES.indexOf(key)
       const scaleName = scale.charAt(0).toUpperCase() + scale.slice(1)
       rows.push(
-        <tr key={key + index + scaleName}>
+      <tr key={key + index + scaleName}>
         <th scope="row">{key}</th>
-        <td><Link to="/MyScaleResult" state={{selected_note_index: keyIndex, selected_scale_name: scaleName}}>{key} {scaleName}</Link></td>
+        <td >{scaleName}</td>
         <td>{scaleNotes}</td>
       </tr>
       )

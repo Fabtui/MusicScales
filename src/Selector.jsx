@@ -8,7 +8,6 @@ import { NOTES, SCALES, SCALES_LIST } from './data'
 import { Title } from './Title'
 import { Triads } from './Triads'
 import { NeckTable } from './NeckTable'
-import Child from "./Child";
 
 export class Selector extends Component {
   constructor (props) {
@@ -33,7 +32,7 @@ export class Selector extends Component {
 
   handleNoteChange (note) {
     this.setState({
-      selected_note_index: note,
+      selected_note_index: parseInt(note),
     })
   }
 
@@ -48,6 +47,8 @@ export class Selector extends Component {
   render () {
     const selected_scale_notes =  ScaleNotes({notes: NOTES, selected_note_index: this.state.selected_note_index, scale_intervals: this.state.selected_scale})
     const selected_note = NOTES[this.state.selected_note_index]
+    const scale_intervals = SCALES_LIST[this.state.selected_scale_name]
+    console.log(scale_intervals, this.state.selected_note_index);
     return <div className='container'>
       <Title selected_note={selected_note} selected_scale_name={this.state.selected_scale_name}/>
       <div className="selectors">
@@ -55,10 +56,10 @@ export class Selector extends Component {
         <ScaleDropDown className="scale-selector" selected_scale={this.state.selected_scale_name} scales={SCALES} onChange={this.handleScaleChange}/>
       </div>
       <div className="scale-display">
-        <ScaleDisplay selected_scale={this.state.selected_scale} notes={NOTES} selected_note_index={this.state.selected_note_index} scale_intervals={SCALES_LIST[this.state.selected_scale_name]} />
+        <ScaleDisplay selected_scale={this.state.selected_scale} notes={NOTES} selected_note_index={this.state.selected_note_index} scale_intervals={scale_intervals} />
       </div>
       <div className="scale-table">
-        <ScaleTable selected_scale={this.state.selected_scale} notes={NOTES} selected_scale_notes={selected_scale_notes} selected_note={selected_note} selected_note_index={this.state.selected_note_index} selected_scale_notes={selected_scale_notes}/>
+        <ScaleTable selected_scale={this.state.selected_scale} notes={NOTES} selected_scale_notes={selected_scale_notes} selected_note={selected_note} selected_note_index={this.state.selected_note_index}/>
       </div>
         <NeckTable selected_scale_notes={selected_scale_notes} selected_note_index={this.state.selected_note_index} selected_scale={this.state.selected_scale} />
       <div className="triads-container">
