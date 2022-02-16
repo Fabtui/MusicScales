@@ -13,16 +13,22 @@ import Child from "./Child";
 export class Selector extends Component {
   constructor (props) {
     super (props)
-    console.log('props', props.selected_scale_name);
     this.state = {
       selected_note_index: props.selected_note_index || 0,
       selected_scale: SCALES_LIST[props.selected_scale_name] || SCALES_LIST["Major"],
       selected_scale_name: props.selected_scale_name || SCALES[0],
       selected_scale_notes: ["A", "B", "C#", "D", "E", "F#", "G#"],
     }
-    console.log(this.state.selected_scale);
     this.handleNoteChange = this.handleNoteChange.bind(this)
     this.handleScaleChange = this.handleScaleChange.bind(this)
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    this.setState({
+      selected_note_index: nextProps.selected_note_index,
+      selected_scale_name: nextProps.selected_scale_name,
+      selected_scale: SCALES_LIST[nextProps.selected_scale_name]
+    })
   }
 
   handleNoteChange (note) {
@@ -40,7 +46,6 @@ export class Selector extends Component {
   }
 
   render () {
-    console.log('selected_scale_name', this.selected_scale_name);
     const selected_scale_notes =  ScaleNotes({notes: NOTES, selected_note_index: this.state.selected_note_index, scale_intervals: this.state.selected_scale})
     const selected_note = NOTES[this.state.selected_note_index]
     return <div className='container'>
