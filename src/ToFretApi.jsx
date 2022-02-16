@@ -39,7 +39,7 @@ export class ToFretApi extends React.Component {
     this.fetchApi = this.fetchApi.bind(this)
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  shouldComponentUpdate(nextProps) {
     this.fetchApi(nextProps.selectedNotes)
   }
 

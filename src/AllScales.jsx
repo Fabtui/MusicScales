@@ -12,7 +12,8 @@ function useFetch (url, groupsNames) {
 
   useEffect(function () {
     (async function () {
-      const response = await fetch(url)
+      const controller = new AbortController();
+      const response = await fetch(url, {signal: controller.signal})
       const responseData = await response.json()
       if (response.ok) {
         const data = responseData.presets
@@ -46,6 +47,8 @@ function useFetch (url, groupsNames) {
         alert(JSON.stringify(responseData))
         setState(state => ({...state, loading: false}))
       }
+      // console.log(controller.signal);
+      return () => controller.abort();
     })()
   }, [url, groupsNames])
 
