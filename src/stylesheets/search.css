@@ -9,5 +9,57 @@
 .search-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 20px
+  grid-gap: 24px;
+  position: relative;
+}
+
+.right-side {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.right-side a {
+  color: rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 32px;
+  transition: 0.2s;
+}
+
+.right-side a:hover {
+  color: rgba(0, 0, 0);
+}
+
+.right-side h1 {
+  display: none;
+}
+
+.right-side .selectors {
+  display: none;
+}
+
+.right-side .tuning-select {
+  display: none;
+}
+
+.right-side .triads-container {
+  display: none;
+}
+
+.left-side table {
+  height: 70vh;
+  overflow-y: scroll;
+  display: block;
+}
+
+.left-side table>thead>tr>th {
+  width: 300px;
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgb(230, 230, 230);
 }
