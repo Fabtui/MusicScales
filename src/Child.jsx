@@ -1,15 +1,12 @@
 import { useLocation } from "react-router-dom";
-import { Title } from "./Title";
+import { Selector } from "./Selector";
 
 function Child (props) {
   const location = useLocation();
   if (location.state) {
-  console.log(props);
-  console.log(location);
-  console.log(location.state);
   return (
     <div>
-    <Title selected_note={location.state.selected_note} selected_scale_name={location.state.selected_scale_name}/>
+    <Selector selected_note_index={location.state.selected_note_index} selected_scale_name={location.state.selected_scale_name}/>
     </div>
   )
   } else {
