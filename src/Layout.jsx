@@ -8,7 +8,7 @@ function CustomLink({ children, to, ...props }) {
   return (
     <div>
       <Link
-        style={{ borderBottom: match ? "2px solid black" : "none" }}
+        style={{ borderBottom: match ? "2px solid rgba(255, 255, 255, 0.801)" : "none" }}
         to={to}
         {...props}
       >
@@ -22,7 +22,7 @@ const Layout = () => {
   let match = useMatch({ path: '/', end: true });
   return (
     <>
-       <nav className="navbar navbar-expand-lg navbar-light bg-light">
+       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <h3 className="navbar-brand"><Link className="nav-link" to="/">MusicScale</Link></h3>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
