@@ -18,6 +18,34 @@
   text-align: center;
 }
 
+#right-side-hint {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20% 10%;
+}
+
+#right-side-hint h2 {
+  padding: 24px;
+  border: 1px solid black;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  font-size: 20px;
+  background-color: rgb(240, 240, 240);
+}
+
+#clickable-td {
+  color: rgba(0, 0, 0, 0.801);
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+#clickable-td:hover {
+  cursor: pointer;
+  color: black;
+  transform: scale(1.1);
+}
+
 .right-side a {
   color: rgba(0, 0, 0, 0.8);
   text-transform: uppercase;
@@ -29,6 +57,12 @@
 
 .right-side a:hover {
   color: rgba(0, 0, 0);
+}
+
+#right-side-result-hint {
+  color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: 0.2s;
 }
 
 .right-side h1 {

@@ -1,11 +1,14 @@
+import './stylesheets/search.css'
 import React, {Component} from 'react'
 import { Link } from "react-router-dom";
 import {SearchCheckboxes} from './SearchCheckboxes'
-import {SearchScales} from './SearchScales'
 import {Selector} from './Selector'
 import { SearchToFretApi } from './SearchToFretApi'
 import { NOTES } from './data'
-import './stylesheets/search.css'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLightbulb } from '@fortawesome/free-solid-svg-icons'
+const lightbulb = <FontAwesomeIcon icon={faLightbulb} />
 
 export class Search extends React.Component {
   constructor (props) {
@@ -37,6 +40,17 @@ export class Search extends React.Component {
     })
   }
 
+  linkOnMouseEnter() {
+    const hint = document.querySelector('#right-side-result-hint')
+    hint.style.opacity = '1'
+  }
+
+  linkOnMouseLeave() {
+    const hint = document.querySelector('#right-side-result-hint')
+    hint.style.opacity = '0'
+  }
+
+
   render () {
     const selected_note_name = NOTES[this.state.selected_note_index]
     return <div className='search-container container mt-4'>
@@ -46,12 +60,11 @@ export class Search extends React.Component {
         {/* <SearchScales selectedNotes={this.state.selectedNotes}/> */}
       </div>
       <div className='right-side'>
-        {!this.state.scale_selected && <h2 className='mt-4'>Select a line to preview the relative scale</h2>}
-        {this.state.scale_selected && <Link to="/MyScaleResult" state={{selected_note_index: this.state.selected_note_index, selected_scale_name: this.state.selected_scale_name}}>{selected_note_name} {this.state.selected_scale_name}</Link>}
+        {!this.state.scale_selected && <div id='right-side-hint'><h2 className='mt-4'>Select a scale to preview it</h2></div>}
+        {this.state.scale_selected && <div id='right-side-result-hint'>{lightbulb} Click to see more details</div>}
+        {this.state.scale_selected && <Link onMouseEnter={this.linkOnMouseEnter} onMouseLeave={this.linkOnMouseLeave} id='right-side-link' to="/MyScaleResult" state={{selected_note_index: this.state.selected_note_index, selected_scale_name: this.state.selected_scale_name}}>{selected_note_name} {this.state.selected_scale_name}</Link>}
         {this.state.scale_selected && <Selector selected_note_index={this.state.selected_note_index} selected_scale_name={this.state.selected_scale_name}/>}
       </div>
     </div>
   }
 }
-
-// selected_note_index={this.state.selected_note_index} selected_scale_name={this.state.selected_scale_name}

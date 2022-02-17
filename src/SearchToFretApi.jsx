@@ -25,9 +25,9 @@ function displayScales (scales, functionOnClick) {
       const keyIndex = NOTES.indexOf(key)
       const scaleName = scale.charAt(0).toUpperCase() + scale.slice(1)
       rows.push(
-        <tr onClick={onClick} key={key + index + scaleName}>
+        <tr key={key + index + scaleName}>
         <th scope="row">{key}</th>
-        <td><Link to="/MyScaleResult" state={{selected_note_index: keyIndex, selected_scale_name: scaleName}}>{key} {scaleName}</Link></td>
+        <td id='clickable-td' onClick={onClick}>{key} {scaleName}</td>
         <td >{scaleNotes}</td>
       </tr>
       )
