@@ -48,7 +48,6 @@ export class Selector extends Component {
     const selected_scale_notes =  ScaleNotes({notes: NOTES, selected_note_index: this.state.selected_note_index, scale_intervals: this.state.selected_scale})
     const selected_note = NOTES[this.state.selected_note_index]
     const scale_intervals = SCALES_LIST[this.state.selected_scale_name]
-    console.log(scale_intervals, this.state.selected_note_index);
     return <div className='container'>
       <Title selected_note={selected_note} selected_scale_name={this.state.selected_scale_name}/>
       <div className="selectors">
