@@ -37,7 +37,10 @@ const Layout = () => {
                 <CustomLink className="nav-link" to="/AllScales">All Scales</CustomLink>
               </li>
               <li className="nav-item">
-                <CustomLink className="nav-link" to="/Search">Search</CustomLink>
+                <CustomLink className="nav-link" to="/Search">Search by Notes</CustomLink>
+              </li>
+              <li className="nav-item">
+                <CustomLink className="nav-link" to="/SearchByChords">Search by Chords</CustomLink>
               </li>
             </ul>
           </div>

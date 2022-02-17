@@ -8,19 +8,20 @@ export class ChordsDropDown extends React.Component {
     super (props)
     this.state = ({
       selected_note_1: ' ',
-      selected_shape_1: 'Maj',
+      selected_shape_1: ' ',
       selected_note_2: ' ',
-      selected_shape_2: 'Maj',
+      selected_shape_2: ' ',
       selected_note_3: ' ',
-      selected_shape_3: 'Maj',
+      selected_shape_3: ' ',
       selected_note_4: ' ',
-      selected_shape_4: 'Maj',
+      selected_shape_4: ' ',
       selected_note_5: ' ',
-      selected_shape_5: 'Maj',
+      selected_shape_5: ' ',
       selected_note_6: ' ',
-      selected_shape_6: 'Maj',
+      selected_shape_6: ' ',
       selected_note_7: ' ',
-      selected_shape_7: 'Maj'
+      selected_shape_7: ' ',
+      selected_chords: []
     })
     this.handleNoteChange1 = this.handleNoteChange1.bind(this)
     this.handleNoteChange2 = this.handleNoteChange2.bind(this)
@@ -36,6 +37,19 @@ export class ChordsDropDown extends React.Component {
     this.handleShapeChange5 = this.handleShapeChange5.bind(this)
     this.handleShapeChange6 = this.handleShapeChange6.bind(this)
     this.handleShapeChange7 = this.handleShapeChange7.bind(this)
+  }
+
+  createChordArray(note, shape) {
+    if (note === ' ' || shape === ' ') {
+      return null
+    }
+    return [note, shape]
+  }
+
+  componentDidUpdate() {
+    const selected_chords = [this.createChordArray(this.state.selected_note_1, this.state.selected_shape_1), this.createChordArray(this.state.selected_note_2, this.state.selected_shape_2), this.createChordArray(this.state.selected_note_3, this.state.selected_shape_3), this.createChordArray(this.state.selected_note_4, this.state.selected_shape_4), this.createChordArray(this.state.selected_note_5, this.state.selected_shape_5), this.createChordArray(this.state.selected_note_6, this.state.selected_shape_6), this.createChordArray(this.state.selected_note_7, this.state.selected_shape_7)]
+    const filtered_selected_chords = selected_chords.filter((a) => a);
+    this.props.onChange(filtered_selected_chords)
   }
 
   handleNoteChange1(note_index) {
@@ -92,6 +106,7 @@ export class ChordsDropDown extends React.Component {
     this.setState ({
       selected_shape_1: selected_shape
     })
+
   }
 
   handleShapeChange2(shape_index) {
@@ -99,6 +114,7 @@ export class ChordsDropDown extends React.Component {
     this.setState ({
       selected_shape_2: selected_shape
     })
+
   }
 
   handleShapeChange3(shape_index) {
@@ -135,6 +151,7 @@ export class ChordsDropDown extends React.Component {
       selected_shape_7: selected_shape
     })
   }
+
 
   render () {
     return <div className='chords-dropdowns'>

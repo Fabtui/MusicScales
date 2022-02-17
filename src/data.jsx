@@ -53,12 +53,12 @@ export const SCALES_LIST_ARRAY = [
 export const CHORD_SHAPE = ['Maj', 'Min', 'Dim', 'Aug', 'Sus4', 'Sus2']
 
 export const CHORD_SHAPE_INTERVALS = {
-  'Maj': [4, 3],
-  'Min': [3, 4],
-  'Dim': [3, 3],
-  'Aug': [5, 2],
-  'Sus4': [5, 2],
-  'Sus2': [2, 5]
+  'Maj': [0, 4, 7],
+  'Min': [0, 3, 7],
+  'Dim': [0, 3, 6],
+  'Aug': [0, 5, 7],
+  'Sus4': [0, 5, 7],
+  'Sus2': [0, 2, 7]
 }
 
 export const SCALES = Object.keys(SCALES_LIST)

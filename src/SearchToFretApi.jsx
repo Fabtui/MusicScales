@@ -55,9 +55,8 @@ export class SearchToFretApi extends React.Component {
       return
     }
     let that = this
-    // const notes = selectedNotes
-    const mutatedNotes = selectedNotes.map(note => NOTES[note].replace('#', '%23'))
-    const url = `http://www.tofret.com/reverse-chord-finder.php?notes=${mutatedNotes.join('+')}&return-type=json`
+    const mutatedNotes = encodeURIComponent(selectedNotes.map(note => NOTES[note]))
+    const url = `http://www.tofret.com/reverse-chord-finder.php?notes=${mutatedNotes}&return-type=json`
     fetch(url)
       .then(response => response.json())
       .then(function(response) {
