@@ -64,6 +64,7 @@ export class Selector extends Component {
       <div className="triads-container">
         <Triads selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
       </div>
+    {/* <ins className="scales_chords_api" chord="E(maj)" instrument="guitar" output="image" nolink="false"></ins> */}
     </div>
   }
 }

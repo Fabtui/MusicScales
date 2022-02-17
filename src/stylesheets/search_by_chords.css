@@ -1,0 +1,11 @@
+.chords-dropdowns {
+  display: flex;
+}
+
+.notes-drop-down .note-selector {
+  margin: 8px;
+}
+
+.shapes-drop-down .note-selector {
+  margin: 8px;
+}

@@ -15,6 +15,10 @@ export function Home () {
         <div className='home-wrap-item item3'>SEARCH</div>
         <div className='hint-box'>Find a scale by notes</div>
       </Link>
+      <Link className="home-wrap-link" to="/SearchByChords">
+        <div className='home-wrap-item item3'>SEARCH BY CHORDS</div>
+        <div className='hint-box'>Find a scale by chords</div>
+      </Link>
     </div>
 
 }
