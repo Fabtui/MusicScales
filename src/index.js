@@ -6,6 +6,7 @@ import './stylesheets/App.css';
 import {Selector} from './Selector'
 import { AllScales } from './AllScales'
 import { Search } from './Search'
+import { SearchByChords } from './SearchByChords'
 import Child from './Child'
 import Layout from './Layout'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -18,6 +19,7 @@ function App() {
           <Route path="MyScale" element={<Selector />} />
           <Route path="AllScales" element={<AllScales />} />
           <Route path="Search" element={<Search />} />
+          <Route path="SearchByChords" element={<SearchByChords />} />
           <Route path="MyScaleResult" element={<Child />} />
         </Route>
       </Routes>

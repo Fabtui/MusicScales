@@ -50,5 +50,16 @@ export const SCALES_LIST_ARRAY = [
   [0, 3, 5, 6, 7, 10]
 ]
 
+export const CHORD_SHAPE = ['Maj', 'Min', 'Dim', 'Aug', 'Sus4', 'Sus2']
+
+export const CHORD_SHAPE_INTERVALS = {
+  'Maj': [4, 3],
+  'Min': [3, 4],
+  'Dim': [3, 3],
+  'Aug': [5, 2],
+  'Sus4': [5, 2],
+  'Sus2': [2, 5]
+}
+
 export const SCALES = Object.keys(SCALES_LIST)
 export const INTERVALS_NAMES = Object.values(INTERVALS)
