@@ -51,13 +51,15 @@ export class ToFretApi extends React.Component {
     // const notes = selectedNotes
     const mutatedNotes = selectedNotes.map(note => NOTES[note].replace('#', '%23'))
     const url = `http://www.tofret.com/reverse-chord-finder.php?notes=${mutatedNotes.join('+')}&return-type=json`
-    fetch(url)
+    const controller = new AbortController();
+    fetch(url, {signal: controller.signal})
       .then(response => response.json())
       .then(function(response) {
         that.setState({
           scales: response.scales
         })
       })
+    return () => controller.abort();
   }
 
   render () {
