@@ -42,6 +42,9 @@ const Layout = () => {
               <li className="nav-item">
                 <CustomLink className="nav-link" to="/SearchByChords">Search by Chords</CustomLink>
               </li>
+              <li className="nav-item">
+                <CustomLink className="nav-link" to="/CircleOfFifth">Circle Of Fifth</CustomLink>
+              </li>
             </ul>
           </div>
         </div>
