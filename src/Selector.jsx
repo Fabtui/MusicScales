@@ -8,6 +8,7 @@ import { NOTES, SCALES, SCALES_LIST } from './data'
 import { Title } from './Title'
 import { Triads } from './Triads'
 import { NeckTable } from './NeckTable'
+import { FretApi } from './FretApi'
 
 export class Selector extends Component {
   constructor (props) {
@@ -64,7 +65,9 @@ export class Selector extends Component {
       <div className="triads-container">
         <Triads selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
       </div>
-    {/* <ins className="scales_chords_api" chord="E(maj)" instrument="guitar" output="image" nolink="false"></ins> */}
+      <div className="fret-api">
+        <FretApi selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
+      </div>
     </div>
   }
 }
