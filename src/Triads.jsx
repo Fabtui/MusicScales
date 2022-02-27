@@ -1,7 +1,7 @@
 import './stylesheets/triads.css'
 import { TriadsChordsShape } from './TriadsChordsShape'
 
-function MakeTriads(selected_scale_notes, selected_scale) {
+export function MakeTriads(selected_scale_notes, selected_scale) {
   const chordsShapes = TriadsChordsShape({selected_scale})
   let chordsShapesArray = []
   chordsShapes.forEach(chord => {
