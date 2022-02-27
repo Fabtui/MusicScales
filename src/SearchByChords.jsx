@@ -55,12 +55,12 @@ export class SearchByChords extends React.Component {
   
   render () {
     const selected_note_name = NOTES[this.state.selected_note_index]
-    const ApiNotes = this.state.selectedNotes.map(note => NOTES.indexOf(note))
-    console.log(this.state.selectedNotes);
+    const apiNotes = this.state.selectedNotes.map(note => NOTES.indexOf(note))
     return <div className='search-container container mt-4'>
       <div className='left-side'>
+        <h5>Select your chords</h5>
         <ChordsDropDown onChange={this.handleChange}/>
-        <SearchToFretApi selectedNotes={ApiNotes} onClick={this.handleClick}/>
+        <SearchToFretApi selectedNotes={apiNotes} onClick={this.handleClick}/>
       </div>
       <div className='right-side'>
         {!this.state.scale_selected && <div id='right-side-hint'><h2 className='mt-4'>Select a scale to preview it</h2></div>}

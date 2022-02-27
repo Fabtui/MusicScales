@@ -3,6 +3,21 @@ import { NoteDropDown } from './NoteDropdown'
 import { CHORD_SHAPE_INTERVALS, CHORD_SHAPE, NOTES } from './data'
 
 
+function mutateSelectedChords(selectedChords_array) {
+  const mutatedChords = []
+  const selectedNotes = []
+  selectedChords_array.forEach(chord => {
+    const index = NOTES.indexOf(chord[0]);
+    const intervals = CHORD_SHAPE_INTERVALS[chord[1]];
+    const mutatedIntervals = intervals.map(interval => (interval + index) >= NOTES.length ? (interval + index) - NOTES.length : (interval + index))
+    const mutatedNotes = mutatedIntervals.map(interval => NOTES[interval])
+    mutatedChords.push(mutatedNotes)
+    mutatedNotes.map(note => selectedNotes.push(note))
+  });
+  const filteredMutatedNotes = selectedNotes.filter((e, i) => selectedNotes.indexOf(e) === i);
+  return {mutatedChords: mutatedChords, filteredMutatedNotes: filteredMutatedNotes}
+}
+
 export class ChordsDropDown extends React.PureComponent {
   constructor (props) {
     super (props)
@@ -49,24 +64,8 @@ export class ChordsDropDown extends React.PureComponent {
   componentDidUpdate() {
     const selected_chords = [this.createChordArray(this.state.selected_note_1, this.state.selected_shape_1), this.createChordArray(this.state.selected_note_2, this.state.selected_shape_2), this.createChordArray(this.state.selected_note_3, this.state.selected_shape_3), this.createChordArray(this.state.selected_note_4, this.state.selected_shape_4), this.createChordArray(this.state.selected_note_5, this.state.selected_shape_5), this.createChordArray(this.state.selected_note_6, this.state.selected_shape_6), this.createChordArray(this.state.selected_note_7, this.state.selected_shape_7)]
     const filtered_selected_chords = selected_chords.filter((a) => a);
-    const mutated_chords_object = this.mutateSelectedChords(filtered_selected_chords)
+    const mutated_chords_object = mutateSelectedChords(filtered_selected_chords)
     this.props.onChange(mutated_chords_object)
-    console.log('changes');
-  }
-
-  mutateSelectedChords(selectedChords_array) {
-    const mutatedChords = []
-    const selectedNotes = []
-    selectedChords_array.forEach(chord => {
-      const index = NOTES.indexOf(chord[0]);
-      const intervals = CHORD_SHAPE_INTERVALS[chord[1]];
-      const mutatedIntervals = intervals.map(interval => (interval + index) >= NOTES.length ? (interval + index) - NOTES.length : (interval + index))
-      const mutatedNotes = mutatedIntervals.map(interval => NOTES[interval])
-      mutatedChords.push(mutatedNotes)
-      mutatedNotes.map(note => selectedNotes.push(note))
-    });
-    const filteredMutatedNotes = selectedNotes.filter((e, i) => selectedNotes.indexOf(e) === i);
-    return {mutatedChords: mutatedChords, filteredMutatedNotes: filteredMutatedNotes}
   }
 
   handleNoteChange1(note_index) {
@@ -171,7 +170,7 @@ export class ChordsDropDown extends React.PureComponent {
 
 
   render () {
-    return <div className='chords-dropdowns'>
+    return <div className='chords-dropdowns mb-4'>
     <div className='notes-drop-down'>
       <NoteDropDown className="note-selector" selected_note={this.state.selected_note_1} notes={NOTES} onChange={this.handleNoteChange1}/>
       {this.state.selected_note_1 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_note_2} notes={NOTES} onChange={this.handleNoteChange2}/>}
@@ -190,6 +189,25 @@ export class ChordsDropDown extends React.PureComponent {
       {this.state.selected_note_6 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_shape_6} notes={CHORD_SHAPE} onChange={this.handleShapeChange6}/>}
       {this.state.selected_note_7 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_shape_7} notes={CHORD_SHAPE} onChange={this.handleShapeChange7}/>}
     </div>
+    <div className='shapes-drop-down'>
+      {this.state.selected_shape_1 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_1} selected_shape={this.state.selected_shape_1}/>}
+      {this.state.selected_shape_2 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_2} selected_shape={this.state.selected_shape_2}/>}
+      {this.state.selected_shape_3 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_3} selected_shape={this.state.selected_shape_3}/>}
+      {this.state.selected_shape_4 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_4} selected_shape={this.state.selected_shape_4}/>}
+      {this.state.selected_shape_5 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_5} selected_shape={this.state.selected_shape_5}/>}
+      {this.state.selected_shape_6 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_6} selected_shape={this.state.selected_shape_6}/>}
+      {this.state.selected_shape_7 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_7} selected_shape={this.state.selected_shape_7}/>}
+    </div>
    </div>
+  }
+}
+
+class ChordNotesDisplay extends React.Component {
+  render () {
+    const mut = mutateSelectedChords([[this.props.selected_note, this.props.selected_shape]])
+    const notes = mut['mutatedChords'][0].join(' - ');
+    return <div class='seach_by_chords_notes_container'>
+      <h3 id='seach_by_chords_notes'>{notes}</h3>
+    </div>
   }
 }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {NOTES} from './data'
-import './stylesheets/search.css'
+import './stylesheets/search_by_notes.css'
 
 class MakeSearchCheckboxes extends React.Component {
   constructor (props) {
