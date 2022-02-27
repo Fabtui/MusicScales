@@ -65,9 +65,9 @@ export class Selector extends Component {
       <div className="triads-container">
         <Triads selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
       </div>
-      <div className="fret-api">
+      {/* <div className="fret-api">
         <FretApi selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
-      </div>
+      </div> */}
     </div>
   }
 }
