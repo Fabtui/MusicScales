@@ -1,4 +1,4 @@
-import './stylesheets/search.css'
+import './stylesheets/search_by_notes.css'
 import React, {Component} from 'react'
 import { Link } from "react-router-dom";
 import {SearchCheckboxes} from './SearchCheckboxes'
@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb } from '@fortawesome/free-solid-svg-icons'
 const lightbulb = <FontAwesomeIcon icon={faLightbulb} />
 
-export class Search extends React.Component {
+export class SearchByNotes extends React.Component {
   constructor (props) {
     super (props)
     this.state = ({

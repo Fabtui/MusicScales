@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import './stylesheets/App.css';
 import {Selector} from './Selector'
 import { AllScales } from './AllScales'
-import { Search } from './Search'
+import { SearchByNotes } from './SearchByNotes'
 import { SearchByChords } from './SearchByChords'
 import Child from './Child'
 import Layout from './Layout'
@@ -18,7 +18,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="MyScale" element={<Selector />} />
           <Route path="AllScales" element={<AllScales />} />
-          <Route path="Search" element={<Search />} />
+          <Route path="Search" element={<SearchByNotes />} />
           <Route path="SearchByChords" element={<SearchByChords />} />
           <Route path="MyScaleResult" element={<Child />} />
         </Route>

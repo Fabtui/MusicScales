@@ -11,12 +11,12 @@ export function Home () {
         <div className='home-wrap-item item2'>ALL SCALES</div>
         <div className='hint-box'>See all the existing scales</div>
       </Link>
-      <Link className="home-wrap-link" to="/Search">
-        <div className='home-wrap-item item3'>SEARCH</div>
+      <Link className="home-wrap-link" to="/SearchByNotes">
+        <div className='home-wrap-item item3'>SEARCH BY NOTES</div>
         <div className='hint-box'>Find a scale by notes</div>
       </Link>
       <Link className="home-wrap-link" to="/SearchByChords">
-        <div className='home-wrap-item item3'>SEARCH BY CHORDS</div>
+        <div className='home-wrap-item item4'>SEARCH BY CHORDS</div>
         <div className='hint-box'>Find a scale by chords</div>
       </Link>
     </div>
