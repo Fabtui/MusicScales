@@ -71,12 +71,3 @@ export class SearchByChords extends React.Component {
     </div>
   }
 }
-
-
-// C Maj  0 4 7    C en premier index == 0
-// D Min  2 5 9    D en deuxieme index == +2
-// E Min  4 7 11
-// F Maj  5 9 0
-// G Maj
-
-// 0 2 4 5 7 9 11 -> index 0 Maj => C Maj

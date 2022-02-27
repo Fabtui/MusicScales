@@ -1,4 +1,5 @@
 import './stylesheets/selector.css'
+import './stylesheets/circle_of_fifth.css'
 import React, {Component} from 'react'
 import {NoteDropDown} from './NoteDropdown'
 import {ScaleDropDown} from './ScaleDropDown'
@@ -9,6 +10,7 @@ import { Title } from './Title'
 import { Triads } from './Triads'
 import { NeckTable } from './NeckTable'
 import { FretApi } from './FretApi'
+import { CircleOfFifth } from './CircleOfFifth'
 
 export class Selector extends Component {
   constructor (props) {
@@ -68,6 +70,7 @@ export class Selector extends Component {
       {/* <div className="fret-api">
         <FretApi selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
       </div> */}
+      <CircleOfFifth />
     </div>
   }
 }
