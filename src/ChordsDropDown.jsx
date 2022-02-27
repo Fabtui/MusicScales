@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import { NoteDropDown } from './NoteDropdown'
-import { NOTES } from './data'
-import { CHORD_SHAPE } from './data'
+import { CHORD_SHAPE_INTERVALS, CHORD_SHAPE, NOTES } from './data'
 
-export class ChordsDropDown extends React.Component {
+
+export class ChordsDropDown extends React.PureComponent {
   constructor (props) {
     super (props)
     this.state = ({
@@ -49,7 +49,24 @@ export class ChordsDropDown extends React.Component {
   componentDidUpdate() {
     const selected_chords = [this.createChordArray(this.state.selected_note_1, this.state.selected_shape_1), this.createChordArray(this.state.selected_note_2, this.state.selected_shape_2), this.createChordArray(this.state.selected_note_3, this.state.selected_shape_3), this.createChordArray(this.state.selected_note_4, this.state.selected_shape_4), this.createChordArray(this.state.selected_note_5, this.state.selected_shape_5), this.createChordArray(this.state.selected_note_6, this.state.selected_shape_6), this.createChordArray(this.state.selected_note_7, this.state.selected_shape_7)]
     const filtered_selected_chords = selected_chords.filter((a) => a);
-    this.props.onChange(filtered_selected_chords)
+    const mutated_chords_object = this.mutateSelectedChords(filtered_selected_chords)
+    this.props.onChange(mutated_chords_object)
+    console.log('changes');
+  }
+
+  mutateSelectedChords(selectedChords_array) {
+    const mutatedChords = []
+    const selectedNotes = []
+    selectedChords_array.forEach(chord => {
+      const index = NOTES.indexOf(chord[0]);
+      const intervals = CHORD_SHAPE_INTERVALS[chord[1]];
+      const mutatedIntervals = intervals.map(interval => (interval + index) >= NOTES.length ? (interval + index) - NOTES.length : (interval + index))
+      const mutatedNotes = mutatedIntervals.map(interval => NOTES[interval])
+      mutatedChords.push(mutatedNotes)
+      mutatedNotes.map(note => selectedNotes.push(note))
+    });
+    const filteredMutatedNotes = selectedNotes.filter((e, i) => selectedNotes.indexOf(e) === i);
+    return {mutatedChords: mutatedChords, filteredMutatedNotes: filteredMutatedNotes}
   }
 
   handleNoteChange1(note_index) {
