@@ -1,12 +1,13 @@
-.chords-dropdowns {
+.chords-dropdowns-items {
   display: flex;
 }
 
-.notes-drop-down .note-selector {
-  margin: 8px;
+.chords-dropdowns {
+  display: flex;
+  justify-content: space-between;
 }
 
-.shapes-drop-down .note-selector {
+.notes-drop-down .note-selector {
   margin: 8px;
 }
 
@@ -14,7 +15,9 @@
   height: 38px;
   background-color: rgba(0, 0, 0, 0.103);
   padding: 0 12px;
-  margin: 8px 16px;
+  margin: 0px 16px;
+  margin-top: 12px;
+  margin-bottom: 24px;
   border-radius: 4px;
   font-size: 12px;
 }
@@ -23,3 +26,20 @@
   margin: 0;
 }
 
+.close-button-shape-drop-down {
+  margin-top: 4px;
+  border-radius: 8px;
+  padding: 8px 16px;
+  border: 2px solid #5C636A;
+  transition: 0.3s;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.close-button-shape-drop-down:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  color: black;
+  border: 2px solid red;
+}
