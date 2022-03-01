@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import './stylesheets/search_by_chords.css'
 import { ChordsDropDown } from './ChordsDropDown'
 import { SearchToFretApi } from './SearchToFretApi'
-import { CHORD_SHAPE_INTERVALS, CHORD_SHAPE, NOTES } from './data'
+import { NOTES } from './data'
 import { Link } from "react-router-dom";
 import {Selector} from './Selector'
 

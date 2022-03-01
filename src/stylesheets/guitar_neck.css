@@ -17,8 +17,14 @@
   margin: 58px 0;
 }
 
+.guitar-neck-table th {
+  border: 1px solid rgba(128, 128, 128, 0.5);
+}
+
 .guitar-neck-table {
   background-color: rgba(210, 105, 30, 0.7);
+  border-radius: 5px;
+  text-align: center;
 }
 
 .guitar-neck-table .not-in-scale {
@@ -27,6 +33,7 @@
 
 .guitar-neck-table > tbody > tr > th:nth-of-type(1) {
   background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
   border-right: 1px solid black;
 }
 

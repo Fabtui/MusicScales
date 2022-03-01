@@ -20,7 +20,7 @@ class NotesRows extends React.Component {
 
   render () {
     const selected_note_index = this.props.guitarString
-    const ordered_notes = [...NOTES.slice(selected_note_index), ...NOTES.slice(0, selected_note_index)]
+    const ordered_notes = [...NOTES.slice(selected_note_index), ...NOTES.slice(0, selected_note_index), NOTES[selected_note_index]]
     const rows = []
     const selectedNote = this.props.selectedNotes
     ordered_notes.forEach((note, index) => {
