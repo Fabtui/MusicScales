@@ -73,19 +73,20 @@ export class SearchToFretApi extends React.Component {
   render () {
     const scales = this.state.scales
     const rows = displayScales(scales, this.onClick)
+    const style = `${this.props.style} table fret-api-result`
     return <div className='container'>
-             <table className="table">
-               <thead>
-                 <tr>
-                   <th scope="col">Key</th>
-                   <th scope="col">Scale</th>
-                   <th scope="col">Notes</th>
-                 </tr>
-               </thead>
-               <tbody>
-                 {rows}
-               </tbody>
-             </table>
-           </div>
+              <table className={style}>
+                <thead>
+                  <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Scale</th>
+                    <th scope="col">Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows}
+                </tbody>
+              </table>
+            </div>
+    }
   }
-}
