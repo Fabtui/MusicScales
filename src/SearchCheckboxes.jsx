@@ -6,9 +6,15 @@ class MakeSearchCheckboxes extends React.Component {
   constructor (props) {
     super (props)
     this.state = {
-      checked: false
+      checked: this.props.checked
     }
   this.handleCheck = this.handleCheck.bind(this)
+  }
+
+  UNSAFE_componentWillReceiveProps (nextProps) {
+    this.setState({
+      checked: nextProps.checked
+    });
   }
 
   handleCheck(e) {
@@ -32,9 +38,15 @@ export class SearchCheckboxes extends React.Component {
   constructor (props) {
     super (props)
     this.state = ({
-      selectedNotes: []
+      selectedNotes: this.props.selectedNotes
     })
     this.handleChange = this.handleChange.bind(this)
+  }
+
+  UNSAFE_componentWillReceiveProps (nextProps) {
+    this.setState({
+      selectedNotes: nextProps.selectedNotes
+    });
   }
 
   handleChange (checked, note) {
@@ -57,7 +69,13 @@ export class SearchCheckboxes extends React.Component {
 
   render () {
     const items = []
-    NOTES.map((note, index) => items.push(<MakeSearchCheckboxes key={index} index={index} note={note} onChange={this.handleChange}/>))
+    const selectedNotes = this.state.selectedNotes
+    NOTES.map((note, index) => {
+      const checked = selectedNotes.includes(NOTES.indexOf(note))
+      console.log(checked);
+      items.push(<MakeSearchCheckboxes checked={checked} selectedNotes={this.state.selectedNotes} key={index} index={index} note={note} onChange={this.handleChange}/>)
+      }
+    )
     return <div className='search-checkboxes'>
       {items}
     </div>

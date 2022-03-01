@@ -61,7 +61,7 @@ export function IntervalNamesRows ({selected_note_index, guitarString, selected_
   const tonic = NOTES[selected_note_index]
   const indexofT = (ordered_notes.indexOf(tonic));
   const ordered_names = [...INTERVALS_NAMES.slice((12 - indexofT)), ...INTERVALS_NAMES.slice(0, (12 - indexofT))]
-  const ordered_names_extend = ordered_names.push(ordered_names[0])
+  // const ordered_names_extend = ordered_names.push(ordered_names[0])
   const scale_names = []
   selected_scale.forEach(scale => {scale_names.push(INTERVALS_NAMES[scale])})
   ordered_names.forEach((note, index) => {
