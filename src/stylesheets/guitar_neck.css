@@ -109,3 +109,12 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.basic-guitar-neck th {
+  color: black;
+  border: 1px solid grey;
+}
+
+.basic-guitar-neck .not-in-scale {
+  color: black;
+}

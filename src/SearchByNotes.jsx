@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import {SearchCheckboxes} from './SearchCheckboxes'
 import {Selector} from './Selector'
 import { SearchToFretApi } from './SearchToFretApi'
+import { GuitarNeckBasic } from './GuitarNeckBasic';
 import { NOTES } from './data'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,10 +18,17 @@ export class SearchByNotes extends React.Component {
       selectedNotes: [],
       selected_note_index: null,
       selected_scale_name: null,
+      selected_scale_name: 'Major',
+      selected_scale: [0, 2, 4, 5, 7, 9, 11],
+      selected_note_index: 0,
+      notes_displayed: true,
+      selected_tuning: [7, 2, 10, 5, 0, 7],
+      selected_scale_notes: ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'],
       scale_selected: false
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.handleNeckClick = this.handleNeckClick.bind(this)
   }
 
   handleChange(selectedNotesArray) {
@@ -50,12 +58,25 @@ export class SearchByNotes extends React.Component {
     hint.style.opacity = '0'
   }
 
+  handleNeckClick(e) {
+    const noteIndex = NOTES.indexOf(e);
+    const selectedNotes = this.state.selectedNotes;
+    if (selectedNotes.includes(noteIndex)) {
+      return
+    } else {
+      const newSelectedNotes = [...this.state.selectedNotes, noteIndex]
+      this.setState ({
+        selectedNotes: newSelectedNotes
+      })
+    }
+  }
 
   render () {
     const selected_note_name = NOTES[this.state.selected_note_index]
     return <div className='search-container container mt-4'>
+      <SearchCheckboxes selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>
+      <GuitarNeckBasic onChange={this.handleNeckClick}/>
       <div className='left-side'>
-        <SearchCheckboxes onChange={this.handleChange}></SearchCheckboxes>
         <SearchToFretApi selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
         {/* <SearchScales selectedNotes={this.state.selectedNotes}/> */}
       </div>
