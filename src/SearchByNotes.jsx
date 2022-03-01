@@ -75,7 +75,7 @@ export class SearchByNotes extends React.Component {
     const selected_note_name = NOTES[this.state.selected_note_index]
     return <div className='search-container container mt-4'>
       <SearchCheckboxes selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>
-      <GuitarNeckBasic onChange={this.handleNeckClick}/>
+      <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>
       <div className='left-side'>
         <SearchToFretApi selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
         {/* <SearchScales selectedNotes={this.state.selectedNotes}/> */}
