@@ -16,19 +16,15 @@ export class SearchByNotes extends React.Component {
     super (props)
     this.state = ({
       selectedNotes: [],
-      selected_note_index: null,
-      selected_scale_name: null,
-      selected_scale_name: 'Major',
-      selected_scale: [0, 2, 4, 5, 7, 9, 11],
       selected_note_index: 0,
-      notes_displayed: true,
       selected_tuning: [7, 2, 10, 5, 0, 7],
-      selected_scale_notes: ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'],
-      scale_selected: false
+      scale_selected: false,
+      fretboardDisplay: false
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.handleNeckClick = this.handleNeckClick.bind(this)
+    this.handleCheck = this.handleCheck.bind(this)
   }
 
   handleChange(selectedNotesArray) {
@@ -71,17 +67,28 @@ export class SearchByNotes extends React.Component {
     }
   }
 
+  handleCheck() {
+    this.setState ({
+      fretboardDisplay: !this.state.fretboardDisplay
+    })
+  }
+
   render () {
     const selected_note_name = NOTES[this.state.selected_note_index]
+    const apiResultStyle = this.state.fretboardDisplay ? 'mini-display' : 'max-display'
     return <div className='search-container container mt-4'>
+      <div className='search-note-left-side'>
       <SearchCheckboxes selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>
-      <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>
-      <div className='left-side'>
-        <SearchToFretApi selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
+      <div className='fretboard-display-checkbox'>
+        <input onChange={this.handleCheck} className="form-check-input" checked={this.state.fretboardDisplay} type="checkbox" value="" id="flexCheckDefault" name='display-fretboard'/>
+        <label for='display-fretboard'>Fretboard</label>
+      </div>
+      {this.state.fretboardDisplay && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
+      <SearchToFretApi style={apiResultStyle} selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
         {/* <SearchScales selectedNotes={this.state.selectedNotes}/> */}
       </div>
-      <div className='right-side'>
-        {!this.state.scale_selected && <div id='right-side-hint'><h2 className='mt-4'>Select a scale to preview it</h2></div>}
+      <div className='search-note-right-side'>
+        {!this.state.scale_selected && <div id='right-side-hint'><h2 className='mt-4'>Select a scale in results</h2></div>}
         {this.state.scale_selected && <div id='right-side-result-hint'>{lightbulb} Click to see more details</div>}
         {this.state.scale_selected && <Link onMouseEnter={this.linkOnMouseEnter} onMouseLeave={this.linkOnMouseLeave} id='right-side-link' to="/MyScaleResult" state={{selected_note_index: this.state.selected_note_index, selected_scale_name: this.state.selected_scale_name}}>{selected_note_name} {this.state.selected_scale_name}</Link>}
         {this.state.scale_selected && <Selector selected_note_index={this.state.selected_note_index} selected_scale_name={this.state.selected_scale_name}/>}

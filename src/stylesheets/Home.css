@@ -67,6 +67,10 @@
   transform: scale(1.1);
 }
 
+.item1:hover, .item2:hover, .item3:hover, .item4:hover, .item5:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
 .home-wrap-link:hover .hint-box {
   opacity: 1;
 }

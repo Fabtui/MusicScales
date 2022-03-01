@@ -13,9 +13,16 @@
   position: relative;
 }
 
-.right-side {
-  margin-top: 24px;
+.search-note-right-side {
   text-align: center;
+}
+
+.search-note-right-side .selector-columns {
+  display: block;
+}
+
+.search-note-right-side .selector-top {
+  display: none;
 }
 
 #right-side-hint {
@@ -46,7 +53,7 @@
   transform: scale(1.1);
 }
 
-.right-side a {
+.search-note-right-side a {
   color: rgba(0, 0, 0, 0.8);
   text-transform: uppercase;
   text-decoration: none;
@@ -55,7 +62,7 @@
   transition: 0.2s;
 }
 
-.right-side a:hover {
+.search-note-right-side a:hover {
   color: rgba(0, 0, 0);
 }
 
@@ -65,29 +72,48 @@
   transition: 0.2s;
 }
 
-.right-side h1 {
+.search-note-right-side h1 {
   display: none;
 }
 
-.right-side .selectors {
+.search-note-right-side .selectors {
   display: none;
 }
 
-.right-side .tuning-select {
+.search-note-right-side .tuning-select {
   display: none;
 }
 
-.right-side .triads-container {
+.search-note-right-side .triads-container {
   display: none;
 }
 
-.left-side table {
-  height: 70vh;
+.search-note-right-side .selector-circle {
+  display: none;
+}
+
+.search-note-left-side .fret-api-result {
+  margin-top: 24px;
   overflow-y: scroll;
   display: block;
 }
 
-.left-side table>thead>tr>th {
+.chords-search {
+  height: 65vh;
+  margin-top: 24px;
+  overflow-y: scroll;
+  display: block;
+}
+
+.mini-display {
+  height: 40vh;
+}
+
+.max-display {
+  height: 65vh;
+}
+
+.search-note-left-side table>thead>tr>th {
   width: 300px;
   vertical-align: bottom;
   border-bottom: 2px solid #ddd;
@@ -96,4 +122,14 @@
   top: 0;
   z-index: 5;
   background: rgb(230, 230, 230);
+}
+
+.fretboard-display-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.fretboard-display-checkbox input {
+  margin: 0 12px;
 }

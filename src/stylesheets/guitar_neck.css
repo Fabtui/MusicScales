@@ -110,6 +110,10 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.basic-guitar-neck th:hover {
+  cursor: pointer;
+}
+
 .note-selected {
   color: #0D6EFD;
 }
