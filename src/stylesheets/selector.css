@@ -1,3 +1,46 @@
-.scale-display {
-  margin: 50px 0;
+.selector-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  margin-top: 24px;
+}
+
+.selector-item {
+  display: flex;
+  padding: 12px;
+}
+
+.selector-columns {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 24px;
+}
+
+.selector-circle {
+  height: 200px;
+}
+
+.selector-circle {
+  margin-top: 20px;
+  width: 100%;
+  max-height: 35vh;
+  text-align: center;
+}
+
+.selector-circle img {
+  max-height: 35vh;
+  transition: 0.2s;
+}
+
+.selector-circle img:hover {
+  cursor: pointer;
+}
+
+.deployed {
+  border-radius: 30%;
+  backdrop-filter: blur(2px);
+  transition: 0.2s;
+  transform: scale(2) translate(-150px, -100px);
 }

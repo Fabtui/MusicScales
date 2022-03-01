@@ -32,7 +32,7 @@ export class NoteDropDown extends React.Component {
     this.props.notes.forEach((note, index) => {
       items.push(<DropdownItems key={index} index={index} note={note} onChange={this.handleChange}/>)
     })
-      return <div className='note-selector'>
+      return <div className='selector-item'>
       <div className="dropdown">
         <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           {this.props.selected_note}

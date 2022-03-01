@@ -32,7 +32,7 @@ export class ScaleDropDown extends React.Component {
     this.props.scales.forEach((scale, index) => {
       items.push(<ScaleDropdownItems key={index} index={index} scale={scale} onChange={this.handleChange}/>)
     })
-      return <div className='note-selector'>
+      return <div className='selector-item'>
       <div className="dropdown">
         <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           {this.props.selected_scale}
