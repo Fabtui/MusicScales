@@ -44,3 +44,9 @@
   transition: 0.2s;
   transform: scale(2) translate(-150px, -100px);
 }
+
+@media screen and (max-width: 990px) {
+  .selector-columns {
+    display: block;
+  }
+}

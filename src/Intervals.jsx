@@ -22,10 +22,10 @@ export function Intervals ({selected_scale}) {
   let rows = []
   intervals.forEach((interval, index) => {
     const key = `${interval}-${index}`
-    rows.push(<div key={index} className="col-interval-items-hidden">-</div>)
-    rows.push(<div key={key} className="col-interval-items">{interval}</div>)
+    rows.push(<td key={index}> </td>)
+    rows.push(<td key={key}>{interval}</td>)
   })
-  return <div className="wrapper-interval">
+  return <tr className='intervals-tr'>
           {rows}
-        </div>
+        </tr>
 }

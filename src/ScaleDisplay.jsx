@@ -38,15 +38,19 @@ export function ScaleDisplay ({selected_scale, notes, selected_note_index, scale
   })
   let rows = []
   scale_notes.forEach((scale_note, index) => {
-    rows.push(<div key={scale_note} className="col-items">{scale_note}</div>)
-    rows.push(<div key={index} className="col-items">-</div>)
+    rows.push(<td key={scale_note}>{scale_note}</td>)
+    rows.push(<td key={index}>-</td>)
   })
   rows.pop()
 
   return <div className="notes-displayer">
-            <div className="wrapper">
+           <table class="table">
+           <tbody>
+             <tr className='notes-tr'>
               {rows}
-            </div>
-            <Intervals selected_scale={selected_scale}/>
-          </div>
+             </tr>
+              <Intervals selected_scale={selected_scale}/>
+           </tbody>
+         </table>
+        </div>
 }
