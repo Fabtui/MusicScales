@@ -39,8 +39,10 @@
 }
 
 .deployed {
-  border-radius: 30%;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);
+  box-shadow: 0 0 30px black;
   transition: 0.2s;
   transform: scale(2) translate(-150px, -100px);
 }
@@ -48,5 +50,18 @@
 @media screen and (max-width: 990px) {
   .selector-columns {
     display: block;
+  }
+  .selector-top {
+    display: block;
+  }
+  .selector-top h1 {
+    font-size: 2rem;
+    margin: 0 !important;
+  }
+  .selectors {
+    margin: 0 !important;
+  }
+  .deployed {
+    transform: scale(2) translate(0px, -80px);
   }
 }
