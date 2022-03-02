@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './stylesheets/index.css';
 import reportWebVitals from './reportWebVitals';
-import './stylesheets/App.css';
 import {Selector} from './Selector'
 import { AllScales } from './AllScales'
 import { SearchByNotes } from './SearchByNotes'
