@@ -14,4 +14,10 @@
 .triads-table th {
   background-color: rgba(0, 0, 0, 0.103);
   border: 1px solid black;
+  text-align: center;
+}
+
+.triads-table td {
+  text-align: center;
+  padding: 0.5rem;
 }

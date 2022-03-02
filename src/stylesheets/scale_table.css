@@ -18,13 +18,35 @@
   display: none;
 }
 
-.notes-displayer {
-  font-size: 32px;
-}
-
 .intervals-tr {
   color: rgba(0, 0, 0, 0.705);
   font-size: 1.5rem;
   border-top: 1px solid #DDE1E5;
   border-bottom: 1px solid transparent;
+}
+
+.scale-display td {
+  padding: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+  width: 20px;
+}
+
+.notes-tr {
+  font-weight: 600;
+}
+
+@media screen and (max-width: 990px) {
+  .table td {
+    padding: 0;
+  }
+  .notes-tr {
+    font-size: 1.5rem;
+  }
+  .intervals-tr {
+    font-size: 1rem;
+  }
+  .scale-table th {
+    padding: 0;
+  }
 }
