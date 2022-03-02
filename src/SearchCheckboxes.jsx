@@ -25,7 +25,7 @@ class MakeSearchCheckboxes extends React.Component {
   }
 
   render () {
-    return <div className="form-check search-form-check mt-4 mb-4">
+    return <div className="form-check search-form-check">
         <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked={this.state.checked} onChange={this.handleCheck}/>
         <label className="form-check-label" htmlFor="flexCheckDefault">
           {this.props.note}

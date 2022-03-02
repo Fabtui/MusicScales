@@ -76,22 +76,26 @@ export class SearchByNotes extends React.Component {
   render () {
     const selected_note_name = NOTES[this.state.selected_note_index]
     const apiResultStyle = this.state.fretboardDisplay ? 'mini-display' : 'max-display'
-    return <div className='search-container container mt-4'>
-      <div className='search-note-left-side'>
-      <SearchCheckboxes selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>
-      <div className='fretboard-display-checkbox'>
-        <input onChange={this.handleCheck} className="form-check-input" checked={this.state.fretboardDisplay} type="checkbox" value="" id="flexCheckDefault" name='display-fretboard'/>
-        <label for='display-fretboard'>Fretboard</label>
+    return <div className='container'>
+      <div className='search-checkboxes'>
+        <SearchCheckboxes selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>
       </div>
-      {this.state.fretboardDisplay && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
-      <SearchToFretApi style={apiResultStyle} selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
-        {/* <SearchScales selectedNotes={this.state.selectedNotes}/> */}
-      </div>
-      <div className='search-note-right-side'>
-        {!this.state.scale_selected && <div id='right-side-hint'><h2 className='mt-4'>Select a scale in results</h2></div>}
-        {this.state.scale_selected && <div id='right-side-result-hint'>{lightbulb} Click to see more details</div>}
-        {this.state.scale_selected && <Link onMouseEnter={this.linkOnMouseEnter} onMouseLeave={this.linkOnMouseLeave} id='right-side-link' to="/MyScaleResult" state={{selected_note_index: this.state.selected_note_index, selected_scale_name: this.state.selected_scale_name}}>{selected_note_name} {this.state.selected_scale_name}</Link>}
-        {this.state.scale_selected && <Selector selected_note_index={this.state.selected_note_index} selected_scale_name={this.state.selected_scale_name}/>}
+      <div className='search-container mt-4'>
+        <div className='search-note-left-side'>
+          <div className='fretboard-display-checkbox'>
+            <input onChange={this.handleCheck} className="form-check-input" checked={this.state.fretboardDisplay} type="checkbox" value="" id="flexCheckDefault" name='display-fretboard'/>
+            <label for='display-fretboard'>Fretboard</label>
+          </div>
+        {this.state.fretboardDisplay && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
+        <SearchToFretApi style={apiResultStyle} selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
+          {/* <SearchScales selectedNotes={this.state.selectedNotes}/> */}
+        </div>
+        <div className='search-note-right-side'>
+          {!this.state.scale_selected && <div id='right-side-hint'><h2 className='mt-4'>Select a scale in results</h2></div>}
+          {this.state.scale_selected && <div id='right-side-result-hint'>{lightbulb} Click to see more details</div>}
+          {this.state.scale_selected && <Link onMouseEnter={this.linkOnMouseEnter} onMouseLeave={this.linkOnMouseLeave} id='right-side-link' to="/MyScaleResult" state={{selected_note_index: this.state.selected_note_index, selected_scale_name: this.state.selected_scale_name}}>{selected_note_name} {this.state.selected_scale_name}</Link>}
+          {this.state.scale_selected && <Selector selected_note_index={this.state.selected_note_index} selected_scale_name={this.state.selected_scale_name}/>}
+        </div>
       </div>
     </div>
   }
