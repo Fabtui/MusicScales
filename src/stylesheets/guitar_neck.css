@@ -23,7 +23,6 @@
 
 .guitar-neck-table {
   background-color: rgba(210, 105, 30, 0.7);
-  border-radius: 5px;
   text-align: center;
 }
 
@@ -124,3 +123,7 @@ input:checked + .slider:before {
 .note-selected {
   color: #0D6EFD;
 }
+
+/* @media screen and (max-width: 990px) {
+
+} */
