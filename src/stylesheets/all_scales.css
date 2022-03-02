@@ -25,7 +25,12 @@
 .all-scales-table thead {
   background: rgb(231, 231, 231);
   position: sticky;
-  top: 74px;
+  top: 4.5rem;
+}
+
+.all-scales-table td {
+  border: 1px solid rgba(0, 0, 0, 0.17);
+  padding: 4px;
 }
 
 .up-arrow-container {
@@ -54,9 +59,24 @@
 
 .groups-radio-buttons {
   margin: 12px 0;
+  width: 100%;
   display: flex;
+  /* justify-content: center; */
+  flex-wrap: wrap;
 }
 
 .group-radio-button-item {
   margin: 0 12px;
+}
+
+@media screen and (max-width: 780px) {
+  .fa-arrow-circle-up {
+    transform: translate(0px, 50px);
+  }
+  .all-scales-table th:first-child {
+    width: 181px;
+  }
+  .all-scales-table tr td:first-child {
+    width: 181px;
+  }
 }
