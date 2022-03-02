@@ -124,6 +124,16 @@ input:checked + .slider:before {
   color: #0D6EFD;
 }
 
+.guitar-neck-table th {
+  padding: 1px;
+}
+
+.basic-guitar-neck-container .tuning-selector {
+  display: flex;
+  justify-content: end;
+}
+
+
 @media screen and (max-width: 990px) {
   .guitar-neck-table th {
     padding: 0;

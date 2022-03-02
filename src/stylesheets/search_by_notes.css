@@ -127,7 +127,6 @@
 .fretboard-display-checkbox {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
 }
 
 .fretboard-display-checkbox input {

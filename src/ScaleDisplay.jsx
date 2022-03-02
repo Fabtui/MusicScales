@@ -44,7 +44,7 @@ export function ScaleDisplay ({selected_scale, notes, selected_note_index, scale
   rows.pop()
 
   return <div className="notes-displayer">
-           <table class="table">
+           <table className="table">
            <tbody>
              <tr className='notes-tr'>
               {rows}

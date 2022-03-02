@@ -47,7 +47,7 @@ export class NeckTable extends React.Component {
           </div>
           <div className='tuning-selector'>
             <h4>Tuning </h4>
-            <TuningDropDown className="scale-selector" tunings={GUITAR_TUNING} selected_tuning_name={this.state.selected_tuning_name} selected_tuning={this.state.selected_tuning} onChange={this.handleTuningChange}/>
+            <TuningDropDown className="scale-selector" tunings={GUITAR_TUNING} selected_tuning_name={this.state.selected_tuning_name} onChange={this.handleTuningChange}/>
           </div>
         </div>
         <GuitarNeck notes_displayed={this.state.notes_displayed} selected_note_index={this.props.selected_note_index} selected_scale={this.props.selected_scale} tuning={this.state.selected_tuning} selected_scale_notes={selected_scale_notes}/>

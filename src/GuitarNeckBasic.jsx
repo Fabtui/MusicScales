@@ -1,6 +1,7 @@
 import React from 'react'
 import { NOTES, GUITAR_TUNING, SCALES_LIST, INTERVALS_NAMES } from './data'
 import './stylesheets/guitar_neck.css'
+import { TuningDropDown } from './TuningDropDown'
 
 class NotesRows extends React.Component {
   constructor (props) {
@@ -39,21 +40,36 @@ class NotesRows extends React.Component {
 export class GuitarNeckBasic extends React.Component {
   constructor (props) {
     super (props)
+    this.state = ({
+      selected_tuning_name: 'E'
+    })
     this.handleClick = this.handleClick.bind(this)
+    this.handleTuningChange = this.handleTuningChange.bind(this)
   }
 
   handleClick(e) {
     this.props.onChange(e);
   }
 
+  handleTuningChange(selected_tuning_name) {
+    this.setState ({
+      selected_tuning_name: selected_tuning_name
+    })
+  }
+
   render () {
     let rows = []
-    const guitarStrings = GUITAR_TUNING['E']
+    const guitarStrings = GUITAR_TUNING[this.state.selected_tuning_name]
     guitarStrings.forEach((guitarString, index) => {
       const key = `${guitarString}-${index}`
-      rows.push(<NotesRows selectedNotes={this.props.selectedNotes} onChange={this.handleClick} key={key} guitarString={guitarString}/>)
+      rows.push(<NotesRows selected_tuning_name={this.state.selected_tuning_name} selectedNotes={this.props.selectedNotes} onChange={this.handleClick} key={key} guitarString={guitarString}/>)
     });
-    return <table className="table guitar-neck-table basic-guitar-neck">
+    return <div className='basic-guitar-neck-container'>
+          <div className='tuning-selector mb-2'>
+            <h4>Tuning </h4>
+            <TuningDropDown className="scale-selector" tunings={GUITAR_TUNING} selected_tuning_name={this.state.selected_tuning_name} onChange={this.handleTuningChange}/>
+          </div>
+          <table className="table guitar-neck-table basic-guitar-neck">
             {rows}
           <tbody>
           <tr className='fretboard-marks'>
@@ -73,5 +89,6 @@ export class GuitarNeckBasic extends React.Component {
           </tr>
           </tbody>
           </table>
+    </div>
   }
 }
