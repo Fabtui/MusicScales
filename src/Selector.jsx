@@ -6,12 +6,9 @@ import {ScaleDropDown} from './ScaleDropDown'
 import {ScaleNotes, ScaleDisplay} from './ScaleDisplay'
 import {ScaleTable} from './ScaleTable'
 import { NOTES, SCALES, SCALES_LIST } from './data'
-import { Title } from './Title'
 import { Triads } from './Triads'
 import { NeckTable } from './NeckTable'
-import { FretApi } from './FretApi'
 import circle from './images/The-Circle-of-Fifths - BW.png';
-import { CircleOfFifth } from './CircleOfFifth'
 
 export class Selector extends Component {
   constructor (props) {
@@ -63,7 +60,6 @@ export class Selector extends Component {
     const scale_intervals = SCALES_LIST[this.state.selected_scale_name]
     return <div className='container'>
       <div className='selector-top'>
-        <Title selected_note={selected_note} selected_scale_name={this.state.selected_scale_name}/>
         <div className="selectors">
           <NoteDropDown selected_note={selected_note} notes={NOTES} onChange={this.handleNoteChange}/>
           <ScaleDropDown selected_scale={this.state.selected_scale_name} scales={SCALES} onChange={this.handleScaleChange}/>
@@ -83,9 +79,6 @@ export class Selector extends Component {
           <div className="triads-container">
             <Triads selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
           </div>
-          {/* <div className="fret-api">
-            <FretApi selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
-          </div> */}
           <div className="selector-circle">
             <img className={circleDeployed} src={circle} alt="circle-of-fifth" onClick={this.deployCircle}/>
           </div>

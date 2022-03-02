@@ -46,7 +46,7 @@ export class NeckTable extends React.Component {
             <label className={noteLabelStyle} id='notes-checkbox-label' htmlFor="notes-checkbox">Notes</label>
           </div>
           <div className='tuning-selector'>
-            <h4>Tuning selector </h4>
+            <h4>Tuning </h4>
             <TuningDropDown className="scale-selector" tunings={GUITAR_TUNING} selected_tuning_name={this.state.selected_tuning_name} selected_tuning={this.state.selected_tuning} onChange={this.handleTuningChange}/>
           </div>
         </div>

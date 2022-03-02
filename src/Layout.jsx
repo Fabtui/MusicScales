@@ -1,5 +1,5 @@
 import { Outlet, Link, useMatch, useResolvedPath } from "react-router-dom";
-import './stylesheets/App.css';
+import './stylesheets/navbar.css';
 import { Home } from "./Home";
 
 function CustomLink({ children, to, ...props }) {
@@ -8,7 +8,7 @@ function CustomLink({ children, to, ...props }) {
   return (
     <div>
       <Link
-        style={{ borderBottom: match ? "2px solid rgba(255, 255, 255, 0.801)" : "none" }}
+        style={{ borderBottom: match ? "2px solid rgba(255, 255, 255, 0.801)" : "none", fontWeight: match ? "600" : "300" }}
         to={to}
         {...props}
       >

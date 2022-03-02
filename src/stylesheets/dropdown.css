@@ -1,5 +1,26 @@
 .selectors {
   display: flex;
-  justify-content: space-around;
-  margin: 20px 10%;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.selectors #dropdownMenuButton1 {
+  background-color: transparent;
+  color: black;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+
+.selectors #dropdownMenuButton1::after {
+  color: rgba(0, 0, 0, 0.2);
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 990px) {
+  .selectors #dropdownMenuButton1 {
+    font-size: 2rem;
+  }
 }
