@@ -72,7 +72,6 @@ export class SearchCheckboxes extends React.Component {
     const selectedNotes = this.state.selectedNotes
     NOTES.map((note, index) => {
       const checked = selectedNotes.includes(NOTES.indexOf(note))
-      console.log(checked);
       items.push(<MakeSearchCheckboxes checked={checked} selectedNotes={this.state.selectedNotes} key={index} index={index} note={note} onChange={this.handleChange}/>)
       }
     )

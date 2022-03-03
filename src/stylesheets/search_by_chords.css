@@ -20,10 +20,13 @@
   margin-bottom: 24px;
   border-radius: 4px;
   font-size: 12px;
+  display: flex;
+  align-items: center;
 }
 
 #seach_by_chords_notes {
   margin: 0;
+  font-size: 16px;
 }
 
 .close-button-shape-drop-down {
@@ -42,4 +45,24 @@
   transition: 0.3s;
   color: black;
   border: 2px solid red;
+}
+
+@media screen and (max-width: 990px) {
+  #seach_by_chords_notes {
+    font-size: 12px;
+  }
+  .chords-search {
+    max-height: 40vh;
+  }
+  .close-button-shape-drop-down {
+    padding: 8px 8px;
+  }
+  .selector-item {
+    padding: 8px;
+  }
+  .seach_by_chords_notes_container {
+    margin: 0px 16px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
 }
