@@ -1,8 +1,12 @@
 .circle-of-fifth {
   margin-top: 20px;
   width: 100%;
-  max-height: 80vh;
+  height: 80vh;
   text-align: center;
+  background-image: url('../images/The-Circle-of-Fifths.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 .circle-of-fifth img {
