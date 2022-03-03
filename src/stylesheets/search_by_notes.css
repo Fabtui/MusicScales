@@ -1,5 +1,6 @@
 .search-checkboxes {
   display: flex;
+  justify-content: center;
 }
 .search-checkboxes {
   margin-top: 12px;
