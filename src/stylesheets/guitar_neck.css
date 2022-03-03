@@ -130,7 +130,7 @@ input:checked + .slider:before {
 
 .basic-guitar-neck-container .tuning-selector {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 @media screen and (max-width: 990px) {
