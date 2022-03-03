@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/scales_react_app/static/css/main.c4fe9959.css",
+    "main.js": "/scales_react_app/static/js/main.56e98793.js",
+    "static/js/787.28cb0dcd.chunk.js": "/scales_react_app/static/js/787.28cb0dcd.chunk.js",
+    "static/media/The-Circle-of-Fifths.png": "/scales_react_app/static/media/The-Circle-of-Fifths.dfb9f118b3b0df105e66.png",
+    "static/media/The-Circle-of-Fifths - BW.png": "/scales_react_app/static/media/The-Circle-of-Fifths - BW.a1a8fcb68cb7228d5e4c.png",
+    "index.html": "/scales_react_app/index.html",
+    "main.c4fe9959.css.map": "/scales_react_app/static/css/main.c4fe9959.css.map",
+    "main.56e98793.js.map": "/scales_react_app/static/js/main.56e98793.js.map",
+    "787.28cb0dcd.chunk.js.map": "/scales_react_app/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c4fe9959.css",
+    "static/js/main.56e98793.js"
+  ]
+}
