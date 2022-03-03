@@ -25,7 +25,7 @@
   min-width: 280px;
   min-height: 280px;
   border-radius: 12px;
-  margin: 24px;
+  margin: 12px;
   opacity: 0.6;
   transition: 0.2s;
 }
@@ -56,7 +56,8 @@
 
 .home-wrap-link {
   position: relative;
-  font-size: 60px;
+  font-size: 3rem;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   color: white;
   text-decoration: none;
   transition: 0.2s;
@@ -64,7 +65,7 @@
 
 .home-wrap-link:hover {
   color: white;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .item1:hover, .item2:hover, .item3:hover, .item4:hover, .item5:hover {
@@ -80,7 +81,7 @@
   padding: 8px 0;
   font-size: 16px;
   text-align: center;
-  margin: 24px;
+  margin: 12px;
   border-radius: 0 0 12px 12px;
   bottom: 0;
   position: absolute;

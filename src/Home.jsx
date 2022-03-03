@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export function Home () {
   return <div className='home-wrap'>
       <Link className="home-wrap-link" to="/MyScale">
-        <div className='home-wrap-item item1'>MY SCALES</div>
+        <div className='home-wrap-item item1'>MY SCALE</div>
         <div className='hint-box'>All about a scale</div>
       </Link>
       <Link className="home-wrap-link" to="/AllScales">
