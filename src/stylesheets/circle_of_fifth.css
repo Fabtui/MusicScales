@@ -7,8 +7,232 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  display: flex;
+  justify-content: center;
 }
 
 .circle-of-fifth img {
   max-height: 80vh;
+}
+
+.circle-select-box {
+  top: 50%;
+  transform: translateY(-50%);
+  position: relative;
+  width: 80vh;
+  max-height: 100vw;
+}
+
+.circle-selector:hover {
+  cursor: pointer;
+}
+
+.C {
+  position: absolute;
+  top: 8%;
+  right: 42%;
+  width: 15%;
+  height: 14%;
+}
+
+.G {
+  position: absolute;
+  top: 13%;
+  right: 25%;
+  transform: rotate(30deg);
+  width: 15%;
+  height: 14%;
+}
+
+.D {
+  position: absolute;
+  top: 26%;
+  right: 12%;
+  transform: rotate(60deg);
+  width: 15%;
+  height: 14%;
+}
+
+.A {
+  position: absolute;
+  top: 43%;
+  right: 7%;
+  width: 15%;
+  height: 14%;
+}
+
+.E {
+  position: absolute;
+  top: 60%;
+  right: 12%;
+  transform: rotate(30deg);
+  width: 15%;
+  height: 14%;
+}
+
+.B {
+  position: absolute;
+  top: 73%;
+  right: 25%;
+  transform: rotate(60deg);
+  width: 15%;
+  height: 14%;
+}
+
+.Fsharp {
+  position: absolute;
+  top: 78%;
+  right: 42%;
+  width: 15%;
+  height: 14%;
+}
+
+.Csharp {
+  position: absolute;
+  top: 73%;
+  right: 60%;
+  transform: rotate(30deg);
+  width: 15%;
+  height: 14%;
+}
+
+.Gsharp {
+  position: absolute;
+  top: 60%;
+  right: 73%;
+  transform: rotate(60deg);
+  width: 15%;
+  height: 14%;
+}
+
+.Dsharp {
+  position: absolute;
+  top: 43%;
+  right: 78%;
+  width: 15%;
+  height: 14%;
+}
+
+.Asharp {
+  position: absolute;
+  top: 26%;
+  right: 73%;
+  transform: rotate(30deg);
+  width: 15%;
+  height: 14%;
+}
+
+.F {
+  position: absolute;
+  top: 13%;
+  right: 60%;
+  transform: rotate(60deg);
+  width: 15%;
+  height: 14%;
+}
+
+.a {
+  position: absolute;
+  top: 22%;
+  right: 45%;
+  width: 10%;
+  height: 14%;
+}
+
+.e {
+  position: absolute;
+  top: 25%;
+  right: 35%;
+  transform: rotate(30deg);
+  width: 10%;
+  height: 14%;
+}
+
+.b {
+  position: absolute;
+  top: 33%;
+  right: 27%;
+  transform: rotate(60deg);
+  width: 10%;
+  height: 14%;
+}
+
+.fsharp {
+  position: absolute;
+  top: 43%;
+  right: 24%;
+  transform: rotate(90deg);
+  width: 10%;
+  height: 14%;
+}
+
+.csharp {
+  position: absolute;
+  top: 54%;
+  right: 27%;
+  transform: rotate(120deg);
+  width: 10%;
+  height: 14%;
+}
+
+.gsharp {
+  position: absolute;
+  top: 61%;
+  right: 35%;
+  transform: rotate(150deg);
+  width: 10%;
+  height: 14%;
+}
+
+.dsharp {
+  position: absolute;
+  top: 64%;
+  right: 45%;
+  width: 10%;
+  height: 14%;
+}
+
+.asharp {
+  position: absolute;
+  top: 61%;
+  right: 56%;
+  transform: rotate(30deg);
+  width: 10%;
+  height: 14%;
+}
+
+.f {
+  position: absolute;
+  top: 53%;
+  right: 63%;
+  transform: rotate(60deg);
+  width: 10%;
+  height: 14%;
+}
+
+.c {
+  position: absolute;
+  top: 43%;
+  right: 66%;
+  width: 10%;
+  height: 14%;
+  transform: rotate(90deg);
+}
+
+.g {
+  position: absolute;
+  top: 33%;
+  right: 63%;
+  transform: rotate(120deg);
+   width: 10%;
+  height: 14%;
+}
+
+.d {
+  position: absolute;
+  top: 25%;
+  right: 56%;
+  transform: rotate(150deg);
+   width: 10%;
+  height: 14%;
 }
