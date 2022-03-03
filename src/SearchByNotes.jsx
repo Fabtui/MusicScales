@@ -35,11 +35,18 @@ export class SearchByNotes extends React.Component {
   }
 
   handleClick(e) {
-    const selected_note_index = NOTES.indexOf(e.split(' ')[0])
-    const selected_scale_name = e.split(' ').length === 3 ? `${e.split(' ')[1]} ${e.split(' ')[2]}` : `${e.split(' ')[1]}`
+    let selectedNote = e.split(' ')[0]
+    // transform b in #
+    if (selectedNote.length === 2 && selectedNote[1] === 'b') {
+      selectedNote = NOTES.indexOf(selectedNote[0]) - 1
+      if (selectedNote === -1) { selectedNote = 11 }
+    } else {
+      selectedNote = NOTES.indexOf(selectedNote)
+    }
+    const selectedScaleName = e.split(' ').length === 3 ? `${e.split(' ')[1]} ${e.split(' ')[2]}` : `${e.split(' ')[1]}`
     this.setState({
-      selected_note_index: selected_note_index,
-      selected_scale_name: selected_scale_name,
+      selected_note_index: selectedNote,
+      selected_scale_name: selectedScaleName,
       scale_selected: true
     })
   }
@@ -90,7 +97,7 @@ export class SearchByNotes extends React.Component {
         <SearchToFretApi style={apiResultStyle} selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
           {/* <SearchScales selectedNotes={this.state.selectedNotes}/> */}
         </div>
-        <div className='search-note-right-side'>
+        <div className='search-note-right-side search-note-translate'>
           {!this.state.scale_selected && <div id='right-side-hint'><h2 className='mt-4'>Select a scale in results</h2></div>}
           {this.state.scale_selected && <div id='right-side-result-hint'>{lightbulb} Click to see more details</div>}
           {this.state.scale_selected && <Link onMouseEnter={this.linkOnMouseEnter} onMouseLeave={this.linkOnMouseLeave} id='right-side-link' to="/MyScaleResult" state={{selected_note_index: this.state.selected_note_index, selected_scale_name: this.state.selected_scale_name}}>{selected_note_name} {this.state.selected_scale_name}</Link>}
