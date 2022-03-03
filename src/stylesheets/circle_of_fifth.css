@@ -27,6 +27,19 @@
   cursor: pointer;
 }
 
+#circle-of-fifth-hint {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 8px;
+  max-height: 60px;
+  min-width: 200px;
+  color: black;
+  z-index: 9999;
+  transition: opacity 0.1s;
+  opacity: 0;
+}
+
 .C {
   position: absolute;
   top: 8%;
