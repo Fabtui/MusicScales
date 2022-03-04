@@ -55,9 +55,17 @@ export class SearchToFretApi extends React.Component {
       return
     }
     let that = this
+
     const mutatedNotes = encodeURIComponent(selectedNotes.map(note => NOTES[note]))
     const url = `http://www.tofret.com/reverse-chord-finder.php?notes=${mutatedNotes}&return-type=json`
-    fetch(url)
+    fetch(url,
+        {
+            method: "GET",
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
       .then(response => response.json())
       .then(function(response) {
         that.setState({

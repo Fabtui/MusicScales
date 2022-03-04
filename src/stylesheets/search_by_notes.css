@@ -24,10 +24,6 @@
   position: relative;
 }
 
-.search-note-translate {
-  transform: translateY(-80px);
-}
-
 .search-note-right-side {
   text-align: center;
 }
@@ -115,6 +111,11 @@
   margin-top: 24px;
   overflow-y: scroll;
   display: block;
+}
+
+.fret-api-result {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .chords-search {
