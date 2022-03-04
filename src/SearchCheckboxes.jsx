@@ -41,6 +41,7 @@ export class SearchCheckboxes extends React.Component {
       selectedNotes: this.props.selectedNotes
     })
     this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   UNSAFE_componentWillReceiveProps (nextProps) {
@@ -67,6 +68,10 @@ export class SearchCheckboxes extends React.Component {
     }
   }
 
+  handleClick () {
+    this.props.onClick()
+  }
+
   render () {
     const items = []
     const selectedNotes = this.state.selectedNotes
@@ -77,6 +82,7 @@ export class SearchCheckboxes extends React.Component {
     )
     return <div className='search-checkboxes'>
       {items}
+      <span onClick={this.handleClick}>X</span>
     </div>
   }
 }
