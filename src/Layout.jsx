@@ -43,7 +43,10 @@ const Layout = () => {
                 <CustomLink className="nav-link" to="/SearchByChords">Search by Chords</CustomLink>
               </li>
               <li className="nav-item">
-                <CustomLink className="nav-link" to="/CircleOfFifth">Circle Of Fifth</CustomLink>
+                <CustomLink className="nav-link" to="/ChordsSearch">Find a Chord</CustomLink>
+              </li>
+              <li className="nav-item">
+                <CustomLink className="nav-link" to="/CircleOfFifth">Circle of Fifth</CustomLink>
               </li>
             </ul>
           </div>

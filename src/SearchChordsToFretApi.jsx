@@ -1,46 +1,13 @@
 import React, {Component} from 'react'
 import { Link } from "react-router-dom";
 import {NOTES} from './data'
+import { displayScales } from './SearchToFretApi';
 
-export function displayScales (scales, functionOnClick) {
-
-  let rows = []
-  if (scales === undefined) {
-    return
-  }
-  let allKeys = []
-  for (const [key, value] of Object.entries(scales)) {
-    allKeys.push(key)
-  }
-
-  function onClick(e) {
-    functionOnClick(e.target.innerText);
-  }
-
-  let allKeysKeys = []
-  allKeys.forEach((key, index) => {
-    allKeysKeys = Object.keys(scales[key])
-    allKeysKeys.forEach(scale => {
-      const scaleNotes = scales[key][scale]
-      const keyIndex = NOTES.indexOf(key)
-      const scaleName = scale.charAt(0).toUpperCase() + scale.slice(1)
-      rows.push(
-        <tr key={key + index + scaleName}>
-        <th scope="row">{key}</th>
-        <td id='clickable-td' onClick={onClick}>{key} {scaleName}</td>
-        <td >{scaleNotes}</td>
-      </tr>
-      )
-    })
-  })
-  return rows
-}
-
-export class SearchToFretApi extends React.Component {
+export class SearchChordsToFretApi extends React.Component {
   constructor(props) {
     super (props)
     this.state = {
-      scales: []
+      chords: []
     }
     this.fetchApi = this.fetchApi.bind(this)
     this.onClick = this.onClick.bind(this)
@@ -69,25 +36,25 @@ export class SearchToFretApi extends React.Component {
       .then(response => response.json())
       .then(function(response) {
         that.setState({
-          scales: response.scales
+          chords: response.chords
         })
       })
   }
 
   onClick(e) {
-    this.props.onClick(e);
+    return
   }
 
   render () {
-    const scales = this.state.scales
-    const rows = displayScales(scales, this.onClick)
+    const chords = this.state.chords
+    const rows = displayScales(chords, this.onClick)
     const style = `${this.props.style} table fret-api-result`
     return <div className='container'>
               <table className={style}>
                 <thead>
                   <tr>
                     <th scope="col">Key</th>
-                    <th scope="col">Scale</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Notes</th>
                   </tr>
                 </thead>
