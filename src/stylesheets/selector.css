@@ -44,7 +44,7 @@
   backdrop-filter: blur(2px);
   box-shadow: 0 0 30px black;
   transition: 0.2s;
-  transform: scale(2) translate(-150px, -100px);
+  transform: scale(1.5) translate(-150px, -100px);
 }
 
 @media screen and (max-width: 990px) {
@@ -62,6 +62,6 @@
     margin: 0 !important;
   }
   .deployed {
-    transform: scale(1.2) translate(0px, -80px);
+    transform: scale(1) translate(0px, 0px);
   }
 }

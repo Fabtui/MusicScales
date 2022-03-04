@@ -42,11 +42,13 @@ export class CircleOfFifth extends React.Component {
       rows.push(linkMaker(note, 'Major', index))
       rows.push(linkMaker(note, 'Minor', index))
     });
-    return <div className='circle-of-fifth'>
-          <div id='circle-of-fifth-hint'>{lightbulb} Click to see more details</div>
-          <div className="circle-select-box">
-            {rows}
-          </div>
-         </div>
+    return <div className="container">
+             <div className='circle-of-fifth'>
+               <div id='circle-of-fifth-hint'>{lightbulb} Click to see more details</div>
+               <div className="circle-select-box">
+                 {rows}
+               </div>
+             </div>
+           </div>
   }
 }
