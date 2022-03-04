@@ -20,10 +20,10 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  width: 20vw;
-  height: 20vw;
-  min-width: 280px;
-  min-height: 280px;
+  width: 40vh;
+  height: 40vh;
+  /* min-width: 280px;
+  min-height: 280px; */
   border-radius: 12px;
   margin: 12px;
   opacity: 0.6;
@@ -56,7 +56,7 @@
 
 .home-wrap-link {
   position: relative;
-  font-size: 3rem;
+  font-size: 2rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   color: white;
   text-decoration: none;
@@ -85,8 +85,26 @@
   border-radius: 0 0 12px 12px;
   bottom: 0;
   position: absolute;
-  width: 20vw;
-  min-width: 280px;
+  width: 40vh;
   background-color: rgba(0, 0, 0, 0.205);
   transition: 0.2s;
+}
+
+@media screen and (max-width: 990px) {
+  .home-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 5vh;
+  }
+  .home-wrap-item {
+    margin: 8px;
+    width: 45vw;
+    height: 45vw;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  .hint-box {
+    opacity: 1;
+    width: 45vw;
+    margin: 8px;
+  }
 }

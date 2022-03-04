@@ -62,7 +62,6 @@ export class SearchByNotes extends React.Component {
   }
 
   handleNeckClick(e) {
-    console.log(e);
     const noteIndex = NOTES.indexOf(e);
     const selectedNotes = this.state.selectedNotes;
     if (selectedNotes.includes(noteIndex)) {
@@ -97,13 +96,13 @@ export class SearchByNotes extends React.Component {
         <div className='search-note-left-side'>
           <div className='fretboard-display-checkbox'>
             <input onChange={this.handleCheck} className="form-check-input" checked={this.state.fretboardDisplay} type="checkbox" value="" id="flexCheckDefault" name='display-fretboard'/>
-            <label for='display-fretboard'>Fretboard</label>
+            <label htmlFor='display-fretboard'>Fretboard</label>
           </div>
         {this.state.fretboardDisplay && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
         <SearchToFretApi style={apiResultStyle} selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
           {/* <SearchScales selectedNotes={this.state.selectedNotes}/> */}
         </div>
-        <div className='search-note-right-side search-note-translate'>
+        <div className='search-note-right-side'>
           {!this.state.scale_selected && <div id='right-side-hint'><h2 className='mt-4'>Select a scale in results</h2></div>}
           {this.state.scale_selected && <div id='right-side-result-hint'>{lightbulb} Click to see more details</div>}
           {this.state.scale_selected && <Link onMouseEnter={this.linkOnMouseEnter} onMouseLeave={this.linkOnMouseLeave} id='right-side-link' to="/MyScaleResult" state={{selected_note_index: this.state.selected_note_index, selected_scale_name: this.state.selected_scale_name}}>{selected_note_name} {this.state.selected_scale_name}</Link>}

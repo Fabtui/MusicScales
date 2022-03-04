@@ -62,6 +62,6 @@
     margin: 0 !important;
   }
   .deployed {
-    transform: scale(2) translate(0px, -80px);
+    transform: scale(1.2) translate(0px, -80px);
   }
 }
