@@ -25,6 +25,7 @@ export class SearchByNotes extends React.Component {
     this.handleClick = this.handleClick.bind(this)
     this.handleNeckClick = this.handleNeckClick.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
+    this.handleRemoveClick = this.handleRemoveClick.bind(this)
   }
 
   handleChange(selectedNotesArray) {
@@ -85,12 +86,18 @@ export class SearchByNotes extends React.Component {
     })
   }
 
+  handleRemoveClick () {
+    this.setState ({
+      selectedNotes: []
+    })
+  }
+
   render () {
     const selected_note_name = NOTES[this.state.selected_note_index]
     const apiResultStyle = this.state.fretboardDisplay ? 'mini-display' : 'max-display'
     return <div className='container'>
       <div className='search-checkboxes'>
-        <SearchCheckboxes selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>
+        <SearchCheckboxes onClick={this.handleRemoveClick} selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>
       </div>
       <div className='search-container mt-4'>
         <div className='search-note-left-side'>

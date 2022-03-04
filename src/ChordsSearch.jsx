@@ -14,6 +14,7 @@ export class ChordsSearch extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleNeckClick = this.handleNeckClick.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
+    this.handleRemoveClick = this.handleRemoveClick.bind(this)
   }
 
   handleChange(selectedNotesArray) {
@@ -47,11 +48,17 @@ export class ChordsSearch extends React.Component {
     })
   }
 
+  handleRemoveClick () {
+    this.setState ({
+      selectedNotes: []
+    })
+  }
+
   render () {
     const apiResultStyle = this.state.fretboardDisplay ? 'mini-display' : 'max-display'
     return <div className='container'>
       <div className='search-checkboxes'>
-        <SearchCheckboxes selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>
+        <SearchCheckboxes onClick={this.handleRemoveClick} selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>
       </div>
       <div className='fretboard-display-checkbox'>
         <input onChange={this.handleCheck} className="form-check-input" checked={this.state.fretboardDisplay} type="checkbox" value="" id="flexCheckDefault" name='display-fretboard'/>
