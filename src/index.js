@@ -6,6 +6,7 @@ import {Selector} from './Selector'
 import { AllScales } from './AllScales'
 import { SearchByNotes } from './SearchByNotes'
 import { SearchByChords } from './SearchByChords'
+import { ChordsSearch } from './ChordsSearch'
 import { CircleOfFifth } from './CircleOfFifth';
 import Child from './Child'
 import Layout from './Layout'
@@ -21,6 +22,7 @@ function App() {
           <Route path="Search" element={<SearchByNotes />} />
           <Route path="SearchByChords" element={<SearchByChords />} />
           <Route path="MyScaleResult" element={<Child />} />
+          <Route path="ChordsSearch" element={<ChordsSearch />} />
           <Route path="CircleOfFifth" element={<CircleOfFifth />} />
         </Route>
       </Routes>
