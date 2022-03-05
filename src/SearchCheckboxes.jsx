@@ -2,6 +2,10 @@ import React, {Component} from 'react'
 import {NOTES} from './data'
 import './stylesheets/search_by_notes.css'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLightbulb, faXmark } from '@fortawesome/free-solid-svg-icons'
+const cross = <FontAwesomeIcon icon={faXmark} />
+
 class MakeSearchCheckboxes extends React.Component {
   constructor (props) {
     super (props)
@@ -73,6 +77,7 @@ export class SearchCheckboxes extends React.Component {
   }
 
   render () {
+    const noteSelected = this.state.selectedNotes.length > 0
     const items = []
     const selectedNotes = this.state.selectedNotes
     NOTES.map((note, index) => {
@@ -82,7 +87,7 @@ export class SearchCheckboxes extends React.Component {
     )
     return <div className='search-checkboxes'>
       {items}
-      <span onClick={this.handleClick}>X</span>
+      {noteSelected && <span id='checkbox-remove-button' onClick={this.handleClick}>{cross}</span>}
     </div>
   }
 }
