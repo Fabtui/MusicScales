@@ -1,11 +1,12 @@
 .search-checkboxes {
-  display: flex;
-  justify-content: center;
-}
-.search-checkboxes {
   margin-top: 12px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+}
+
+.form-check-input:hover {
+  cursor: pointer;
 }
 
 .search-form-check {
@@ -156,6 +157,19 @@
 
 .fret-api-result th:first-child {
   max-width: 100px;
+}
+
+#checkbox-remove-button {
+  margin-top: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 1.5rem;
+  width: 1.5rem;
+  text-align: center;
+  border-radius: 50%;
+}
+
+#checkbox-remove-button:hover {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 990px) {
