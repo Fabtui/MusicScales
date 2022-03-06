@@ -16,26 +16,26 @@ export class SearchChordsToFretApi extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     this.fetchApi(nextProps.selectedNotes)
-    const selectedChords = this.searchFromData (nextProps.selectedNotes, 'chords')
+    const selectedChords = this.searchFromData (nextProps.selectedNotes, EVERY_CHORDS)
     console.log(selectedChords);
     // this.setState ({
     //   s: selectedChords
     // })
   }
 
-    searchFromData (selectedNotes, type) {
+  searchFromData (selectedNotes, data) {
     if (selectedNotes.length === 0) {
       return
     }
     const selectedNotesNames = selectedNotes.map(note => NOTES[note])
     // console.log(selectedNotesNames.join(' '));
-    const keys = Object.keys(EVERY_CHORDS)
+    const keys = Object.keys(data)
     const selectedChords = []
     const checker = (arr, target) => target.every(v => arr.includes(v));
     keys.forEach(key => {
-      const chordShapes = Object.keys(EVERY_CHORDS[key])
+      const chordShapes = Object.keys(data[key])
       chordShapes.forEach(chordShape => {
-        const chord = EVERY_CHORDS[key][chordShape].split(' ')
+        const chord = data[key][chordShape].split(' ')
         if (checker(chord, selectedNotesNames)) {
           selectedChords.push([key, chordShape, chord.join(' ')])
         }
