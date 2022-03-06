@@ -29,7 +29,7 @@ export class SearchChordsToFretApi extends React.Component {
     this.state = {
       chords: [],
     }
-    this.fetchApi = this.fetchApi.bind(this)
+    // this.fetchApi = this.fetchApi.bind(this)
     this.onClick = this.onClick.bind(this)
   }
 
@@ -41,29 +41,29 @@ export class SearchChordsToFretApi extends React.Component {
     })
   }
 
-  fetchApi (selectedNotes) {
-    if (selectedNotes.length === 0) {
-      return
-    }
-    let that = this
+  // fetchApi (selectedNotes) {
+  //   if (selectedNotes.length === 0) {
+  //     return
+  //   }
+  //   let that = this
 
-    const mutatedNotes = encodeURIComponent(selectedNotes.map(note => NOTES[note]))
-    const url = `http://www.tofret.com/reverse-chord-finder.php?notes=${mutatedNotes}&return-type=json`
-    fetch(url,
-        {
-            method: "GET",
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-      .then(response => response.json())
-      .then(function(response) {
-        that.setState({
-          chords: response.chords
-        })
-      })
-  }
+  //   const mutatedNotes = encodeURIComponent(selectedNotes.map(note => NOTES[note]))
+  //   const url = `http://www.tofret.com/reverse-chord-finder.php?notes=${mutatedNotes}&return-type=json`
+  //   fetch(url,
+  //       {
+  //           method: "GET",
+  //           mode: 'cors',
+  //           headers: {
+  //               'Content-Type': 'application/json',
+  //           }
+  //       })
+  //     .then(response => response.json())
+  //     .then(function(response) {
+  //       that.setState({
+  //         chords: response.chords
+  //       })
+  //     })
+  // }
 
   onClick(e) {
     return
