@@ -16,7 +16,8 @@ export function searchFromData (selectedNotes, data) {
     chordShapes.forEach(chordShape => {
       const chord = data[key][chordShape].split(' ')
       if (checker(chord, selectedNotesNames)) {
-        selectedChords.push([key, chordShape, chord.join(' ')])
+        const capitalChordShape = chordShape.charAt(0).toUpperCase() + chordShape.slice(1);
+        selectedChords.push([key, capitalChordShape, chord.join(' ')])
       }
     })
   })
