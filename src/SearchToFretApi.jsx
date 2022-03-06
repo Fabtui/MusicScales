@@ -1,42 +1,64 @@
 import React, {Component} from 'react'
 import { Link } from "react-router-dom";
 import {NOTES} from './data'
-// import { EVERY_CHORDS } from './data/chords.js'
-// import { EVERY_SCALES } from './data/scales.js'
+import { EVERY_SCALES } from './data/scales';
+import { searchFromData } from './SearchChordsToFretApi';
 
-export function displayScales (scales, functionOnClick) {
-
+export function displayFoundScales (scales, functionOnClick) {
   let rows = []
   if (scales === undefined) {
     return
-  }
-  let allKeys = []
-  for (const [key, value] of Object.entries(scales)) {
-    allKeys.push(key)
   }
 
   function onClick(e) {
     functionOnClick(e.target.innerText);
   }
 
-  let allKeysKeys = []
-  allKeys.forEach((key, index) => {
-    allKeysKeys = Object.keys(scales[key])
-    allKeysKeys.forEach(scale => {
-      const scaleNotes = scales[key][scale]
-      const keyIndex = NOTES.indexOf(key)
-      const scaleName = scale.charAt(0).toUpperCase() + scale.slice(1)
+  scales.forEach((scale, index) => {
+      console.log(scale);
       rows.push(
-        <tr key={key + index + scaleName}>
-        <th scope="row">{key}</th>
-        <td id='clickable-td' onClick={onClick}>{key} {scaleName}</td>
-        <td >{scaleNotes}</td>
+        <tr key={index}>
+        <th scope="row">{scale[0]}</th>
+        <td id='clickable-td' onClick={onClick}>{scale[0]} {scale[1]}</td>
+        <td >{scale[2]}</td>
       </tr>
       )
-    })
   })
   return rows
 }
+
+// export function displayScales (scales, functionOnClick) {
+//   let rows = []
+//   if (scales === undefined) {
+//     return
+//   }
+//   let allKeys = []
+//   for (const [key, value] of Object.entries(scales)) {
+//     allKeys.push(key)
+//   }
+
+//   function onClick(e) {
+//     functionOnClick(e.target.innerText);
+//   }
+
+//   let allKeysKeys = []
+//   allKeys.forEach((key, index) => {
+//     allKeysKeys = Object.keys(scales[key])
+//     allKeysKeys.forEach(scale => {
+//       const scaleNotes = scales[key][scale]
+//       const keyIndex = NOTES.indexOf(key)
+//       const scaleName = scale.charAt(0).toUpperCase() + scale.slice(1)
+//       rows.push(
+//         <tr key={key + index + scaleName}>
+//         <th scope="row">{key}</th>
+//         <td id='clickable-td' onClick={onClick}>{key} {scaleName}</td>
+//         <td >{scaleNotes}</td>
+//       </tr>
+//       )
+//     })
+//   })
+//   return rows
+// }
 
 export class SearchToFretApi extends React.Component {
   constructor(props) {
@@ -49,28 +71,12 @@ export class SearchToFretApi extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    this.fetchApi(nextProps.selectedNotes)
-    // this.searchFromData (nextProps.selectedNotes, 'chords')
+    // this.fetchApi(nextProps.selectedNotes)
+    const selectedChords = searchFromData(nextProps.selectedNotes, EVERY_SCALES)
+    this.setState ({
+      scales: selectedChords
+    })
   }
-
-  // searchFromData (selectedNotes, type) {
-  //   if (selectedNotes.length === 0) {
-  //     return
-  //   }
-  //   const selectedNotesNames = selectedNotes.map(note => NOTES[note])
-  //   // console.log(selectedNotesNames.join(' '));
-  //   const keys = Object.keys(EVERY_CHORDS)
-  //   const selected = []
-  //   const checker = (arr, target) => target.every(v => arr.includes(v));
-  //   keys.forEach(key => {
-  //     const chordShapes = Object.keys(EVERY_CHORDS[key])
-  //     chordShapes.forEach(chordShape => {
-  //       const chord = EVERY_CHORDS[key][chordShape].split(' ')
-  //       if (checker(chord, selectedNotesNames)) {selected.push([key, chordShape, chord.join(' ')])}
-  //     })
-  //   })
-  //   console.log(selected);
-  // }
 
   fetchApi (selectedNotes) {
     if (selectedNotes.length === 0) {
@@ -102,7 +108,7 @@ export class SearchToFretApi extends React.Component {
 
   render () {
     const scales = this.state.scales
-    const rows = displayScales(scales, this.onClick)
+    const rows = displayFoundScales(scales, this.onClick)
     const style = `${this.props.style} table fret-api-result`
     return <div className='container'>
               <table className={style}>

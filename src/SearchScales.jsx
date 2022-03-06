@@ -9,7 +9,6 @@ function DisplayScalesFound (scale) {
 }
 
 export class SearchScales extends React.Component {
-
   MakeAllScales(selectedNotes) {
     const allKeys = []
     selectedNotes.forEach(selectedNote => {
