@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="MyScale" element={<Selector />} />
           <Route path="AllScales" element={<AllScales />} />
-          <Route path="Search" element={<SearchByNotes />} />
+          <Route path="SearchByNotes" element={<SearchByNotes />} />
           <Route path="SearchByChords" element={<SearchByChords />} />
           <Route path="MyScaleResult" element={<Child />} />
           <Route path="ChordsSearch" element={<ChordsSearch />} />
