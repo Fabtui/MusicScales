@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 import {NOTES} from './data'
+import { EVERY_CHORDS } from './data/chords.js'
 import { displayScales } from './SearchToFretApi';
 
 export class SearchChordsToFretApi extends React.Component {
   constructor(props) {
     super (props)
     this.state = {
-      chords: []
+      chords: [],
+      s: []
     }
     this.fetchApi = this.fetchApi.bind(this)
     this.onClick = this.onClick.bind(this)
@@ -14,6 +16,32 @@ export class SearchChordsToFretApi extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     this.fetchApi(nextProps.selectedNotes)
+    const selectedChords = this.searchFromData (nextProps.selectedNotes, 'chords')
+    console.log(selectedChords);
+    // this.setState ({
+    //   s: selectedChords
+    // })
+  }
+
+    searchFromData (selectedNotes, type) {
+    if (selectedNotes.length === 0) {
+      return
+    }
+    const selectedNotesNames = selectedNotes.map(note => NOTES[note])
+    // console.log(selectedNotesNames.join(' '));
+    const keys = Object.keys(EVERY_CHORDS)
+    const selectedChords = []
+    const checker = (arr, target) => target.every(v => arr.includes(v));
+    keys.forEach(key => {
+      const chordShapes = Object.keys(EVERY_CHORDS[key])
+      chordShapes.forEach(chordShape => {
+        const chord = EVERY_CHORDS[key][chordShape].split(' ')
+        if (checker(chord, selectedNotesNames)) {
+          selectedChords.push([key, chordShape, chord.join(' ')])
+        }
+      })
+    })
+    return selectedChords
   }
 
   fetchApi (selectedNotes) {

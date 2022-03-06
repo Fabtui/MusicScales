@@ -1,4 +1,4 @@
-{
+export const EVERY_SCALES = {
   "A": {
     "major": "A B C# D E F# G#",
     "minor": "A B C D E F G",

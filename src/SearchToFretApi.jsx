@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import { Link } from "react-router-dom";
 import {NOTES} from './data'
+// import { EVERY_CHORDS } from './data/chords.js'
+// import { EVERY_SCALES } from './data/scales.js'
 
 export function displayScales (scales, functionOnClick) {
 
@@ -48,7 +50,27 @@ export class SearchToFretApi extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     this.fetchApi(nextProps.selectedNotes)
+    // this.searchFromData (nextProps.selectedNotes, 'chords')
   }
+
+  // searchFromData (selectedNotes, type) {
+  //   if (selectedNotes.length === 0) {
+  //     return
+  //   }
+  //   const selectedNotesNames = selectedNotes.map(note => NOTES[note])
+  //   // console.log(selectedNotesNames.join(' '));
+  //   const keys = Object.keys(EVERY_CHORDS)
+  //   const selected = []
+  //   const checker = (arr, target) => target.every(v => arr.includes(v));
+  //   keys.forEach(key => {
+  //     const chordShapes = Object.keys(EVERY_CHORDS[key])
+  //     chordShapes.forEach(chordShape => {
+  //       const chord = EVERY_CHORDS[key][chordShape].split(' ')
+  //       if (checker(chord, selectedNotesNames)) {selected.push([key, chordShape, chord.join(' ')])}
+  //     })
+  //   })
+  //   console.log(selected);
+  // }
 
   fetchApi (selectedNotes) {
     if (selectedNotes.length === 0) {
