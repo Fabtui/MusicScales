@@ -15,7 +15,6 @@ export function displayFoundScales (scales, functionOnClick) {
   }
 
   scales.forEach((scale, index) => {
-      console.log(scale);
       rows.push(
         <tr key={index}>
         <th scope="row">{scale[0]}</th>
