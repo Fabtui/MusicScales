@@ -1,27 +1,27 @@
-.chords-search {
+.chords-search-result {
+  margin-top: 24px;
   width: 100%;
 }
 
-.chords-search .fret-api-result {
+.chords-search-result .fret-api-result {
   max-width: 700px;
   margin: 0 auto;
 }
 
-.chords-search .fretboard-display-checkbox {
+.chords-search-result .fretboard-display-checkbox {
   max-width: 700px;
   margin: 0 auto;
 }
 
-.chords-search .basic-guitar-neck-container {
+.chords-search-result .basic-guitar-neck-container {
   max-width: 700px;
   margin: 0 auto;
 }
 
-
-.chords-search .mini-display {
+.chords-search-result .mini-display {
   height: 40vh;
 }
 
-.chords-search .max-display {
+.chords-search-result .max-display {
   height: 65vh;
 }
