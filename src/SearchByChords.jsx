@@ -59,7 +59,7 @@ export class SearchByChords extends React.Component {
     const style = 'chords-search'
     return <div className='search-container container mt-4'>
       <div className='left-side'>
-        <h5>Choose your chords</h5>
+        <h5>Choose your chords :</h5>
         <ChordsDropDown onChange={this.handleChange}/>
         <SearchToFretApi style={style} selectedNotes={apiNotes} onClick={this.handleClick}/>
       </div>

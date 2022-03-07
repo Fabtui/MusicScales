@@ -61,12 +61,14 @@ export class ChordsSearch extends React.Component {
       <div className='search-checkboxes'>
         <SearchCheckboxes onClick={this.handleRemoveClick} selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>
       </div>
-      <div className='fretboard-display-checkbox mb-4'>
+      <div className='fretboard-display-checkbox'>
         <input onChange={this.handleCheck} className="form-check-input" checked={this.state.fretboardDisplay} type="checkbox" value="" id="flexCheckDefault" name='display-fretboard'/>
         <label htmlFor='display-fretboard'>Fretboard</label>
       </div>
-        {this.state.fretboardDisplay && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
-        <SearchChordsToFretApi style={apiResultStyle} selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
+        <div className='chords-search-result'>
+         {this.state.fretboardDisplay && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
+         <SearchChordsToFretApi style={apiResultStyle} selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
+        </div>
     </div>
   }
 }

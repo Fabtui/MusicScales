@@ -38,15 +38,15 @@ export class NeckTable extends React.Component {
     return <div className="neck-table">
         <div className="tuning-select">
           <div className='notes-checkbox-container'>
-            <label className={nameLabelStyle} id='notes-checkbox-label' htmlFor="notes-checkbox">Intervals</label>
+            <label className={nameLabelStyle} id='notes-checkbox-label' htmlFor="notes-checkbox">INTERVALS</label>
             <label className="switch">
               <input type="checkbox" className="switch" id="notes-checkbox" name="notes-checkbox" checked={this.state.notes_displayed} onChange={this.handleCheck}></input>
               <span className="slider round"></span>
             </label>
-            <label className={noteLabelStyle} id='notes-checkbox-label' htmlFor="notes-checkbox">Notes</label>
+            <label className={noteLabelStyle} id='notes-checkbox-label' htmlFor="notes-checkbox">NOTES</label>
           </div>
           <div className='tuning-selector'>
-            <h4>Tuning </h4>
+            <h4>TUNING</h4>
             <TuningDropDown className="scale-selector" tunings={GUITAR_TUNING} selected_tuning_name={this.state.selected_tuning_name} onChange={this.handleTuningChange}/>
           </div>
         </div>
