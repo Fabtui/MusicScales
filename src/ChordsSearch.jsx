@@ -3,29 +3,55 @@ import { SearchCheckboxes } from './SearchCheckboxes'
 import { GuitarNeckBasic } from './GuitarNeckBasic'
 import { SearchChordsToFretApi } from './SearchChordsToFretApi'
 import './stylesheets/chords_search.css'
-import { NOTES } from './data'
+import { EVERY_CHORDS } from './data/chords'
+import { NOTES, CHORDS_INTERVALS, CHORDS_INTERVALS_SHAPES } from './data'
 
-class ScalesChordsApi extends React.Component {
-  constructor (props) {
-    super (props)
-    this.state = ({
-      selectedChord: this.props.chord
-    })
-  }
+function MakeChordDetailsRow ({note, structure, shape}) {
+  console.log(note, structure, shape);
+  const key = `${note}${structure}${shape}`
+  return (
+    <tr key={key}>
+      <th scope="row">{note}</th>
+      <td>{shape}</td>
+      <td>{structure}</td>
+    </tr>
+  )
+}
 
-  UNSAFE_componentWillReceiveProps (nextProps) {
-    this.setState({
-      selectedChord: nextProps.chord
-    });
-  }
-
+class ChordDetails extends React.Component {
   render () {
-    const chord = this.state.selectedChord
-    const row = []
-    row.push(<ins className="scales_chords_api" output="image" chord={chord}></ins>)
-    console.log(row);
+      const key = this.props.chord.split(' ')[0]
+      const chordShape = this.props.chord.split(' ')[1]
+      const notes = EVERY_CHORDS[key][chordShape].split(' ')
+      const notesIntervals = notes.map(note => NOTES.indexOf(note))
+      const notesIntervalsMutated = notesIntervals.map(interval => interval - notesIntervals[0])
+      const notesIntervalsMutatedExtend = notesIntervalsMutated.map(interval => interval < 0 ? interval + 12 : interval)
+      console.log('notesIntervalsMutatedExtend', notesIntervalsMutatedExtend);
+      const structure = notesIntervalsMutatedExtend.map(interval => CHORDS_INTERVALS[interval])
+      structure[0] = 'R'
+      const shapes = notesIntervalsMutated.map((interval, index) => CHORDS_INTERVALS_SHAPES[- (notesIntervalsMutated[index -1] - interval)] )
+      shapes[0] = null
+      //suspended chord: chord has no third (no m3 or 3)
+      	// major chord: chord has major third (R + 3)
+        // chord is 7 (dominant 7): major chord (R,3,5) + m7
+        // chord is 11: chord 7 with added 4th (11th)
+      const rows = []
+      notes.forEach((note, index) => {
+        rows.push(MakeChordDetailsRow({note: note, structure: structure[index], shape: shapes[index]}))
+      });
     return <>
-    {row}
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">Note</th>
+                <th scope="col">Interval</th>
+                <th scope="col">Scale Degree</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows}
+            </tbody>
+          </table>
     </>
   }
 }
@@ -35,7 +61,7 @@ export class ChordsSearch extends React.Component {
     super(props)
     this.state = ({
       selectedNotes: [],
-      selectedChord: "Am",
+      selectedChord: 'A diminished7',
       fretboardDisplay: false
     })
     this.handleChange = this.handleChange.bind(this)
@@ -82,10 +108,9 @@ export class ChordsSearch extends React.Component {
     })
   }
 
-  handleClick (e) {
-    const mutatedChord = `${e.split(' ')[0]}(${e.split(' ')[1]})`
+  handleClick (chord) {
     this.setState ({
-      selectedChord: mutatedChord
+      selectedChord: chord
     })
   }
 
@@ -103,8 +128,7 @@ export class ChordsSearch extends React.Component {
          {this.state.fretboardDisplay && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
          <SearchChordsToFretApi style={apiResultStyle} selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
         </div>
-          <ScalesChordsApi chord={this.state.selectedChord}/>
-          <ins className="scales_chords_api" chord="D(Major)"></ins>
+        <ChordDetails chord={this.state.selectedChord}/>
     </div>
   }
 }
