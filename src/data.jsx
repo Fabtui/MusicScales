@@ -26,6 +26,8 @@ export const CHORDS_INTERVALS = {
   9: "6",
   10: "m7",
   11: "7",
+  14: '9',
+
 }
 
 export const CHORDS_INTERVALS_SHAPES = {

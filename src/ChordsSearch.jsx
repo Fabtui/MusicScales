@@ -7,7 +7,6 @@ import { EVERY_CHORDS } from './data/chords'
 import { NOTES, CHORDS_INTERVALS, CHORDS_INTERVALS_SHAPES } from './data'
 
 function MakeChordDetailsRow ({note, structure, shape}) {
-  console.log(note, structure, shape);
   const key = `${note}${structure}${shape}`
   return (
     <tr key={key}>
@@ -18,6 +17,17 @@ function MakeChordDetailsRow ({note, structure, shape}) {
   )
 }
 
+function SpecialChord (notesIntervals) {
+  if (!notesIntervals.includes(3) && !notesIntervals.includes(4)) {
+    if (notesIntervals.includes(5)) {
+      return 'sus4'
+    }
+    if (notesIntervals.includes(2)) {
+      return 'sus2'
+    }
+  }
+}
+
 class ChordDetails extends React.Component {
   render () {
       const key = this.props.chord.split(' ')[0]
@@ -26,9 +36,14 @@ class ChordDetails extends React.Component {
       const notesIntervals = notes.map(note => NOTES.indexOf(note))
       const notesIntervalsMutated = notesIntervals.map(interval => interval - notesIntervals[0])
       const notesIntervalsMutatedExtend = notesIntervalsMutated.map(interval => interval < 0 ? interval + 12 : interval)
+
       console.log('notesIntervalsMutatedExtend', notesIntervalsMutatedExtend);
+
       const structure = notesIntervalsMutatedExtend.map(interval => CHORDS_INTERVALS[interval])
       structure[0] = 'R'
+
+      console.log('structure', structure);
+
       const shapes = notesIntervalsMutated.map((interval, index) => CHORDS_INTERVALS_SHAPES[- (notesIntervalsMutated[index -1] - interval)] )
       shapes[0] = null
       //suspended chord: chord has no third (no m3 or 3)
@@ -36,11 +51,12 @@ class ChordDetails extends React.Component {
         // chord is 7 (dominant 7): major chord (R,3,5) + m7
         // chord is 11: chord 7 with added 4th (11th)
       const rows = []
+      const special = SpecialChord(notesIntervalsMutated)
       notes.forEach((note, index) => {
         rows.push(MakeChordDetailsRow({note: note, structure: structure[index], shape: shapes[index]}))
       });
     return <>
-          <table className="table">
+          <table className="table mt-4">
             <thead>
               <tr>
                 <th scope="col">Note</th>
@@ -52,6 +68,7 @@ class ChordDetails extends React.Component {
               {rows}
             </tbody>
           </table>
+          {special}
     </>
   }
 }
@@ -120,15 +137,21 @@ export class ChordsSearch extends React.Component {
       <div className='search-checkboxes'>
         <SearchCheckboxes onClick={this.handleRemoveClick} selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>
       </div>
-      <div className='fretboard-display-checkbox'>
-        <input onChange={this.handleCheck} className="form-check-input" checked={this.state.fretboardDisplay} type="checkbox" value="" id="flexCheckDefault" name='display-fretboard'/>
-        <label htmlFor='display-fretboard'>Fretboard</label>
-      </div>
-        <div className='chords-search-result'>
-         {this.state.fretboardDisplay && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
-         <SearchChordsToFretApi style={apiResultStyle} selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
+      <div className='search-container'>
+        <div className='search-note-left-side'>
+          <div className='fretboard-display-checkbox'>
+            <input onChange={this.handleCheck} className="form-check-input" checked={this.state.fretboardDisplay} type="checkbox" value="" id="flexCheckDefault" name='display-fretboard'/>
+            <label htmlFor='display-fretboard'>Fretboard</label>
+          </div>
+            <div className='chords-search-result'>
+            {this.state.fretboardDisplay && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
+            <SearchChordsToFretApi style={apiResultStyle} selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
+            </div>
+          </div>
+          <div className='search-note-left-side'>
+            <ChordDetails chord={this.state.selectedChord}/>
+          </div>
         </div>
-        <ChordDetails chord={this.state.selectedChord}/>
     </div>
   }
 }
