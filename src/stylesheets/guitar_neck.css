@@ -33,7 +33,7 @@
 .guitar-neck-table > tbody > tr > th:nth-of-type(1) {
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-  border-right: 1px solid black;
+  border-right: 4px double black;
 }
 
 .fretboard-marks {
