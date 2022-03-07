@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import { Link } from "react-router-dom";
-import {NOTES} from './data'
 import { EVERY_SCALES } from './data/scales';
 import { searchFromData } from './SearchChordsToFretApi';
 

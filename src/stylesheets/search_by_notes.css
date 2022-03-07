@@ -108,18 +108,12 @@
   height: 70vh;
 }
 
-.search-note-left-side .fret-api-result {
+.fret-api-result {
   margin-top: 24px;
   overflow-y: scroll;
   display: block;
-}
-
-.fret-api-result {
   border: 2px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-}
-
-.chords-search {
   height: 65vh;
   margin-top: 24px;
   overflow-y: scroll;
@@ -134,7 +128,7 @@
   height: 65vh;
 }
 
-.search-note-left-side table>thead>tr>th {
+.fret-api-result thead>tr>th {
   width: 300px;
   vertical-align: bottom;
   border-bottom: 2px solid #ddd;
@@ -143,6 +137,10 @@
   top: 0;
   z-index: 5;
   background: rgb(230, 230, 230);
+}
+
+.fret-api-result th:first-child {
+  max-width: 100px;
 }
 
 .fretboard-display-checkbox {
@@ -155,9 +153,6 @@
   margin: 0 12px;
 }
 
-.fret-api-result th:first-child {
-  max-width: 100px;
-}
 
 #checkbox-remove-button {
   margin-top: 2px;

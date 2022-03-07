@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { SearchCheckboxes } from './SearchCheckboxes'
 import { GuitarNeckBasic } from './GuitarNeckBasic'
 import { SearchChordsToFretApi } from './SearchChordsToFretApi'
+import './stylesheets/chords_search.css'
 import { NOTES } from './data'
 
 export class ChordsSearch extends React.Component {
@@ -56,11 +57,11 @@ export class ChordsSearch extends React.Component {
 
   render () {
     const apiResultStyle = this.state.fretboardDisplay ? 'mini-display' : 'max-display'
-    return <div className='container'>
+    return <div className='container chords-search-result'>
       <div className='search-checkboxes'>
         <SearchCheckboxes onClick={this.handleRemoveClick} selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>
       </div>
-      <div className='fretboard-display-checkbox'>
+      <div className='fretboard-display-checkbox mb-4'>
         <input onChange={this.handleCheck} className="form-check-input" checked={this.state.fretboardDisplay} type="checkbox" value="" id="flexCheckDefault" name='display-fretboard'/>
         <label htmlFor='display-fretboard'>Fretboard</label>
       </div>
