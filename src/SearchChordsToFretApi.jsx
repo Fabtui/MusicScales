@@ -67,7 +67,7 @@ export class SearchChordsToFretApi extends React.Component {
   // }
 
   onClick(e) {
-    return
+    this.props.onClick(e)
   }
 
   render () {

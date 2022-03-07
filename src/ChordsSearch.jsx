@@ -5,17 +5,44 @@ import { SearchChordsToFretApi } from './SearchChordsToFretApi'
 import './stylesheets/chords_search.css'
 import { NOTES } from './data'
 
+class ScalesChordsApi extends React.Component {
+  constructor (props) {
+    super (props)
+    this.state = ({
+      selectedChord: this.props.chord
+    })
+  }
+
+  UNSAFE_componentWillReceiveProps (nextProps) {
+    this.setState({
+      selectedChord: nextProps.chord
+    });
+  }
+
+  render () {
+    const chord = this.state.selectedChord
+    const row = []
+    row.push(<ins className="scales_chords_api" output="image" chord={chord}></ins>)
+    console.log(row);
+    return <>
+    {row}
+    </>
+  }
+}
+
 export class ChordsSearch extends React.Component {
   constructor (props) {
     super(props)
     this.state = ({
       selectedNotes: [],
+      selectedChord: "Am",
       fretboardDisplay: false
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleNeckClick = this.handleNeckClick.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
     this.handleRemoveClick = this.handleRemoveClick.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleChange(selectedNotesArray) {
@@ -55,6 +82,13 @@ export class ChordsSearch extends React.Component {
     })
   }
 
+  handleClick (e) {
+    const mutatedChord = `${e.split(' ')[0]}(${e.split(' ')[1]})`
+    this.setState ({
+      selectedChord: mutatedChord
+    })
+  }
+
   render () {
     const apiResultStyle = this.state.fretboardDisplay ? 'mini-display' : 'max-display'
     return <div className='container chords-search-result'>
@@ -69,6 +103,8 @@ export class ChordsSearch extends React.Component {
          {this.state.fretboardDisplay && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
          <SearchChordsToFretApi style={apiResultStyle} selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
         </div>
+          <ScalesChordsApi chord={this.state.selectedChord}/>
+          <ins className="scales_chords_api" chord="D(Major)"></ins>
     </div>
   }
 }
