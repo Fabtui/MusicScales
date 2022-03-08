@@ -19,10 +19,73 @@ function MakeChordDetailsRow ({index, note, degree, shape}) {
 
 function SpecialChord (chordShape) {
   if (chordShape.includes('sus2')) {
-      return 'sus2'
-    }
+    return 'sus2 suspended chord: chord has no third (no m3 or 3)'
+  }
+  if (chordShape.includes('7sus4')) {
+    return '7sus4 suspended chord: chord has no third (no m3 or 3)'
+  }
+  if (chordShape.includes('9sus4')) {
+    return '9sus4 suspended chord: chord has no third (no m3 or 3)'
+  }
   if (chordShape.includes('sus4')) {
-    return 'sus4'
+    return 'sus4 suspended chord: chord has no third (no m3 or 3)'
+  }
+  if (chordShape.includes('Major11')) {
+    return 'Major11 major chord: chord has major third (R + 3) chord is 11: chord 7 with added 4th (11th)'
+  }
+  if (chordShape.includes('Major9')) {
+    return 'Major9 major chord: chord has major third (R + 3)'
+  }
+  if (chordShape.includes('Major6')) {
+    return 'Major6 major chord: chord has major third (R + 3)'
+  }
+  if (chordShape.includes('Major7')) {
+    return 'Major7 major chord: chord has major third (R + 3)'
+  }
+  if (chordShape.includes('Major')) {
+    return 'Major major chord: chord has major third (R + 3)'
+  }
+  if (chordShape.includes('minor6')) {
+    return 'minor6 minor chord: chord has minor third (R + m3)'
+  }
+  if (chordShape.includes('minor9')) {
+    return 'minor9 minor chord: chord has minor third (R + m3)'
+  }
+  if (chordShape.includes('minor7')) {
+    return 'minor7 minor chord: chord has minor third (R + m3)'
+  }
+  if (chordShape.includes('minor')) {
+    return 'minor minor chord: chord has minor third (R + m3)'
+  }
+  if (chordShape.includes('madd9')) {
+    return 'madd9 minor chord: chord has minor third (R + m3)'
+  }
+  if (chordShape.includes('add9')) {
+    return 'add9'
+  }
+  if (chordShape.includes('augmented7')) {
+    return 'augmented7'
+  }
+  if (chordShape.includes('augmented')) {
+    return 'augmented'
+  }
+  if (chordShape.includes('diminished7')) {
+    return 'diminished7'
+  }
+  if (chordShape.includes('diminished')) {
+    return 'diminished'
+  }
+  if (chordShape.includes('dominant7th')) {
+    return 'dominant7th chord is 7 (dominant 7): major chord (R,3,5) + m7'
+  }
+  if (chordShape.includes('dominant9th')) {
+    return 'dominant9th'
+  }
+  if (chordShape.includes('m7b5')) {
+    return 'm7b5'
+  }
+  if (chordShape.includes('JimiHendrix')) {
+    return 'JimiHendrix'
   }
 }
 
@@ -34,16 +97,13 @@ class ChordDetails extends React.Component {
       const notesIntervals = (notes.map(note => NOTES.indexOf(note)))
       const notesIntervalsMutated = notesIntervals.map(interval => interval - notesIntervals[0])
       const notesIntervalsMutatedExtend = notesIntervalsMutated.map(interval => interval < 0 ? interval + 12 : interval)
+
       const degrees = notesIntervalsMutatedExtend.map(interval => CHORDS_INTERVALS[interval])
       degrees[0] = 'R'
 
       const shapes = notesIntervalsMutated.map((interval, index) => CHORDS_INTERVALS_SHAPES[- (notesIntervalsMutated[index -1] - interval)] )
-
       shapes[0] = null
-      //suspended chord: chord has no third (no m3 or 3)
-      	// major chord: chord has major third (R + 3)
-        // chord is 7 (dominant 7): major chord (R,3,5) + m7
-        // chord is 11: chord 7 with added 4th (11th)
+
       const rows = []
       const special = SpecialChord(chordShape)
       notes.forEach((note, index) => {
