@@ -6,25 +6,23 @@ import './stylesheets/chords_search.css'
 import { EVERY_CHORDS } from './data/chords'
 import { NOTES, CHORDS_INTERVALS, CHORDS_INTERVALS_SHAPES } from './data'
 
-function MakeChordDetailsRow ({note, structure, shape}) {
-  const key = `${note}${structure}${shape}`
+function MakeChordDetailsRow ({index, note, degree, shape}) {
+  const scaleDegree = (index > 2 && degree === '2' ) ? '9 / 2' : degree;
   return (
-    <tr key={key}>
+    <tr key={index}>
       <th scope="row">{note}</th>
       <td>{shape}</td>
-      <td>{structure}</td>
+      <td>{scaleDegree}</td>
     </tr>
   )
 }
 
-function SpecialChord (notesIntervals) {
-  if (!notesIntervals.includes(3) && !notesIntervals.includes(4)) {
-    if (notesIntervals.includes(5)) {
-      return 'sus4'
-    }
-    if (notesIntervals.includes(2)) {
+function SpecialChord (chordShape) {
+  if (chordShape.includes('sus2')) {
       return 'sus2'
     }
+  if (chordShape.includes('sus4')) {
+    return 'sus4'
   }
 }
 
@@ -33,27 +31,23 @@ class ChordDetails extends React.Component {
       const key = this.props.chord.split(' ')[0]
       const chordShape = this.props.chord.split(' ')[1]
       const notes = EVERY_CHORDS[key][chordShape].split(' ')
-      const notesIntervals = notes.map(note => NOTES.indexOf(note))
+      const notesIntervals = (notes.map(note => NOTES.indexOf(note)))
       const notesIntervalsMutated = notesIntervals.map(interval => interval - notesIntervals[0])
       const notesIntervalsMutatedExtend = notesIntervalsMutated.map(interval => interval < 0 ? interval + 12 : interval)
-
-      console.log('notesIntervalsMutatedExtend', notesIntervalsMutatedExtend);
-
-      const structure = notesIntervalsMutatedExtend.map(interval => CHORDS_INTERVALS[interval])
-      structure[0] = 'R'
-
-      console.log('structure', structure);
+      const degrees = notesIntervalsMutatedExtend.map(interval => CHORDS_INTERVALS[interval])
+      degrees[0] = 'R'
 
       const shapes = notesIntervalsMutated.map((interval, index) => CHORDS_INTERVALS_SHAPES[- (notesIntervalsMutated[index -1] - interval)] )
+
       shapes[0] = null
       //suspended chord: chord has no third (no m3 or 3)
       	// major chord: chord has major third (R + 3)
         // chord is 7 (dominant 7): major chord (R,3,5) + m7
         // chord is 11: chord 7 with added 4th (11th)
       const rows = []
-      const special = SpecialChord(notesIntervalsMutated)
+      const special = SpecialChord(chordShape)
       notes.forEach((note, index) => {
-        rows.push(MakeChordDetailsRow({note: note, structure: structure[index], shape: shapes[index]}))
+        rows.push(MakeChordDetailsRow({index: index, note: note, degree: degrees[index], shape: shapes[index]}))
       });
     return <>
           <table className="table mt-4">
