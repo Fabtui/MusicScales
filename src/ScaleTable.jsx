@@ -10,12 +10,12 @@ class NotesRow extends React.Component {
   render () {
     if (this.props.inScale) {
       if (this.props.root) {
-        return <th className='in-scale root-note'>{this.props.interval}</th>
+        return <th className='in-scale root-note'><p>{this.props.interval}</p></th>
       } else {
-        return <th className='in-scale'>{this.props.interval}</th>
+        return <th className='in-scale'><p>{this.props.interval}</p></th>
       }
     } else {
-      return <th className='not-in-scale'>{this.props.interval}</th>
+      return <th className='not-in-scale'><p>{this.props.interval}</p></th>
     }
   }
 }

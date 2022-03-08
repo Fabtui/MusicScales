@@ -71,23 +71,25 @@ export class GuitarNeckBasic extends React.Component {
           </div>
           <table className="table guitar-neck-table basic-guitar-neck">
             {rows}
-          <tbody>
-          <tr className='fretboard-marks'>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th>o</th>
-            <th></th>
-            <th>o</th>
-            <th></th>
-            <th>o</th>
-            <th></th>
-            <th>o</th>
-            <th></th>
-            <th></th>
-            <th>oo</th>
-          </tr>
-          </tbody>
+          </table>
+          <table className='table fretboard-marks-table'>
+            <tbody>
+              <tr className='fretboard-marks'>
+                <th>x</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+                <th>11</th>
+                <th>12</th>
+              </tr>
+            </tbody>
           </table>
     </div>
   }
