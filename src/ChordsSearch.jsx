@@ -17,6 +17,27 @@ function MakeChordDetailsRow ({index, note, degree, shape}) {
   )
 }
 
+function MakeChordDetails (chord) {
+  const key = chord.split(' ')[0]
+  const chordShape = chord.split(' ')[1]
+  const notes = EVERY_CHORDS[key][chordShape].split(' ')
+  const notesIntervals = (notes.map(note => NOTES.indexOf(note)))
+  const notesIntervalsMutated = notesIntervals.map(interval => interval - notesIntervals[0])
+  const notesIntervalsMutatedExtend = notesIntervalsMutated.map(interval => interval < 0 ? interval + 12 : interval)
+
+  const degrees = notesIntervalsMutatedExtend.map(interval => CHORDS_INTERVALS[interval])
+  degrees[0] = 'R'
+
+  const shapes = notesIntervalsMutated.map((interval, index) => CHORDS_INTERVALS_SHAPES[- (notesIntervalsMutated[index -1] - interval)] )
+  shapes[0] = null
+
+  const rows = []
+  notes.forEach((note, index) => {
+    rows.push(MakeChordDetailsRow({index: index, note: note, degree: degrees[index], shape: shapes[index]}))
+  });
+  return rows
+}
+
 function SpecialChord (chordShape) {
   if (chordShape.includes('sus2')) {
     return 'sus2 suspended chord: chord has no third (no m3 or 3)'
@@ -91,39 +112,23 @@ function SpecialChord (chordShape) {
 
 class ChordDetails extends React.Component {
   render () {
-      const key = this.props.chord.split(' ')[0]
-      const chordShape = this.props.chord.split(' ')[1]
-      const notes = EVERY_CHORDS[key][chordShape].split(' ')
-      const notesIntervals = (notes.map(note => NOTES.indexOf(note)))
-      const notesIntervalsMutated = notesIntervals.map(interval => interval - notesIntervals[0])
-      const notesIntervalsMutatedExtend = notesIntervalsMutated.map(interval => interval < 0 ? interval + 12 : interval)
-
-      const degrees = notesIntervalsMutatedExtend.map(interval => CHORDS_INTERVALS[interval])
-      degrees[0] = 'R'
-
-      const shapes = notesIntervalsMutated.map((interval, index) => CHORDS_INTERVALS_SHAPES[- (notesIntervalsMutated[index -1] - interval)] )
-      shapes[0] = null
-
-      const rows = []
-      const special = SpecialChord(chordShape)
-      notes.forEach((note, index) => {
-        rows.push(MakeChordDetailsRow({index: index, note: note, degree: degrees[index], shape: shapes[index]}))
-      });
-    return <>
-          <table className="table mt-4">
-            <thead>
-              <tr>
-                <th scope="col">Note</th>
-                <th scope="col">Interval</th>
-                <th scope="col">Scale Degree</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows}
-            </tbody>
-          </table>
-          {special}
-    </>
+    const rows = MakeChordDetails (this.props.chord)
+    const special = SpecialChord(this.props.chord.split(' ')[1])
+    return  <React.Fragment>
+              <table className="table mt-4">
+                <thead>
+                  <tr>
+                    <th scope="col">Note</th>
+                    <th scope="col">Interval</th>
+                    <th scope="col">Scale Degree</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows}
+                </tbody>
+              </table>
+              {special}
+            </React.Fragment>
   }
 }
 
