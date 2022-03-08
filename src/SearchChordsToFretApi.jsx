@@ -16,8 +16,7 @@ export function searchFromData (selectedNotes, data) {
     chordShapes.forEach(chordShape => {
       const chord = data[key][chordShape].split(' ')
       if (checker(chord, selectedNotesNames)) {
-        const capitalChordShape = chordShape.charAt(0).toUpperCase() + chordShape.slice(1);
-        selectedChords.push([key, capitalChordShape, chord.join(' ')])
+        selectedChords.push([key, chordShape, chord.join(' ')])
       }
     })
   })
@@ -67,7 +66,7 @@ export class SearchChordsToFretApi extends React.Component {
   // }
 
   onClick(e) {
-    return
+    this.props.onClick(e)
   }
 
   render () {

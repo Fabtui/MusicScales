@@ -13,6 +13,30 @@ export const INTERVALS = {
   11: "7"
 }
 
+export const CHORDS_INTERVALS = {
+  0: "R",
+  1: "m2",
+  2: "2",
+  3: "m3",
+  4: "3",
+  5: "4",
+  6: "5-",
+  7: "5",
+  8: "m6",
+  9: "6",
+  10: "m7",
+  11: "7",
+  14: '9',
+
+}
+
+export const CHORDS_INTERVALS_SHAPES = {
+  0: "R",
+  3: "minor",
+  4: "major",
+}
+
+
 export const NOTES = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
 
 export const GUITAR_TUNING = {
