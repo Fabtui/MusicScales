@@ -1,10 +1,13 @@
-import React, {Component} from 'react'
+import React, {Component, useMemo} from 'react'
 import { SearchCheckboxes } from './SearchCheckboxes'
 import { GuitarNeckBasic } from './GuitarNeckBasic'
 import { SearchChordsToFretApi } from './SearchChordsToFretApi'
 import './stylesheets/chords_search.css'
 import { EVERY_CHORDS } from './data/chords'
 import { NOTES, CHORDS_INTERVALS, CHORDS_INTERVALS_SHAPES } from './data'
+import Guitar from 'react-guitar'
+import { standard } from 'react-guitar-tunings'
+import useSound from 'react-guitar-sound'
 
 function MakeChordDetailsRow ({index, note, degree, shape}) {
   const scaleDegree = (index > 2 && degree === '2' ) ? '9 / 2' : degree;
@@ -136,6 +139,13 @@ class ChordDetails extends React.Component {
   }
 }
 
+function SampleGuitarWithSound() {
+  const strings = useMemo(() => [0, 1, 2, 2, 0, -1], [])
+  const { play, strum } = useSound({ fretting: strings, tuning: standard })
+
+  return <Guitar strings={strings} onPlay={play} />
+}
+
 export class ChordsSearch extends React.Component {
   constructor (props) {
     super(props)
@@ -215,6 +225,7 @@ export class ChordsSearch extends React.Component {
             <ChordDetails chord={this.state.selectedChord}/>
           </div>
         </div>
+        <SampleGuitarWithSound />
     </div>
   }
 }

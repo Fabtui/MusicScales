@@ -69,9 +69,9 @@ export class SearchToFretApi extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     // this.fetchApi(nextProps.selectedNotes)
-    const selectedChords = searchFromData(nextProps.selectedNotes, EVERY_SCALES)
+    const selectedScales = searchFromData(nextProps.selectedNotes, EVERY_SCALES)
     this.setState ({
-      scales: selectedChords
+      scales: selectedScales
     })
   }
 
