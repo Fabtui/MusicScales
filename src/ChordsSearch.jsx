@@ -38,83 +38,86 @@ function MakeChordDetails (chord) {
   return rows
 }
 
-function SpecialChord (chordShape) {
+function ChordExplanations (chordShape) {
   if (chordShape.includes('sus2')) {
-    return 'sus2 suspended chord: chord has no third (no m3 or 3)'
+    return 'Suspended 2: chord has no third (no m3 or 3), major second (2) instead'
   }
   if (chordShape.includes('7sus4')) {
-    return '7sus4 suspended chord: chord has no third (no m3 or 3)'
+    return '7 Suspended 4: chord has no third (no m3 or 3), fourth (4) instead, chord is 7: added m7'
   }
   if (chordShape.includes('9sus4')) {
-    return '9sus4 suspended chord: chord has no third (no m3 or 3)'
+    return '9 Suspended 4: chord has no third (no m3 or 3), fourth (4) instead, chord is 9: chord 7 with added major second (9th)'
   }
   if (chordShape.includes('sus4')) {
-    return 'sus4 suspended chord: chord has no third (no m3 or 3)'
+    return 'Suspended 4: chord has no third (no m3 or 3), fourth (4) instead'
   }
   if (chordShape.includes('Major11')) {
-    return 'Major11 major chord: chord has major third (R + 3) chord is 11: chord 7 with added 4th (11th)'
+    return 'Major 11: chord has major third (R + 3) chord is 11: chord 7 with added 4th (11th)'
   }
   if (chordShape.includes('Major9')) {
-    return 'Major9 major chord: chord has major third (R + 3)'
+    return 'Major 9: chord has major third (R + 3), chord is 9: chord 7 with added major second (9th)'
   }
   if (chordShape.includes('Major6')) {
-    return 'Major6 major chord: chord has major third (R + 3)'
+    return 'Major 6: chord has major third (R + 3) and a perfect fifth (5), chord is 6 added major sixth (6th)'
   }
   if (chordShape.includes('Major7')) {
-    return 'Major7 major chord: chord has major third (R + 3)'
+    return 'Major 7: chord has major third (R + 3) and a perfect fifth (5), chord is 7 added major seventh (7th)'
   }
   if (chordShape.includes('Major')) {
-    return 'Major major chord: chord has major third (R + 3)'
+    return 'Major: chord has major third (R + 3) and a perfect fifth (5).'
   }
   if (chordShape.includes('minor6')) {
-    return 'minor6 minor chord: chord has minor third (R + m3)'
+    return 'Minor 6: chord has minor third (R + m3) and a perfect fifth (5), chord is 6 added major sixth (6th)'
   }
   if (chordShape.includes('minor9')) {
-    return 'minor9 minor chord: chord has minor third (R + m3)'
+    return 'Minor 9: chord has minor third (R + m3), chord is 9: chord 7 with added major second (9th)'
   }
   if (chordShape.includes('minor7')) {
-    return 'minor7 minor chord: chord has minor third (R + m3)'
+    return 'Minor 7: chord has minor third (R + m3) and a perfect fifth (5), chord is 7 added minor seventh (7th)'
   }
   if (chordShape.includes('minor')) {
-    return 'minor minor chord: chord has minor third (R + m3)'
+    return 'Minor: chord has minor third (R + m3) and a perfect fifth (5)'
   }
   if (chordShape.includes('madd9')) {
-    return 'madd9 minor chord: chord has minor third (R + m3)'
+    return 'Minor add9: chord has minor third (R + m3) and a perfect fifth (5) with added major second (9th)'
   }
   if (chordShape.includes('add9')) {
-    return 'add9'
+    return 'Major add9: chord has major third (R + 3) and a perfect fifth (5) with added major second (9th)'
   }
   if (chordShape.includes('augmented7')) {
-    return 'augmented7'
+    return 'Major augmented 7: chord has major third (R + 3) with an augmented fifth (m6), chord is 7 added minor seventh (7th)'
   }
   if (chordShape.includes('augmented')) {
-    return 'augmented'
+    return 'Major augmented : chord has major third (R + 3) with an augmented fifth (m6)'
   }
   if (chordShape.includes('diminished7')) {
-    return 'diminished7'
+    return 'Minor diminished 7 : chord has minor third (R + m3) with an diminished fifth (5-), chord is 7 added major sixth (7th)'
   }
   if (chordShape.includes('diminished')) {
-    return 'diminished'
+    return 'Minor diminished : chord has minor third (R + m3) with an diminished fifth (5-)'
   }
   if (chordShape.includes('dominant7th')) {
-    return 'dominant7th chord is 7 (dominant 7): major chord (R,3,5) + m7'
+    return 'Major dominant 7th : chord is 7 (dominant 7): major chord (R,3,5) with a minor seventh (7th)'
   }
   if (chordShape.includes('dominant9th')) {
-    return 'dominant9th'
+    return 'Major dominant 9th : chord is 7 (dominant 7): major chord (R,3,5) with a minor seventh (7th) and added major second (9th)'
   }
   if (chordShape.includes('m7b5')) {
-    return 'm7b5'
+    return 'Half-diminished Chord m7b5 : : chord has minor third (R + m3) with an diminished fifth (5-) with a minor seventh (7th)'
   }
   if (chordShape.includes('JimiHendrix')) {
-    return 'JimiHendrix'
+    return 'JimiHendrix : chord has minor third (R + m3) and a perfect fifth (5), chord is 7 added minor seventh (7th) and added a major third (3)'
   }
 }
 
 class ChordDetails extends React.Component {
   render () {
-    const rows = MakeChordDetails (this.props.chord)
-    const special = SpecialChord(this.props.chord.split(' ')[1])
-    return  <React.Fragment>
+    if (this.props.chord.length === 0) {
+      return <div className='no-chord-selected mt-4'><h1>Select a chord to see details</h1></div>
+    } else {
+      const rows = MakeChordDetails (this.props.chord)
+      const special = ChordExplanations(this.props.chord.split(' ')[1])
+      return  <React.Fragment>
               <table className="table mt-4">
                 <thead>
                   <tr>
@@ -129,6 +132,7 @@ class ChordDetails extends React.Component {
               </table>
               {special}
             </React.Fragment>
+    }
   }
 }
 
@@ -137,7 +141,7 @@ export class ChordsSearch extends React.Component {
     super(props)
     this.state = ({
       selectedNotes: [],
-      selectedChord: 'A diminished7',
+      selectedChord: [],
       fretboardDisplay: false
     })
     this.handleChange = this.handleChange.bind(this)
