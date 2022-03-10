@@ -44,7 +44,7 @@ function MakeChordDetails (chord) {
 
 function ChordExplanations (chordShape) {
   if (chordShape.includes('Power')) {
-    return 'Suspended 2: chord has no third (no m3 or 3), major second (2) instead'
+    return 'Power Chord: chord has no third (no m3 or 3), root and perfect fifth (5)'
   }
   if (chordShape.includes('sus2')) {
     return 'Suspended 2: chord has no third (no m3 or 3), major second (2) instead'
