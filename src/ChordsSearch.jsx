@@ -1,4 +1,4 @@
-import React, {Component, useMemo} from 'react'
+import React, { Component } from 'react'
 import { SearchCheckboxes } from './SearchCheckboxes'
 import { GuitarNeckBasic } from './GuitarNeckBasic'
 import { SearchChordsToFretApi } from './SearchChordsToFretApi'
@@ -122,6 +122,7 @@ class ChordDetails extends React.Component {
       const rows = MakeChordDetails (this.props.chord)
       const special = ChordExplanations(this.props.chord.split(' ')[1])
       return  <React.Fragment>
+              <h2 className='mt-4 text-center'>{this.props.chord}</h2>
               <table className="table mt-4">
                 <thead>
                   <tr>
@@ -147,7 +148,7 @@ export class ChordsSearch extends React.Component {
       selectedNotes: [],
       selectedNeckNotes: {1: null, 2: null, 3: null, 4: null, 5: null, 6: null},
       selectedChord: [],
-      fretboardMode: false
+      fretboardMode: true
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleNeckClick = this.handleNeckClick.bind(this)
@@ -201,26 +202,32 @@ export class ChordsSearch extends React.Component {
     } else {
       selectedNotes = this.state.selectedNotes
     }
+    const noteLabelStyle = this.state.fretboardMode ? 'not-selected' : 'selected'
+    const fretboardLabelStyle = this.state.fretboardMode ? 'selected' : 'not-selected'
     const apiResultStyle = this.state.fretboardMode ? 'mini-display' : 'max-display'
     return <div className='container chords-search-result'>
-      <div className='search-checkboxes'>
-        {!this.state.fretboardMode && <SearchCheckboxes onClick={this.handleRemoveClick} selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>}
-      </div>
-      <div className='search-container'>
-        <div className='search-note-left-side'>
-          <div className='fretboard-display-checkbox'>
-            <input onChange={this.handleCheck} className="form-check-input" checked={this.state.fretboardMode} type="checkbox" value="" id="flexCheckDefault" name='display-fretboard'/>
-            <label htmlFor='display-fretboard'>Fretboard</label>
-          </div>
-            <div className='chords-search-result'>
-            {this.state.fretboardMode && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
-            <SearchChordsToFretApi style={apiResultStyle} selectedNotes={selectedNotes} onClick={this.handleClick} fretboardMode={this.state.fretboardMode}/>
+            <div className='notes-checkbox-container'>
+              <label className={fretboardLabelStyle} id='notes-checkbox-label' htmlFor="notes-checkbox">FRETBOARD</label>
+              <label className="switch">
+                <input type="checkbox" className="switch" id="notes-checkbox" name="notes-checkbox" checked={!this.state.fretboardMode} onChange={this.handleCheck}></input>
+                <span className="slider round"></span>
+              </label>
+              <label className={noteLabelStyle} id='notes-checkbox-label' htmlFor="notes-checkbox">NOTES</label>
             </div>
+          <div className='search-checkboxes'>
+            {!this.state.fretboardMode && <SearchCheckboxes onClick={this.handleRemoveClick} selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>}
           </div>
-          <div className='search-note-left-side'>
-            <ChordDetails chord={this.state.selectedChord}/>
-          </div>
+          <div className='search-container'>
+            <div className='search-note-left-side'>
+                <div className='chords-search-result'>
+                {this.state.fretboardMode && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
+                <SearchChordsToFretApi style={apiResultStyle} selectedNotes={selectedNotes} onClick={this.handleClick} fretboardMode={this.state.fretboardMode}/>
+                </div>
+              </div>
+              <div className='search-note-left-side mb-4'>
+                <ChordDetails chord={this.state.selectedChord}/>
+              </div>
+            </div>
         </div>
-    </div>
   }
 }
