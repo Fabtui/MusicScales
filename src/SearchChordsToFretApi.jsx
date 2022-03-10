@@ -12,14 +12,29 @@ export function searchFromData (selectedNotes, data, fretboardMode) {
   const selectedChords = []
   const checker = (arr, target) => target.every(v => arr.includes(v));
 
+  if (fretboardMode) {
     keys.forEach(key => {
       const chordShapes = Object.keys(data[key])
       chordShapes.forEach(chordShape => {
+        const chord = data[key][chordShape].split(' ')
+        if (data[key][chordShape].split(' ').sort().join(' ') === selectedNotesNames.sort().join(' ')) {
+          selectedChords.push([key, chordShape, chord.join(' '), true])
+        }
+      })
+    })
+  }
+    keys.forEach(key => {
+      const chordShapes = Object.keys(data[key])
+      chordShapes.forEach(chordShape => {
+        const chord = data[key][chordShape].split(' ')
         if (fretboardMode) {
-          if (data[key][chordShape].split(' ').sort().join(' ') === selectedNotesNames.sort().join(' ')) {
-          const chord = data[key][chordShape].split(' ')
-          selectedChords.push([key, chordShape, chord.join(' ')])
-          }
+          // if (data[key][chordShape].split(' ').sort().join(' ') === selectedNotesNames.sort().join(' ')) {
+          // selectedChords.push([key, chordShape, chord.join(' ')])
+          // } else {
+            if (checker(chord, selectedNotesNames)) {
+              selectedChords.push([key, chordShape, chord.join(' '), false])
+            }
+          // }
         }
       else {
         const chord = data[key][chordShape].split(' ')
@@ -44,7 +59,7 @@ export class SearchChordsToFretApi extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     // this.fetchApi(nextProps.selectedNotes)
-    const selectedChords = searchFromData (nextProps.selectedNotes, EVERY_CHORDS, this.props.fretboardMode)
+    const selectedChords = searchFromData(nextProps.selectedNotes, EVERY_CHORDS, this.props.fretboardMode)
     this.setState ({
       chords: selectedChords
     })

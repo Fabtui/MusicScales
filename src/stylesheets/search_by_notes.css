@@ -175,7 +175,10 @@
     padding: 8px;
   }
   .max-display {
-    height: 40vh;
+    max-height: 30vh;
+  }
+  .mini-display {
+    max-height: 20vh;
   }
   .search-note-right-side {
     transform: translateY(0px);

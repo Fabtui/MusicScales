@@ -13,8 +13,10 @@ export function displayFoundScales (scales, functionOnClick) {
   }
 
   scales.forEach((scale, index) => {
+    const exactChord = scale[3]
+    const style = exactChord ? 'exact-chord' : ''
       rows.push(
-        <tr key={index}>
+        <tr className={style} key={index}>
         <th scope="row">{scale[0]}</th>
         <td id='clickable-td' onClick={onClick}>{scale[0]} {scale[1]}</td>
         <td >{scale[2]}</td>

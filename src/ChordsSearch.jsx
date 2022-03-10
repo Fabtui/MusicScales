@@ -120,7 +120,7 @@ function ChordExplanations (chordShape) {
 class ChordDetails extends React.Component {
   render () {
     if (this.props.chord.length === 0) {
-      return <div className='no-chord-selected mt-4'><h1>Select a chord to see details</h1></div>
+      return <div className='no-chord-selected mt-4'><h5 className='text-center'>Select a chord in results to see details</h5></div>
     } else {
       const rows = MakeChordDetails (this.props.chord)
       const special = ChordExplanations(this.props.chord.split(' ')[1])
