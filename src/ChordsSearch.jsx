@@ -173,21 +173,6 @@ export class ChordsSearch extends React.Component {
     this.setState ({
       selectedNeckNotes: selectedNotes
     })
-    // const noteIndex = NOTES.indexOf(e);
-    // const selectedNotes = this.state.selectedNotes;
-    // if (selectedNotes.includes(noteIndex)) {
-    //   const index = selectedNotes.indexOf(noteIndex)
-    //   selectedNotes.splice(index, 1)
-    //   this.setState({
-    //     selectedNotes: selectedNotes
-    //   })
-    //   return
-    // } else {
-    //   const newSelectedNotes = [...this.state.selectedNotes, noteIndex]
-    //   this.setState ({
-    //     selectedNotes: newSelectedNotes
-    //   })
-    // }
   }
 
   handleCheck() {
