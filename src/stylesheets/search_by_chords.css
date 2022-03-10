@@ -24,6 +24,17 @@
   align-items: center;
 }
 
+.shapes-drop-down-degrees h4 {
+  height: 38px;
+  padding: 0 12px;
+  margin: 0px 16px;
+  margin-top: 12px;
+  margin-bottom: 24px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
 #seach_by_chords_notes {
   margin: 0;
   font-size: 16px;
@@ -61,6 +72,11 @@
     padding: 8px;
   }
   .seach_by_chords_notes_container {
+    margin: 0px 16px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+  .shapes-drop-down-degrees h4 {
     margin: 0px 16px;
     margin-top: 8px;
     margin-bottom: 16px;
