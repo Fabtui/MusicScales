@@ -1,6 +1,25 @@
 import React, {Component} from 'react'
 import { NoteDropDown } from './NoteDropdown'
 import { CHORD_SHAPE_INTERVALS, CHORD_SHAPE, NOTES } from './data'
+import { EVERY_SCALES } from './data/scales'
+
+
+function romanize(num) {
+  const romanNumber = {1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'VI', 7: 'VII'}
+  return romanNumber[num];
+}
+
+class ChordDegree extends React.PureComponent {
+  render () {
+    if (this.props.selected_note_index != null) {
+      const scaleNotes = (EVERY_SCALES[NOTES[this.props.selected_note_index]][this.props.selected_scale_name]).split(' ')
+      const degree = romanize(scaleNotes.indexOf(this.props.selected_note) + 1)
+        return <h4>{degree}</h4>
+    } else {
+      return <></>
+    }
+  }
+}
 
 function mutateSelectedChords(selectedChords_array) {
   const mutatedChords = []
@@ -217,6 +236,15 @@ export class ChordsDropDown extends React.PureComponent {
         {this.state.selected_shape_5 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_5} selected_shape={this.state.selected_shape_5}/>}
         {this.state.selected_shape_6 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_6} selected_shape={this.state.selected_shape_6}/>}
         {this.state.selected_shape_7 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_7} selected_shape={this.state.selected_shape_7}/>}
+      </div>
+       <div className='shapes-drop-down shapes-drop-down-degrees'>
+        {this.state.selected_shape_1 !== ' ' && <ChordDegree selected_note_index={this.props.selected_note_index} selected_scale_name={this.props.selected_scale_name} selected_note={this.state.selected_note_1}/>}
+        {this.state.selected_shape_2 !== ' ' && <ChordDegree selected_note_index={this.props.selected_note_index} selected_scale_name={this.props.selected_scale_name} selected_note={this.state.selected_note_2}/>}
+        {this.state.selected_shape_3 !== ' ' && <ChordDegree selected_note_index={this.props.selected_note_index} selected_scale_name={this.props.selected_scale_name} selected_note={this.state.selected_note_3}/>}
+        {this.state.selected_shape_4 !== ' ' && <ChordDegree selected_note_index={this.props.selected_note_index} selected_scale_name={this.props.selected_scale_name} selected_note={this.state.selected_note_4}/>}
+        {this.state.selected_shape_5 !== ' ' && <ChordDegree selected_note_index={this.props.selected_note_index} selected_scale_name={this.props.selected_scale_name} selected_note={this.state.selected_note_5}/>}
+        {this.state.selected_shape_6 !== ' ' && <ChordDegree selected_note_index={this.props.selected_note_index} selected_scale_name={this.props.selected_scale_name} selected_note={this.state.selected_note_6}/>}
+        {this.state.selected_shape_7 !== ' ' && <ChordDegree selected_note_index={this.props.selected_note_index} selected_scale_name={this.props.selected_scale_name} selected_note={this.state.selected_note_7}/>}
       </div>
     </div>
     <div className='reset-all-dropdown'>
