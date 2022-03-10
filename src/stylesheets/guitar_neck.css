@@ -45,7 +45,8 @@
 }
 
 .guitar-neck-table .not-in-scale {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(240, 240, 240, 0.8);
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
 }
 
 .guitar-neck-table > tbody > tr > th:nth-of-type(1) {

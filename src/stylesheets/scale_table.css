@@ -2,8 +2,14 @@
   margin-top: 32px;
 }
 
+.scale-table th {
+  width: calc(100% / 13);
+  text-align: center;
+}
+
 .in-scale {
   color: #0243a3;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
 }
 
 .root-note {
@@ -11,7 +17,7 @@
 }
 
 .not-in-scale {
-  color: rgba(128, 128, 128, 0.8);
+  color: rgba(128, 128, 128, 0.6);
 }
 
 .scale-table .table tbody tr th:last-child {
