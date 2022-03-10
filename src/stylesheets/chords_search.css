@@ -20,3 +20,7 @@
 .chords-search-result .max-display {
   height: 65vh;
 }
+
+.exact-chord {
+  background-color: #0456d136;
+}
