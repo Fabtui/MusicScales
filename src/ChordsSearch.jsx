@@ -165,7 +165,11 @@ export class ChordsSearch extends React.Component {
 
   handleNeckClick(note, string) {
     const selectedNotes = this.state.selectedNeckNotes
-    selectedNotes[string] = note
+    if (selectedNotes[string] === note) {
+      selectedNotes[string] = null
+    } else {
+      selectedNotes[string] = note
+    }
     this.setState ({
       selectedNeckNotes: selectedNotes
     })
@@ -212,7 +216,6 @@ export class ChordsSearch extends React.Component {
     } else {
       selectedNotes = this.state.selectedNotes
     }
-    console.log(selectedNotes);
     const apiResultStyle = this.state.fretboardMode ? 'mini-display' : 'max-display'
     return <div className='container chords-search-result'>
       <div className='search-checkboxes'>
