@@ -1,5 +1,6 @@
 export const EVERY_CHORDS = {
   "A": {
+    "PowerChord": "A E",
     "Major": "A C# E",
     "Major6": "A C# E F#",
     "Major7": "A C# E G#",
@@ -25,6 +26,7 @@ export const EVERY_CHORDS = {
     "JimiHendrix": "A C C# E G"
   },
   "A#": {
+    "PowerChord": "A# F",
     "Major": "A# D F",
     "Major6": "A# D F G",
     "Major7": "A# D F A",
@@ -50,6 +52,7 @@ export const EVERY_CHORDS = {
     "JimiHendrix": "A# C# D F G#"
   },
   "B": {
+    "PowerChord": "B F#",
     "Major": "B D# F#",
     "Major6": "B D# F# G#",
     "Major7": "B D# F# A#",
@@ -75,6 +78,7 @@ export const EVERY_CHORDS = {
     "JimiHendrix": "B D D# F# A"
   },
   "C": {
+    "PowerChord": "C G",
     "Major": "C E G",
     "Major6": "C E G A",
     "Major7": "C E G B",
@@ -100,6 +104,7 @@ export const EVERY_CHORDS = {
     "JimiHendrix": "C D# E G A#"
   },
   "C#": {
+    "PowerChord": "C# G#",
     "Major": "C# F G#",
     "Major6": "C# F G# A#",
     "Major7": "C# F G# C",
@@ -125,6 +130,7 @@ export const EVERY_CHORDS = {
     "JimiHendrix": "C# E F G# B"
   },
   "D": {
+    "PowerChord": "D A",
     "Major": "D F# A",
     "Major6": "D F# A B",
     "Major7": "D F# A C#",
@@ -150,6 +156,7 @@ export const EVERY_CHORDS = {
     "JimiHendrix": "D F F# A C"
   },
   "D#": {
+    "PowerChord": "D# A#",
     "Major": "D# G A#",
     "Major6": "D# G A# C",
     "Major7": "D# G A# D",
@@ -175,6 +182,7 @@ export const EVERY_CHORDS = {
     "JimiHendrix": "D# F# G A# C#"
   },
   "E": {
+    "PowerChord": "E B",
     "Major": "E G# B",
     "Major6": "E G# B C#",
     "Major7": "E G# B D#",
@@ -200,6 +208,7 @@ export const EVERY_CHORDS = {
     "JimiHendrix": "E G G# B D"
   },
   "F": {
+    "PowerChord": "F C",
     "Major": "F A C",
     "Major6": "F A C D",
     "Major7": "F A C E",
@@ -225,6 +234,7 @@ export const EVERY_CHORDS = {
     "JimiHendrix": "F G# A C D#"
   },
   "F#": {
+    "PowerChord": "F# C#",
     "Major": "F# A# C#",
     "Major6": "F# A# C# D#",
     "Major7": "F# A# C# F",
@@ -250,6 +260,7 @@ export const EVERY_CHORDS = {
     "JimiHendrix": "F# A A# C# E"
   },
   "G": {
+    "PowerChord": "G D",
     "Major": "G B D",
     "Major6": "G B D E",
     "Major7": "G B D F#",
@@ -275,6 +286,7 @@ export const EVERY_CHORDS = {
     "JimiHendrix": "G A# B D F"
   },
   "G#": {
+    "PowerChord": "G# D#",
     "Major": "G# C D#",
     "Major6": "G# C D# F",
     "Major7": "G# C D# G",
