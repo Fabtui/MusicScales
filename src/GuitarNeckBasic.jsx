@@ -7,15 +7,17 @@ class NotesRows extends React.Component {
   constructor (props) {
     super (props)
     this.state = ({
-      selectedNotes: this.props.selectedNotes
+      selectedNote: null
     })
     this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick (e) {
-    this.props.onChange(e.target.innerHTML)
+    const noteName = e.target.id.split(',')[0]
+    const string = e.target.id.split(',')[1]
+    this.props.onChange(noteName, string)
     this.setState ({
-      selectedNotes: [...this.props.selectedNotes, NOTES.indexOf(e)]
+      selectedNote: e.target.id
     })
   }
 
@@ -23,11 +25,12 @@ class NotesRows extends React.Component {
     const selected_note_index = this.props.guitarString
     const ordered_notes = [...NOTES.slice(selected_note_index), ...NOTES.slice(0, selected_note_index), NOTES[selected_note_index]]
     const rows = []
-    const selectedNote = this.props.selectedNotes
+    // const selectedNote = this.props.selectedNotes
     ordered_notes.forEach((note, index) => {
-      const style = selectedNote.includes(NOTES.indexOf(note)) ? 'note-selected' : ''
       const key = `${note}-${index}`
-      rows.push(<th className={style} key={key} onClick={this.handleClick}>{note}</th>)
+      const id = `${note},${this.props.guitar_string_num},${index}`
+      const style = this.state.selectedNote === id ? 'note-selected' : ''
+      rows.push(<th id={id} className={style} key={key} onClick={this.handleClick}>O</th>)
     })
     return <tbody>
           <tr>
@@ -47,8 +50,8 @@ export class GuitarNeckBasic extends React.Component {
     this.handleTuningChange = this.handleTuningChange.bind(this)
   }
 
-  handleClick(e) {
-    this.props.onChange(e);
+  handleClick(note, string) {
+    this.props.onChange(note, string);
   }
 
   handleTuningChange(selected_tuning_name) {
@@ -62,7 +65,7 @@ export class GuitarNeckBasic extends React.Component {
     const guitarStrings = GUITAR_TUNING[this.state.selected_tuning_name]
     guitarStrings.forEach((guitarString, index) => {
       const key = `${guitarString}-${index}`
-      rows.push(<NotesRows selected_tuning_name={this.state.selected_tuning_name} selectedNotes={this.props.selectedNotes} onChange={this.handleClick} key={key} guitarString={guitarString}/>)
+      rows.push(<NotesRows guitar_string_num={index + 1} selected_tuning_name={this.state.selected_tuning_name} selectedNotes={this.props.selectedNotes} onChange={this.handleClick} key={key} guitarString={guitarString}/>)
     });
     return <div className='basic-guitar-neck-container'>
           <div className='tuning-selector mb-2'>

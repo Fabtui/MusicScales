@@ -3,7 +3,7 @@ import {NOTES} from './data'
 import { EVERY_CHORDS } from './data/chords.js'
 import { displayFoundScales } from './SearchToFretApi';
 
-export function searchFromData (selectedNotes, data) {
+export function searchFromData (selectedNotes, data, fretboardMode) {
   if (selectedNotes.length === 0) {
     return
   }
@@ -11,15 +11,25 @@ export function searchFromData (selectedNotes, data) {
   const keys = Object.keys(data)
   const selectedChords = []
   const checker = (arr, target) => target.every(v => arr.includes(v));
-  keys.forEach(key => {
-    const chordShapes = Object.keys(data[key])
-    chordShapes.forEach(chordShape => {
-      const chord = data[key][chordShape].split(' ')
-      if (checker(chord, selectedNotesNames)) {
-        selectedChords.push([key, chordShape, chord.join(' ')])
+
+    keys.forEach(key => {
+      const chordShapes = Object.keys(data[key])
+      chordShapes.forEach(chordShape => {
+        if (fretboardMode) {
+          if (data[key][chordShape].split(' ').sort().join(' ') === selectedNotesNames.sort().join(' ')) {
+          const chord = data[key][chordShape].split(' ')
+          selectedChords.push([key, chordShape, chord.join(' ')])
+        }
       }
+      else {
+          console.log('coucou');
+          const chord = data[key][chordShape].split(' ')
+          if (checker(chord, selectedNotesNames)) {
+            selectedChords.push([key, chordShape, chord.join(' ')])
+          }
+      }
+      })
     })
-  })
   return selectedChords
 }
 
@@ -35,7 +45,7 @@ export class SearchChordsToFretApi extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     // this.fetchApi(nextProps.selectedNotes)
-    const selectedChords = searchFromData (nextProps.selectedNotes, EVERY_CHORDS)
+    const selectedChords = searchFromData (nextProps.selectedNotes, EVERY_CHORDS, this.props.fretboardMode)
     this.setState ({
       chords: selectedChords
     })
