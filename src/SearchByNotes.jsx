@@ -95,7 +95,6 @@ export class SearchByNotes extends React.Component {
   render () {
     const selected_note_name = NOTES[this.state.selected_note_index]
     const apiResultStyle = this.state.fretboardDisplay ? 'mini-display' : 'max-display'
-    console.log(this.state.selected_note_index, this.state.selected_scale_name);
     return <div className='container'>
       <div className='search-checkboxes'>
         <SearchCheckboxes onClick={this.handleRemoveClick} selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>

@@ -16,9 +16,15 @@ class NotesRows extends React.Component {
     const noteName = e.target.id.split(',')[0]
     const string = e.target.id.split(',')[1]
     this.props.onChange(noteName, string)
-    this.setState ({
-      selectedNote: e.target.id
-    })
+    if (this.state.selectedNote === e.target.id) {
+      this.setState ({
+        selectedNote: null
+      })
+    } else {
+      this.setState ({
+        selectedNote: e.target.id
+      })
+    }
   }
 
   render () {

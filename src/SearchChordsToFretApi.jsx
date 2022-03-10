@@ -19,14 +19,13 @@ export function searchFromData (selectedNotes, data, fretboardMode) {
           if (data[key][chordShape].split(' ').sort().join(' ') === selectedNotesNames.sort().join(' ')) {
           const chord = data[key][chordShape].split(' ')
           selectedChords.push([key, chordShape, chord.join(' ')])
-        }
-      }
-      else {
-          console.log('coucou');
-          const chord = data[key][chordShape].split(' ')
-          if (checker(chord, selectedNotesNames)) {
-            selectedChords.push([key, chordShape, chord.join(' ')])
           }
+        }
+      else {
+        const chord = data[key][chordShape].split(' ')
+        if (checker(chord, selectedNotesNames)) {
+          selectedChords.push([key, chordShape, chord.join(' ')])
+        }
       }
       })
     })
