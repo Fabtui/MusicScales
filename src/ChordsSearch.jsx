@@ -6,6 +6,10 @@ import './stylesheets/chords_search.css'
 import { EVERY_CHORDS } from './data/chords'
 import { NOTES, CHORDS_INTERVALS, CHORDS_INTERVALS_SHAPES } from './data'
 
+function uniq(value, index, self) {
+  return self.indexOf(value) === index;
+}
+
 function MakeChordDetailsRow ({index, note, degree, shape}) {
   const scaleDegree = (index > 2 && degree === '2' ) ? '9 / 2' : degree;
   return (
@@ -141,8 +145,9 @@ export class ChordsSearch extends React.Component {
     super(props)
     this.state = ({
       selectedNotes: [],
+      selectedNeckNotes: {1: null, 2: null, 3: null, 4: null, 5: null, 6: null},
       selectedChord: [],
-      fretboardDisplay: false
+      fretboardMode: false
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleNeckClick = this.handleNeckClick.bind(this)
@@ -158,27 +163,32 @@ export class ChordsSearch extends React.Component {
     })
   }
 
-  handleNeckClick(e) {
-    const noteIndex = NOTES.indexOf(e);
-    const selectedNotes = this.state.selectedNotes;
-    if (selectedNotes.includes(noteIndex)) {
-      const index = selectedNotes.indexOf(noteIndex)
-      selectedNotes.splice(index, 1)
-      this.setState({
-        selectedNotes: selectedNotes
-      })
-      return
-    } else {
-      const newSelectedNotes = [...this.state.selectedNotes, noteIndex]
-      this.setState ({
-        selectedNotes: newSelectedNotes
-      })
-    }
+  handleNeckClick(note, string) {
+    const selectedNotes = this.state.selectedNeckNotes
+    selectedNotes[string] = note
+    this.setState ({
+      selectedNeckNotes: selectedNotes
+    })
+    // const noteIndex = NOTES.indexOf(e);
+    // const selectedNotes = this.state.selectedNotes;
+    // if (selectedNotes.includes(noteIndex)) {
+    //   const index = selectedNotes.indexOf(noteIndex)
+    //   selectedNotes.splice(index, 1)
+    //   this.setState({
+    //     selectedNotes: selectedNotes
+    //   })
+    //   return
+    // } else {
+    //   const newSelectedNotes = [...this.state.selectedNotes, noteIndex]
+    //   this.setState ({
+    //     selectedNotes: newSelectedNotes
+    //   })
+    // }
   }
 
   handleCheck() {
     this.setState ({
-      fretboardDisplay: !this.state.fretboardDisplay
+      fretboardMode: !this.state.fretboardMode
     })
   }
 
@@ -194,25 +204,29 @@ export class ChordsSearch extends React.Component {
     })
   }
 
-  fretboardClick(e) {
-    console.log(e);
-  }
-
   render () {
-    const apiResultStyle = this.state.fretboardDisplay ? 'mini-display' : 'max-display'
+    let selectedNotes = null
+    if (this.state.fretboardMode) {
+      const selectedNotesNames = Object.values(this.state.selectedNeckNotes).filter(function(val) { return val !== null; }).filter(uniq)
+      selectedNotes = selectedNotesNames.map(note => NOTES.indexOf(note))
+    } else {
+      selectedNotes = this.state.selectedNotes
+    }
+    console.log(selectedNotes);
+    const apiResultStyle = this.state.fretboardMode ? 'mini-display' : 'max-display'
     return <div className='container chords-search-result'>
       <div className='search-checkboxes'>
-        <SearchCheckboxes onClick={this.handleRemoveClick} selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>
+        {!this.state.fretboardMode && <SearchCheckboxes onClick={this.handleRemoveClick} selectedNotes={this.state.selectedNotes} onChange={this.handleChange}></SearchCheckboxes>}
       </div>
       <div className='search-container'>
         <div className='search-note-left-side'>
           <div className='fretboard-display-checkbox'>
-            <input onChange={this.handleCheck} className="form-check-input" checked={this.state.fretboardDisplay} type="checkbox" value="" id="flexCheckDefault" name='display-fretboard'/>
+            <input onChange={this.handleCheck} className="form-check-input" checked={this.state.fretboardMode} type="checkbox" value="" id="flexCheckDefault" name='display-fretboard'/>
             <label htmlFor='display-fretboard'>Fretboard</label>
           </div>
             <div className='chords-search-result'>
-            {this.state.fretboardDisplay && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
-            <SearchChordsToFretApi style={apiResultStyle} selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
+            {this.state.fretboardMode && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
+            <SearchChordsToFretApi style={apiResultStyle} selectedNotes={selectedNotes} onClick={this.handleClick} fretboardMode={this.state.fretboardMode}/>
             </div>
           </div>
           <div className='search-note-left-side'>
