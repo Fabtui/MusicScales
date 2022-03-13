@@ -105,7 +105,7 @@ export class SearchByNotes extends React.Component {
             <input onChange={this.handleCheck} className="form-check-input" checked={this.state.fretboardDisplay} type="checkbox" value="" id="flexCheckDefault" name='display-fretboard'/>
             <label htmlFor='display-fretboard'>Fretboard</label>
           </div>
-        {this.state.fretboardDisplay && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
+        {this.state.fretboardDisplay && <GuitarNeckBasic mutliselect={true} selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
         <SearchToFretApi style={apiResultStyle} selectedNotes={this.state.selectedNotes} onClick={this.handleClick}/>
           {/* <SearchScales selectedNotes={this.state.selectedNotes}/> */}
         </div>
