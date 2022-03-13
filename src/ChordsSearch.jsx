@@ -223,7 +223,7 @@ export class ChordsSearch extends React.Component {
           <div className='search-container'>
             <div className='search-note-left-side'>
                 <div className='chords-search-result'>
-                {this.state.fretboardMode && <GuitarNeckBasic selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
+                {this.state.fretboardMode && <GuitarNeckBasic mutliselect={false} selectedNotes={this.state.selectedNotes} onChange={this.handleNeckClick}/>}
                 <SearchChordsToFretApi style={apiResultStyle} selectedNotes={selectedNotes} onClick={this.handleClick} fretboardMode={this.state.fretboardMode}/>
                 </div>
               </div>
