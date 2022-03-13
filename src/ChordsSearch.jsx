@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { SearchCheckboxes } from './SearchCheckboxes'
 import { GuitarNeckBasic } from './GuitarNeckBasic'
 import { SearchChordsToFretApi } from './SearchChordsToFretApi'
+import { ApiFingering } from './ApiFingering'
 import './stylesheets/chords_search.css'
 import { EVERY_CHORDS, EVERY_CHORDS_DETAILS } from './data/chords'
 import { NOTES, CHORDS_INTERVALS, CHORDS_INTERVALS_SHAPES } from './data'
@@ -121,6 +122,7 @@ export class ChordsSearch extends React.Component {
   }
 
   handleClick (chord) {
+    ApiFingering(chord)
     this.setState ({
       selectedChord: chord
     })
