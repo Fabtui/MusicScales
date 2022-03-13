@@ -74,7 +74,7 @@ function fetchApi (chord) {
     return fingering
 }
 
-export function ApiFingering (chord) {
+export function ApiFingering(chord) {
   const mutateChord = mutatedChord (chord.split(' ')[0], chord.split(' ')[1])
   if (mutateChord != null) {
     const apiResponse = fetchApi(mutateChord)
