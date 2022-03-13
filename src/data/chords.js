@@ -312,3 +312,30 @@ export const EVERY_CHORDS = {
     "JimiHendrix": "G# B C D# F#"
   }
 }
+
+export const EVERY_CHORDS_DETAILS = {
+  "PowerChord": "Power Chord: chord has no third (no m3 or 3), has root and perfect fifth (5)",
+  "Major": "Major: chord has major third (R + 3) and a perfect fifth (5).",
+  "Major6": "Major 6: chord has major third (R + 3) and a perfect fifth (5), chord is 6 added major sixth (6th)",
+  "Major7": "Major 7: chord has major third (R + 3) and a perfect fifth (5), chord is 7 added major seventh (7th)",
+  "Major9": "Major 9: chord has major third (R + 3), chord is 9: chord 7 with added major second (9th)",
+  "Major11": "Major 11: chord has major third (R + 3) chord is 11: chord 7 with added 4th (11th)",
+  "minor": "Minor: chord has minor third (R + m3) and a perfect fifth (5)",
+  "minor6": "Minor 6: chord has minor third (R + m3) and a perfect fifth (5), chord is 6 added major sixth (6th)",
+  "minor7": "Minor 7: chord has minor third (R + m3) and a perfect fifth (5), chord is 7 added minor seventh (7th)",
+  "minor9": "Minor 9: chord has minor third (R + m3), chord is 9: chord 7 with added major second (9th)",
+  "add9": "Major add9: chord has major third (R + 3) and a perfect fifth (5) with added major second (9th)",
+  "madd9": "Minor add9: chord has minor third (R + m3) and a perfect fifth (5) with added major second (9th)",
+  "sus2": "Suspended 2: chord has no third (no m3 or 3), major second (2) instead",
+  "sus4": "Suspended 4: chord has no third (no m3 or 3), fourth (4) instead",
+  "7sus4": "7 Suspended 4: chord has no third (no m3 or 3), fourth (4) instead, chord is 7: added m7",
+  "9sus4": "9 Suspended 4: chord has no third (no m3 or 3), fourth (4) instead, chord is 9: chord 7 with added major second (9th)",
+  "augmented": "Major augmented : chord has major third (R + 3) with an augmented fifth (m6)",
+  "augmented7": "Major augmented 7: chord has major third (R + 3) with an augmented fifth (m6), chord is 7 added minor seventh (7th)",
+  "diminished": "Minor diminished : chord has minor third (R + m3) with an diminished fifth (5-)",
+  "diminished7": "Minor diminished 7 : chord has minor third (R + m3) with an diminished fifth (5-), chord is 7 added major sixth (7th)",
+  "dominant7th": "Major dominant 7th : chord is 7 (dominant 7): major chord (R,3,5) with a minor seventh (7th)",
+  "dominant9th": "Major dominant 9th : chord is 7 (dominant 7): major chord (R,3,5) with a minor seventh (7th) and added major second (9th)",
+  "m7b5": "Half-diminished chord m7b5 : : chord has minor third (R + m3) with an diminished fifth (5-) with a minor seventh (7th)",
+  "JimiHendrix": "JimiHendrix chord : chord has minor third (R + m3) and a perfect fifth (5), chord is 7 added minor seventh (7th) and added a major third (3)"
+}

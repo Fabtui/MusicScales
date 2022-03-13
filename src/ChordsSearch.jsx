@@ -3,7 +3,7 @@ import { SearchCheckboxes } from './SearchCheckboxes'
 import { GuitarNeckBasic } from './GuitarNeckBasic'
 import { SearchChordsToFretApi } from './SearchChordsToFretApi'
 import './stylesheets/chords_search.css'
-import { EVERY_CHORDS } from './data/chords'
+import { EVERY_CHORDS, EVERY_CHORDS_DETAILS } from './data/chords'
 import { NOTES, CHORDS_INTERVALS, CHORDS_INTERVALS_SHAPES } from './data'
 
 function uniq(value, index, self) {
@@ -43,78 +43,7 @@ function MakeChordDetails (chord) {
 }
 
 function ChordExplanations (chordShape) {
-  if (chordShape.includes('Power')) {
-    return 'Power Chord: chord has no third (no m3 or 3), root and perfect fifth (5)'
-  }
-  if (chordShape.includes('sus2')) {
-    return 'Suspended 2: chord has no third (no m3 or 3), major second (2) instead'
-  }
-  if (chordShape.includes('7sus4')) {
-    return '7 Suspended 4: chord has no third (no m3 or 3), fourth (4) instead, chord is 7: added m7'
-  }
-  if (chordShape.includes('9sus4')) {
-    return '9 Suspended 4: chord has no third (no m3 or 3), fourth (4) instead, chord is 9: chord 7 with added major second (9th)'
-  }
-  if (chordShape.includes('sus4')) {
-    return 'Suspended 4: chord has no third (no m3 or 3), fourth (4) instead'
-  }
-  if (chordShape.includes('Major11')) {
-    return 'Major 11: chord has major third (R + 3) chord is 11: chord 7 with added 4th (11th)'
-  }
-  if (chordShape.includes('Major9')) {
-    return 'Major 9: chord has major third (R + 3), chord is 9: chord 7 with added major second (9th)'
-  }
-  if (chordShape.includes('Major6')) {
-    return 'Major 6: chord has major third (R + 3) and a perfect fifth (5), chord is 6 added major sixth (6th)'
-  }
-  if (chordShape.includes('Major7')) {
-    return 'Major 7: chord has major third (R + 3) and a perfect fifth (5), chord is 7 added major seventh (7th)'
-  }
-  if (chordShape.includes('Major')) {
-    return 'Major: chord has major third (R + 3) and a perfect fifth (5).'
-  }
-  if (chordShape.includes('minor6')) {
-    return 'Minor 6: chord has minor third (R + m3) and a perfect fifth (5), chord is 6 added major sixth (6th)'
-  }
-  if (chordShape.includes('minor9')) {
-    return 'Minor 9: chord has minor third (R + m3), chord is 9: chord 7 with added major second (9th)'
-  }
-  if (chordShape.includes('minor7')) {
-    return 'Minor 7: chord has minor third (R + m3) and a perfect fifth (5), chord is 7 added minor seventh (7th)'
-  }
-  if (chordShape.includes('minor')) {
-    return 'Minor: chord has minor third (R + m3) and a perfect fifth (5)'
-  }
-  if (chordShape.includes('madd9')) {
-    return 'Minor add9: chord has minor third (R + m3) and a perfect fifth (5) with added major second (9th)'
-  }
-  if (chordShape.includes('add9')) {
-    return 'Major add9: chord has major third (R + 3) and a perfect fifth (5) with added major second (9th)'
-  }
-  if (chordShape.includes('augmented7')) {
-    return 'Major augmented 7: chord has major third (R + 3) with an augmented fifth (m6), chord is 7 added minor seventh (7th)'
-  }
-  if (chordShape.includes('augmented')) {
-    return 'Major augmented : chord has major third (R + 3) with an augmented fifth (m6)'
-  }
-  if (chordShape.includes('diminished7')) {
-    return 'Minor diminished 7 : chord has minor third (R + m3) with an diminished fifth (5-), chord is 7 added major sixth (7th)'
-  }
-  if (chordShape.includes('diminished')) {
-    return 'Minor diminished : chord has minor third (R + m3) with an diminished fifth (5-)'
-  }
-  if (chordShape.includes('dominant7th')) {
-    return 'Major dominant 7th : chord is 7 (dominant 7): major chord (R,3,5) with a minor seventh (7th)'
-  }
-  if (chordShape.includes('dominant9th')) {
-    return 'Major dominant 9th : chord is 7 (dominant 7): major chord (R,3,5) with a minor seventh (7th) and added major second (9th)'
-  }
-  if (chordShape.includes('m7b5')) {
-    return 'Half-diminished Chord m7b5 : : chord has minor third (R + m3) with an diminished fifth (5-) with a minor seventh (7th)'
-  }
-  if (chordShape.includes('JimiHendrix')) {
-    return 'JimiHendrix : chord has minor third (R + m3) and a perfect fifth (5), chord is 7 added minor seventh (7th) and added a major third (3)'
-  }
+  return EVERY_CHORDS_DETAILS[chordShape]
 }
 
 class ChordDetails extends React.Component {
