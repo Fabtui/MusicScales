@@ -160,8 +160,8 @@ export class ChordsSearch extends React.Component {
               </div>
               <div className='search-note-left-side mb-4'>
                 <ChordDetails chord={this.state.selectedChord}/>
+                <div id='chord-chart'></div>
               </div>
-              <div id='chord-chart'></div>
             </div>
         </div>
   }

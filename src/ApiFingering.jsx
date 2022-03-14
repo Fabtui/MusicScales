@@ -1,6 +1,6 @@
 import { NOTES } from "./data"
 import axios from 'axios';
-import { GuitarNeckBasic } from './GuitarNeckBasic'
+import { ChordBox } from 'vexchords';
 
 function mutatedChord (key, shape) {
   if (key === 'G#') {
@@ -100,8 +100,39 @@ export async function ApiFingering(chord) {
   const sideWindow = document.getElementById('chord-chart')
   let apiResponse = null
   if (mutateChord != null) {
-    apiResponse = await fetchApi(mutateChord)
-    sideWindow.innerHTML = `<h2>${apiResponse}</h2>`
+    sideWindow.innerHTML = ``
+    apiResponse = (await fetchApi(mutateChord)).split(' ')
+    const chords = []
+    apiResponse.reverse().map((e, index) => {
+      chords.push([index + 1, e])
+    })
+    console.log(chords);
+    // const rows = []
+    // apiResponse.forEach((element, index) => {
+    //   console.log(index + 1, element);
+    //   for (let i = 0; i < 7; i++) {
+    //     if (parseInt(element ) === i) {
+    //       rows.push('<td>O</td>')
+    //     } else {
+    //       rows.push('<td> </td>');
+    //     }
+    //   }
+    // });
+    const chord = new ChordBox(sideWindow);
+    console.log(chord);
+    chord.draw({
+      chord: chords,
+      // optional: position marker
+      position: 0, // start render at fret 5
+      // optional: barres for barre chords
+      // barres: [
+      //   { fromString: 6, toString: 1, fret: 1 },
+      //   { fromString: 5, toString: 3, fret: 3 }
+      // ],
+      // optional: tuning keys
+      tuning: ['E', 'A', 'D', 'G', 'B', 'E']
+    });
+    // sideWindow.innerHTML = `<h2>${apiResponse}</h2>`
   } else {
     sideWindow.innerHTML = `<h2></h2>`
   }
