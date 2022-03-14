@@ -24,3 +24,17 @@
 .exact-chord {
   background-color: #0456d136;
 }
+
+.special-details {
+
+}
+
+#chord-chart {
+  text-align: center;
+  height: 300px;
+  overflow: hidden;
+}
+
+#chord-chart svg {
+  transform: translateY(-40px);
+}

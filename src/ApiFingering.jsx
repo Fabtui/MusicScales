@@ -1,6 +1,7 @@
-import { NOTES } from "./data"
+import { NOTES, GUITAR_TUNING } from "./data"
 import axios from 'axios';
 import { ChordBox } from 'vexchords';
+import './stylesheets/chords_search.css'
 
 function mutatedChord (key, shape) {
   if (key === 'G#') {
@@ -106,31 +107,41 @@ export async function ApiFingering(chord) {
     apiResponse.reverse().map((e, index) => {
       chords.push([index + 1, e])
     })
-    console.log(chords);
-    // const rows = []
-    // apiResponse.forEach((element, index) => {
-    //   console.log(index + 1, element);
-    //   for (let i = 0; i < 7; i++) {
-    //     if (parseInt(element ) === i) {
-    //       rows.push('<td>O</td>')
-    //     } else {
-    //       rows.push('<td> </td>');
-    //     }
-    //   }
-    // });
-    const chord = new ChordBox(sideWindow);
-    console.log(chord);
+    const notes = []
+    const stringsNotes = GUITAR_TUNING['E'].reverse()
+    apiResponse.reverse().map((e, index) => {
+      if (e === 'X') {
+        notes.push(' ')
+      } else {
+        const string = stringsNotes[index]
+        const note = string + parseInt(e)
+        console.log(note);
+        note >= 12 ? notes.push(NOTES[note - 12]) : notes.push(NOTES[note])
+      }
+    })
+    const chord = new ChordBox(sideWindow, {
+      width: 300, // canvas width
+      height: 360, // canvas height
+      numStrings: 6, // number of strings (e.g., 4 for bass)
+      numFrets: 7, // number of frets (e.g., 7 for stretch chords)
+      showTuning: true, // show tuning keys
+      defaultColor: 'black', // default color
+      bgColor: '#FFF', // background color
+      strokeColor: 'black', // stroke color (overrides defaultColor)
+      textColor: 'black', // text color (overrides defaultColor)
+      stringColor: 'black', // string color (overrides defaultColor)
+      fretColor: 'black', // fret color (overrides defaultColor)
+      labelColor: 'black', // label color (overrides defaultColor)
+      fretWidth: 2, // fret width
+      stringWidth: 1, // string width
+    });
     chord.draw({
       chord: chords,
-      // optional: position marker
       position: 0, // start render at fret 5
-      // optional: barres for barre chords
       // barres: [
       //   { fromString: 6, toString: 1, fret: 1 },
       //   { fromString: 5, toString: 3, fret: 3 }
-      // ],
-      // optional: tuning keys
-      tuning: ['E', 'A', 'D', 'G', 'B', 'E']
+      tuning: notes
     });
     // sideWindow.innerHTML = `<h2>${apiResponse}</h2>`
   } else {

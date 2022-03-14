@@ -68,7 +68,9 @@ class ChordDetails extends React.Component {
                   {rows}
                 </tbody>
               </table>
-              {special}
+              <div className='special-details'>
+                {special}
+              </div>
             </React.Fragment>
     }
   }
