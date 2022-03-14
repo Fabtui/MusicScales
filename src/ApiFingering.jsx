@@ -1,4 +1,6 @@
 import { NOTES } from "./data"
+import axios from 'axios';
+import { GuitarNeckBasic } from './GuitarNeckBasic'
 
 function mutatedChord (key, shape) {
   if (key === 'G#') {
@@ -52,32 +54,55 @@ function mutatedChord (key, shape) {
   //   "JimiHendrix": "G A# B D F"
 }
 
-function fetchApi (chord) {
-  // let that = this
-  let fingering = {}
-  // const mutatedNotes = encodeURIComponent(selectedNotes.map(note => NOTES[note]))
-  const url = `https://api.uberchord.com/v1/chords/${chord}`
-  fetch(url,
-      {
-          method: "GET",
-          mode: 'cors',
-          headers: {
-              'Content-Type': 'application/json',
-          }
-      })
-    .then(response => response.json())
-    .then(function(response) {
-      fingering['strings'] = response[0].strings
-      fingering['fingering'] = response[0].fingering
-    })
+function makeGetRequest(path) {
+  return new Promise(function (resolve, reject) {
+    axios.get(path).then(
+      (response) => {
+        var result = response.data;
+        resolve(result);
+      },
+        (error) => {
+        reject(error);
+      }
+    );
+  });
+}
 
+async function main(url) {
+    var result = await makeGetRequest(url);
+    const fingering = result[0].strings;
     return fingering
 }
 
-export function ApiFingering(chord) {
+
+async function fetchApi (chord) {
+  const url = `https://api.uberchord.com/v1/chords/${chord}`
+  const fingering = await main(url);
+  // console.log(fingering);
+  return fingering
+  // fetch(url,
+  //     {
+  //         method: "GET",
+  //         mode: 'cors',
+  //         headers: {
+  //             'Content-Type': 'application/json',
+  //         }
+  //     })
+  //   .then(response => response.json())
+  //   .then(function(response) {
+  //     fingering.push(response[0].strings)
+  //   })
+  //   console.log(fingering);
+}
+
+export async function ApiFingering(chord) {
   const mutateChord = mutatedChord (chord.split(' ')[0], chord.split(' ')[1])
+  const sideWindow = document.getElementById('chord-chart')
+  let apiResponse = null
   if (mutateChord != null) {
-    const apiResponse = fetchApi(mutateChord)
-    console.log(apiResponse);
+    apiResponse = await fetchApi(mutateChord)
+    sideWindow.innerHTML = `<h2>${apiResponse}</h2>`
+  } else {
+    sideWindow.innerHTML = `<h2></h2>`
   }
 }
