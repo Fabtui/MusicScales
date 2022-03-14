@@ -101,7 +101,7 @@ export async function ApiFingering(chord) {
   const sideWindow = document.getElementById('chord-chart')
   let apiResponse = null
   if (mutateChord != null) {
-    sideWindow.innerHTML = ``
+    sideWindow.innerHTML = `Chord exemple:`
     apiResponse = (await fetchApi(mutateChord)).split(' ')
     const chords = []
     apiResponse.reverse().map((e, index) => {
@@ -111,7 +111,7 @@ export async function ApiFingering(chord) {
     const stringsNotes = GUITAR_TUNING['E'].reverse()
     apiResponse.reverse().map((e, index) => {
       if (e === 'X') {
-        notes.push(' ')
+        notes.push('X')
       } else {
         const string = stringsNotes[index]
         const note = string + parseInt(e)
