@@ -68,7 +68,9 @@ class ChordDetails extends React.Component {
                   {rows}
                 </tbody>
               </table>
-              {special}
+              <div className='special-details'>
+                {special}
+              </div>
             </React.Fragment>
     }
   }
@@ -160,8 +162,8 @@ export class ChordsSearch extends React.Component {
               </div>
               <div className='search-note-left-side mb-4'>
                 <ChordDetails chord={this.state.selectedChord}/>
+                <div id='chord-chart'></div>
               </div>
-              <div id='chord-chart'></div>
             </div>
         </div>
   }
