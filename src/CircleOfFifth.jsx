@@ -44,6 +44,7 @@ export class CircleOfFifth extends React.Component {
     });
     return <div className="container">
              <div className='circle-of-fifth'>
+               <div class="spinner-border" role="status"></div>
                <div id='circle-of-fifth-hint'>{lightbulb} Click to see more details</div>
                <div className="circle-select-box">
                  {rows}

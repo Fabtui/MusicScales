@@ -19,10 +19,8 @@
 }
 
 .selector-circle {
+  position: relative;
   height: 200px;
-}
-
-.selector-circle {
   margin-top: 20px;
   width: 100%;
   max-height: 35vh;

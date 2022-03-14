@@ -1,4 +1,5 @@
 .circle-of-fifth {
+  position: relative;
   margin-top: 20px;
   width: 100%;
   height: 80vh;
@@ -9,6 +10,12 @@
   background-position: 50% 50%;
   display: flex;
   justify-content: center;
+}
+
+.spinner-border {
+  position: absolute;
+  top: 30%;
+  z-index: -1;
 }
 
 .circle-of-fifth img {
