@@ -30,6 +30,7 @@
 }
 
 #chord-chart {
+  margin-top: 24px;
   text-align: center;
   height: 300px;
   overflow: hidden;
