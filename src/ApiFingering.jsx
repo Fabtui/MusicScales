@@ -111,7 +111,7 @@ export async function ApiFingering(chord) {
     const stringsNotes = GUITAR_TUNING['E'].reverse()
     apiResponse.reverse().map((e, index) => {
       if (e === 'X') {
-        notes.push('X')
+        notes.push(' ')
       } else {
         const string = stringsNotes[index]
         const note = string + parseInt(e)
