@@ -3,7 +3,6 @@ import { NoteDropDown } from './NoteDropdown'
 import { CHORD_SHAPE_INTERVALS, CHORD_SHAPE, NOTES } from './data'
 import { EVERY_SCALES } from './data/scales'
 
-
 function romanize(num) {
   const romanNumber = {1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'VI', 7: 'VII'}
   return romanNumber[num];
@@ -40,217 +39,103 @@ export class ChordsDropDown extends React.PureComponent {
   constructor (props) {
     super (props)
     this.state = ({
-      selected_note_1: ' ',
-      selected_shape_1: ' ',
-      selected_note_2: ' ',
-      selected_shape_2: ' ',
-      selected_note_3: ' ',
-      selected_shape_3: ' ',
-      selected_note_4: ' ',
-      selected_shape_4: ' ',
-      selected_note_5: ' ',
-      selected_shape_5: ' ',
-      selected_note_6: ' ',
-      selected_shape_6: ' ',
-      selected_note_7: ' ',
-      selected_shape_7: ' ',
-      selected_chords: []
+      selected_chords: [],
+      number_of_items: 0
     })
-    this.handleNoteChange1 = this.handleNoteChange1.bind(this)
-    this.handleNoteChange2 = this.handleNoteChange2.bind(this)
-    this.handleNoteChange3 = this.handleNoteChange3.bind(this)
-    this.handleNoteChange4 = this.handleNoteChange4.bind(this)
-    this.handleNoteChange5 = this.handleNoteChange5.bind(this)
-    this.handleNoteChange6 = this.handleNoteChange6.bind(this)
-    this.handleNoteChange7 = this.handleNoteChange7.bind(this)
-    this.handleShapeChange1 = this.handleShapeChange1.bind(this)
-    this.handleShapeChange2 = this.handleShapeChange2.bind(this)
-    this.handleShapeChange3 = this.handleShapeChange3.bind(this)
-    this.handleShapeChange4 = this.handleShapeChange4.bind(this)
-    this.handleShapeChange5 = this.handleShapeChange5.bind(this)
-    this.handleShapeChange6 = this.handleShapeChange6.bind(this)
-    this.handleShapeChange7 = this.handleShapeChange7.bind(this)
     this.resetAll = this.resetAll.bind(this)
+    this.handleNoteChange = this.handleNoteChange.bind(this)
   }
 
   createChordArray(note, shape) {
-    if (note === ' ' || shape === ' ') {
+    if (note === null || shape === null) {
       return null
     }
     return [note, shape]
   }
 
-  componentDidUpdate() {
-    const selected_chords = [this.createChordArray(this.state.selected_note_1, this.state.selected_shape_1), this.createChordArray(this.state.selected_note_2, this.state.selected_shape_2), this.createChordArray(this.state.selected_note_3, this.state.selected_shape_3), this.createChordArray(this.state.selected_note_4, this.state.selected_shape_4), this.createChordArray(this.state.selected_note_5, this.state.selected_shape_5), this.createChordArray(this.state.selected_note_6, this.state.selected_shape_6), this.createChordArray(this.state.selected_note_7, this.state.selected_shape_7)]
+  // componentDidUpdate() {
+  //   const selected_chords = [this.createChordArray(this.state.selected_note_1, this.state.selected_shape_1), this.createChordArray(this.state.selected_note_2, this.state.selected_shape_2), this.createChordArray(this.state.selected_note_3, this.state.selected_shape_3), this.createChordArray(this.state.selected_note_4, this.state.selected_shape_4), this.createChordArray(this.state.selected_note_5, this.state.selected_shape_5), this.createChordArray(this.state.selected_note_6, this.state.selected_shape_6), this.createChordArray(this.state.selected_note_7, this.state.selected_shape_7)]
+  //   const filtered_selected_chords = selected_chords.filter((a) => a);
+  //   const mutated_chords_object = mutateSelectedChords(filtered_selected_chords)
+  //   this.props.onChange(mutated_chords_object)
+  // }
+
+  handleNoteChange(note, shape, index) {
+    const chordArray = this.createChordArray(note, shape)
+    const selected_chords = this.state.selected_chords
+    const number_of_items = selected_chords.length + 1
+    selected_chords[index] = chordArray
+    this.setState ({
+      selected_chords: selected_chords,
+      number_of_items: number_of_items
+    })
     const filtered_selected_chords = selected_chords.filter((a) => a);
     const mutated_chords_object = mutateSelectedChords(filtered_selected_chords)
     this.props.onChange(mutated_chords_object)
   }
 
-  handleNoteChange1(note_index) {
-    const note = NOTES[note_index]
-    this.setState ({
-      selected_note_1: note
-    })
-  }
-
-  handleNoteChange2(note_index) {
-    const note = NOTES[note_index]
-    this.setState ({
-      selected_note_2: note
-    })
-  }
-
-  handleNoteChange3(note_index) {
-    const note = NOTES[note_index]
-    this.setState ({
-      selected_note_3: note
-    })
-  }
-
-  handleNoteChange4(note_index) {
-    const note = NOTES[note_index]
-    this.setState ({
-      selected_note_4: note
-    })
-  }
-
-  handleNoteChange5(note_index) {
-    const note = NOTES[note_index]
-    this.setState ({
-      selected_note_5: note
-    })
-  }
-
-  handleNoteChange6(note_index) {
-    const note = NOTES[note_index]
-    this.setState ({
-      selected_note_6: note
-    })
-  }
-
-  handleNoteChange7(note_index) {
-    const note = NOTES[note_index]
-    this.setState ({
-      selected_note_7: note
-    })
-  }
-
-  handleShapeChange1(shape_index) {
-    const selected_shape = CHORD_SHAPE[shape_index]
-    this.setState ({
-      selected_shape_1: selected_shape
-    })
-
-  }
-
-  handleShapeChange2(shape_index) {
-    const selected_shape = CHORD_SHAPE[shape_index]
-    this.setState ({
-      selected_shape_2: selected_shape
-    })
-
-  }
-
-  handleShapeChange3(shape_index) {
-    const selected_shape = CHORD_SHAPE[shape_index]
-    this.setState ({
-      selected_shape_3: selected_shape
-    })
-  }
-
-  handleShapeChange4(shape_index) {
-    const selected_shape = CHORD_SHAPE[shape_index]
-    this.setState ({
-      selected_shape_4: selected_shape
-    })
-  }
-
-  handleShapeChange5(shape_index) {
-    const selected_shape = CHORD_SHAPE[shape_index]
-    this.setState ({
-      selected_shape_5: selected_shape
-    })
-  }
-
-  handleShapeChange6(shape_index) {
-    const selected_shape = CHORD_SHAPE[shape_index]
-    this.setState ({
-      selected_shape_6: selected_shape
-    })
-  }
-
-  handleShapeChange7(shape_index) {
-    const selected_shape = CHORD_SHAPE[shape_index]
-    this.setState ({
-      selected_shape_7: selected_shape
-    })
-  }
-
   resetAll() {
     this.setState ({
-      selected_note_1: ' ',
-      selected_shape_1: ' ',
-      selected_note_2: ' ',
-      selected_shape_2: ' ',
-      selected_note_3: ' ',
-      selected_shape_3: ' ',
-      selected_note_4: ' ',
-      selected_shape_4: ' ',
-      selected_note_5: ' ',
-      selected_shape_5: ' ',
-      selected_note_6: ' ',
-      selected_shape_6: ' ',
-      selected_note_7: ' ',
-      selected_shape_7: ' ',
-      selected_chords: []
+      selected_chords: [],
+      number_of_items: 0
     })
   }
 
   render () {
+    const number_of_items = this.state.number_of_items
+    const rows = []
+    for (let i = 0; i <= number_of_items; i++) {
+      rows.push(<ChordsDropDownItem key={i} reset={this.state.reset} index={i} clicked_scale_name={this.props.selected_scale_name} clicked_note_index={this.props.selected_note_index}  onChange={this.handleNoteChange}/>)
+    }
     return <div className='chords-dropdowns mb-4'>
     <div className='chords-dropdowns-items'>
       <div className='notes-drop-down'>
-        <NoteDropDown className="note-selector" selected_note={this.state.selected_note_1} notes={NOTES} onChange={this.handleNoteChange1}/>
-        {this.state.selected_note_1 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_note_2} notes={NOTES} onChange={this.handleNoteChange2}/>}
-        {this.state.selected_note_2 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_note_3} notes={NOTES} onChange={this.handleNoteChange3}/>}
-        {this.state.selected_note_3 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_note_4} notes={NOTES} onChange={this.handleNoteChange4}/>}
-        {this.state.selected_note_4 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_note_5} notes={NOTES} onChange={this.handleNoteChange5}/>}
-        {this.state.selected_note_5 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_note_6} notes={NOTES} onChange={this.handleNoteChange6}/>}
-        {this.state.selected_note_6 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_note_7} notes={NOTES} onChange={this.handleNoteChange7}/>}
-      </div>
-      <div className='shapes-drop-down'>
-        {this.state.selected_note_1 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_shape_1} notes={CHORD_SHAPE} onChange={this.handleShapeChange1}/>}
-        {this.state.selected_note_2 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_shape_2} notes={CHORD_SHAPE} onChange={this.handleShapeChange2}/>}
-        {this.state.selected_note_3 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_shape_3} notes={CHORD_SHAPE} onChange={this.handleShapeChange3}/>}
-        {this.state.selected_note_4 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_shape_4} notes={CHORD_SHAPE} onChange={this.handleShapeChange4}/>}
-        {this.state.selected_note_5 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_shape_5} notes={CHORD_SHAPE} onChange={this.handleShapeChange5}/>}
-        {this.state.selected_note_6 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_shape_6} notes={CHORD_SHAPE} onChange={this.handleShapeChange6}/>}
-        {this.state.selected_note_7 !== ' ' && <NoteDropDown className="note-selector" selected_note={this.state.selected_shape_7} notes={CHORD_SHAPE} onChange={this.handleShapeChange7}/>}
-      </div>
-      <div className='shapes-drop-down'>
-        {this.state.selected_shape_1 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_1} selected_shape={this.state.selected_shape_1}/>}
-        {this.state.selected_shape_2 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_2} selected_shape={this.state.selected_shape_2}/>}
-        {this.state.selected_shape_3 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_3} selected_shape={this.state.selected_shape_3}/>}
-        {this.state.selected_shape_4 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_4} selected_shape={this.state.selected_shape_4}/>}
-        {this.state.selected_shape_5 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_5} selected_shape={this.state.selected_shape_5}/>}
-        {this.state.selected_shape_6 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_6} selected_shape={this.state.selected_shape_6}/>}
-        {this.state.selected_shape_7 !== ' ' && <ChordNotesDisplay selected_note={this.state.selected_note_7} selected_shape={this.state.selected_shape_7}/>}
-      </div>
-       <div className='shapes-drop-down shapes-drop-down-degrees'>
-        {this.state.selected_shape_1 !== ' ' && <ChordDegree selected_note_index={this.props.selected_note_index} selected_scale_name={this.props.selected_scale_name} selected_note={this.state.selected_note_1}/>}
-        {this.state.selected_shape_2 !== ' ' && <ChordDegree selected_note_index={this.props.selected_note_index} selected_scale_name={this.props.selected_scale_name} selected_note={this.state.selected_note_2}/>}
-        {this.state.selected_shape_3 !== ' ' && <ChordDegree selected_note_index={this.props.selected_note_index} selected_scale_name={this.props.selected_scale_name} selected_note={this.state.selected_note_3}/>}
-        {this.state.selected_shape_4 !== ' ' && <ChordDegree selected_note_index={this.props.selected_note_index} selected_scale_name={this.props.selected_scale_name} selected_note={this.state.selected_note_4}/>}
-        {this.state.selected_shape_5 !== ' ' && <ChordDegree selected_note_index={this.props.selected_note_index} selected_scale_name={this.props.selected_scale_name} selected_note={this.state.selected_note_5}/>}
-        {this.state.selected_shape_6 !== ' ' && <ChordDegree selected_note_index={this.props.selected_note_index} selected_scale_name={this.props.selected_scale_name} selected_note={this.state.selected_note_6}/>}
-        {this.state.selected_shape_7 !== ' ' && <ChordDegree selected_note_index={this.props.selected_note_index} selected_scale_name={this.props.selected_scale_name} selected_note={this.state.selected_note_7}/>}
+        {rows}
       </div>
     </div>
     <div className='reset-all-dropdown'>
-      {this.state.selected_shape_1 !== ' ' && <div onClick={this.resetAll} className='close-button-shape-drop-down'>RESET ALL</div>}
+      {this.state.number_of_items !== 0 && <div onClick={this.resetAll} className='close-button-shape-drop-down'>RESET ALL</div>}
     </div>
    </div>
+  }
+}
+
+class ChordsDropDownItem extends React.Component {
+   constructor (props) {
+    super (props)
+    this.state = ({
+      selected_note: null,
+      selected_shape: null,
+      selected_note_index: null
+    })
+    this.handleNoteChange = this.handleNoteChange.bind(this)
+    this.handleShapeChange = this.handleShapeChange.bind(this)
+  }
+
+  handleNoteChange(note_index) {
+    const note = NOTES[note_index]
+    this.setState ({
+      selected_note: note,
+      selected_note_index: note_index,
+      reset: false
+    })
+  }
+
+  handleShapeChange(shape_index) {
+    const selected_shape = CHORD_SHAPE[shape_index]
+    this.setState ({
+      selected_shape: selected_shape
+    })
+    this.props.onChange(this.state.selected_note, selected_shape, this.props.index)
+  }
+
+  render () {
+    return <React.Fragment>
+            <NoteDropDown className="note-selector" selected_note={this.state.selected_note} notes={NOTES} onChange={this.handleNoteChange}/>
+            {this.state.selected_note !== null && <NoteDropDown className="note-selector" selected_note={this.state.selected_shape} notes={CHORD_SHAPE} onChange={this.handleShapeChange}/>}
+            {this.state.selected_shape !== null && <ChordNotesDisplay selected_note={this.state.selected_note} selected_shape={this.state.selected_shape}/>}
+            {this.state.selected_shape !== null && <ChordDegree selected_note_index={this.props.clicked_note_index} selected_scale_name={this.props.clicked_scale_name} selected_note={this.state.selected_note}/>}
+          </React.Fragment>
   }
 }
 
