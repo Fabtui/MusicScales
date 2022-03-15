@@ -3,7 +3,7 @@ import {NOTES} from './data'
 import './stylesheets/search_by_notes.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLightbulb, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 const cross = <FontAwesomeIcon icon={faXmark} />
 
 class MakeSearchCheckboxes extends React.Component {

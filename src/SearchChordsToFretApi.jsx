@@ -28,13 +28,9 @@ export function searchFromData (selectedNotes, data, fretboardMode) {
       chordShapes.forEach(chordShape => {
         const chord = data[key][chordShape].split(' ')
         if (fretboardMode) {
-          // if (data[key][chordShape].split(' ').sort().join(' ') === selectedNotesNames.sort().join(' ')) {
-          // selectedChords.push([key, chordShape, chord.join(' ')])
-          // } else {
-            if (checker(chord, selectedNotesNames)) {
-              selectedChords.push([key, chordShape, chord.join(' '), false])
-            }
-          // }
+          if (checker(chord, selectedNotesNames)) {
+            selectedChords.push([key, chordShape, chord.join(' '), false])
+          }
         }
       else {
         const chord = data[key][chordShape].split(' ')
@@ -53,41 +49,15 @@ export class SearchChordsToFretApi extends React.Component {
     this.state = {
       chords: [],
     }
-    // this.fetchApi = this.fetchApi.bind(this)
     this.onClick = this.onClick.bind(this)
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    // this.fetchApi(nextProps.selectedNotes)
     const selectedChords = searchFromData(nextProps.selectedNotes, EVERY_CHORDS, this.props.fretboardMode)
     this.setState ({
       chords: selectedChords
     })
   }
-
-  // fetchApi (selectedNotes) {
-  //   if (selectedNotes.length === 0) {
-  //     return
-  //   }
-  //   let that = this
-
-  //   const mutatedNotes = encodeURIComponent(selectedNotes.map(note => NOTES[note]))
-  //   const url = `http://www.tofret.com/reverse-chord-finder.php?notes=${mutatedNotes}&return-type=json`
-  //   fetch(url,
-  //       {
-  //           method: "GET",
-  //           mode: 'cors',
-  //           headers: {
-  //               'Content-Type': 'application/json',
-  //           }
-  //       })
-  //     .then(response => response.json())
-  //     .then(function(response) {
-  //       that.setState({
-  //         chords: response.chords
-  //       })
-  //     })
-  // }
 
   onClick(e) {
     this.props.onClick(e)
