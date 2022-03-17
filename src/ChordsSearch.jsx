@@ -52,7 +52,7 @@ class ChordDetails extends React.Component {
     if (this.props.chord.length === 0) {
       return <div className='no-chord-selected mt-4'><h5 className='text-center'>Select a chord in results to see details</h5></div>
     } else {
-      const rows = MakeChordDetails (this.props.chord)
+      const rows = MakeChordDetails(this.props.chord)
       const special = ChordExplanations(this.props.chord.split(' ')[1])
       return  <React.Fragment>
               <h2 className='mt-4 text-center'>{this.props.chord}</h2>
