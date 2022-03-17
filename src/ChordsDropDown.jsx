@@ -116,8 +116,8 @@ export class ChordsDropDown extends React.PureComponent {
   handleNoteChange(note, shape, index) {
     const chordArray = this.createChordArray(note, shape)
     const selected_chords = this.state.selected_chords
-    const number_of_items = selected_chords.length + 1
     selected_chords[index] = chordArray
+    const number_of_items = selected_chords.length
     this.setState ({
       selected_chords: selected_chords,
       number_of_items: number_of_items
