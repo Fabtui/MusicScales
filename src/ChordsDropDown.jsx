@@ -8,7 +8,16 @@ function romanize(num) {
   return romanNumber[num];
 }
 
-class ChordDegree extends React.PureComponent {
+class ChordDegree extends React.Component {
+
+  componentDidUpdate(prevProps) {
+    console.log('update');
+    if (this.props.selected_note_index !== prevProps.selected_note_index) {
+      console.log('new props');
+    }
+  }
+
+
   render () {
     if (this.props.selected_note_index != null) {
       const scaleNotes = (EVERY_SCALES[NOTES[this.props.selected_note_index]][this.props.selected_scale_name]).split(' ')
@@ -100,7 +109,9 @@ export class ChordsDropDown extends React.PureComponent {
     super (props)
     this.state = ({
       selected_chords: [],
-      number_of_items: 0
+      number_of_items: 0,
+      clicked_selected_note_index: this.props.selected_note_index || null,
+      clicked_selected_scale_name: this.props.selected_scale_name || null
     })
     this.resetAll = this.resetAll.bind(this)
     this.handleNoteChange = this.handleNoteChange.bind(this)
@@ -111,6 +122,19 @@ export class ChordsDropDown extends React.PureComponent {
       return null
     }
     return [note, shape]
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.selected_note_index !== prevProps.selected_note_index) {
+      this.setState ({
+        clicked_selected_note_index: this.props.selected_note_index
+      })
+    }
+    if (this.props.selected_scale_name !== prevProps.selected_scale_name) {
+      this.setState ({
+        clicked_selected_scale_name: this.props.selected_scale_name
+      })
+    }
   }
 
   handleNoteChange(note, shape, index) {
@@ -130,7 +154,9 @@ export class ChordsDropDown extends React.PureComponent {
   resetAll() {
     this.setState ({
       selected_chords: [],
-      number_of_items: 0
+      number_of_items: 0,
+      clicked_selected_note_index: null,
+      clicked_selected_scale_name: null
     })
   }
 
@@ -140,7 +166,7 @@ export class ChordsDropDown extends React.PureComponent {
     for (let i = 0; i <= number_of_items; i++) {
       const selected_note = this.state.number_of_items > i ? this.state.selected_chords[i][0] : null
       const selected_shape = this.state.number_of_items > i ? this.state.selected_chords[i][1] : null
-      rows.push(<ChordsDropDownItem key={i} selected_note={selected_note} selected_shape={selected_shape} index={i} clicked_scale_name={this.props.selected_scale_name} clicked_note_index={this.props.selected_note_index}  onChange={this.handleNoteChange}/>)
+      rows.push(<ChordsDropDownItem key={i} selected_note={selected_note} selected_shape={selected_shape} index={i} clicked_scale_name={this.state.clicked_selected_scale_name} clicked_note_index={this.state.clicked_selected_note_index}  onChange={this.handleNoteChange}/>)
     }
     return <div className='chords-dropdowns mb-4'>
     <div className='chords-dropdowns-items'>
