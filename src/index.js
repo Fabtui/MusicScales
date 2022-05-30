@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './stylesheets/index.css';
 import reportWebVitals from './reportWebVitals';
-import {Selector} from './Selector'
+import {MyScale} from './MyScale'
 import { AllScales } from './AllScales'
 import { SearchByNotes } from './SearchByNotes'
 import { SearchByChords } from './SearchByChords'
@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="MyScale" element={<Selector />} />
+          <Route path="MyScale" element={<MyScale />} />
           <Route path="AllScales" element={<AllScales />} />
           <Route path="SearchByNotes" element={<SearchByNotes />} />
           <Route path="SearchByChords" element={<SearchByChords />} />
