@@ -1,0 +1,15 @@
+.compare-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 32px;
+}
+
+.compare-link-container {
+  margin-top: 12px;
+}
+
+.compare-link {
+  paddin-top: 12px;
+  color: black;
+  text-decoration: none;
+}

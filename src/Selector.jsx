@@ -54,6 +54,7 @@ export class Selector extends Component {
   }
 
   render () {
+    const columnClass = this.props.inline ? "selector-columns-inline" : "selector-columns"
     const circleDeployed = this.state.circle_deployed ? 'deployed' : ''
     const selected_scale_notes =  ScaleNotes({notes: NOTES, selected_note_index: this.state.selected_note_index, scale_intervals: this.state.selected_scale})
     const selected_note = NOTES[this.state.selected_note_index]
@@ -65,7 +66,7 @@ export class Selector extends Component {
           <ScaleDropDown selected_scale={this.state.selected_scale_name} scales={SCALES} onChange={this.handleScaleChange}/>
         </div>
       </div>
-      <div className='selector-columns'>
+      <div className={columnClass}>
         <div className='selector-left-side'>
           <div className="scale-display">
             <ScaleDisplay selected_scale={this.state.selected_scale} notes={NOTES} selected_note_index={this.state.selected_note_index} scale_intervals={scale_intervals} />
