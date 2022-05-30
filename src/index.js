@@ -8,6 +8,7 @@ import { SearchByNotes } from './SearchByNotes'
 import { SearchByChords } from './SearchByChords'
 import { ChordsSearch } from './ChordsSearch'
 import { CircleOfFifth } from './CircleOfFifth';
+import { Compare } from './Compare';
 import Child from './Child'
 import Layout from './Layout'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -24,6 +25,7 @@ function App() {
           <Route path="MyScaleResult" element={<Child />} />
           <Route path="ChordsSearch" element={<ChordsSearch />} />
           <Route path="CircleOfFifth" element={<CircleOfFifth />} />
+          <Route path="Compare" element={<Compare />} />
         </Route>
       </Routes>
     </BrowserRouter>
