@@ -15,8 +15,12 @@ export function Compare () {
           </Link>
          </div>
           <div className="compare-container">
-            <Selector inline={true}/>
-            <Selector inline={true}/>
+            <div className="compare-first-selector">
+              <Selector inline={true}/>
+            </div>
+            <div className="compare-second-selector">
+              <Selector inline={true}/>
+            </div>
           </div>
       </div>
 }

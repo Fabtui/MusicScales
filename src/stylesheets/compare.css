@@ -19,3 +19,16 @@
   color: black;
   transition: 0.2s;
 }
+
+@media screen and (max-width: 900px) {
+  .compare-link {
+    display: none;
+    }
+  .compare-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .compare-second-selector {
+    display: none;
+  }
+}
