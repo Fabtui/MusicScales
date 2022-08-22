@@ -82,7 +82,9 @@ export const CHORD_SHAPE_INTERVALS = {
   'Dim': [0, 3, 6],
   'Aug': [0, 5, 7],
   'Sus4': [0, 5, 7],
-  'Sus2': [0, 2, 7]
+  'Sus2': [0, 2, 7],
+  'Lyd': [0, 6, 7],
+  'Phry': [0, 1, 7]
 }
 
 export const SCALES = Object.keys(SCALES_LIST)

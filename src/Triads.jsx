@@ -55,7 +55,7 @@ export function Triads ({selected_scale_notes, selected_scale}) {
       <th scope="col">Root</th>
       <th scope="col">Third</th>
       <th scope="col">Fifth</th>
-      <th scope="col">Chord Shape</th>
+      <th scope="col">Name</th>
     </tr>
   </thead>
   <tbody>
