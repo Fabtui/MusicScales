@@ -1,0 +1,51 @@
+export const MODES = {
+  1: {
+    name: "Ionian",
+    type: "Major",
+    degree: "I",
+    special_notes: [],
+    scale: [0, 2, 4, 5, 7, 9, 11],
+  },
+  2: {
+    name: "Dorian",
+    type: "minor",
+    degree: "II",
+    special_notes: [9],
+    scale: [0, 2, 3, 5, 7, 9, 10],
+  },
+  3: {
+    name: "Phrygian",
+    type: "minor",
+    degree: "III",
+    special_notes: [1],
+    scale: [0, 1, 3, 5, 7, 8, 10],
+  },
+  4: {
+    name: "Lydian",
+    type: "Major",
+    degree: "IV",
+    special_notes: [6],
+    scale: [0, 2, 4, 6, 7, 9, 11],
+  },
+  5: {
+    name: "Mixolidian",
+    type: "Major",
+    degree: "V",
+    special_notes: [10],
+    scale: [0, 2, 4, 5, 7, 9, 10],
+  },
+  6: {
+    name: "Aeolian",
+    type: "minor",
+    degree: "VI",
+    special_notes: [8],
+    scale: [0, 2, 3, 5, 7, 8, 10],
+  },
+  7: {
+    name: "Locrian",
+    type: "diminished",
+    degree: "VII",
+    special_notes: [1, 6],
+    scale: [0, 1, 3, 5, 6, 8, 10],
+  },
+};

@@ -45,6 +45,10 @@ export class SearchByNotes extends React.Component {
       selectedNote = NOTES.indexOf(selectedNote)
     }
     const selectedScaleName = e.split(' ').length === 3 ? `${e.split(' ')[1]} ${e.split(' ')[2]}` : `${e.split(' ')[1]}`
+    const deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    if (deviceWidth < 750) {
+      console.log('coucou');
+    }
     this.setState({
       selected_note_index: selectedNote,
       selected_scale_name: selectedScaleName,
