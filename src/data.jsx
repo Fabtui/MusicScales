@@ -87,5 +87,58 @@ export const CHORD_SHAPE_INTERVALS = {
   'Phry': [0, 1, 7]
 }
 
+export const MODES = [
+  {
+    name: "Ionian",
+    type: "Maj",
+    degree: "I",
+    special_notes: [],
+    scale: [0, 2, 4, 5, 7, 9, 11],
+  },
+  {
+    name: "Dorian",
+    type: "min",
+    degree: "II",
+    special_notes: [9],
+    scale: [0, 2, 3, 5, 7, 9, 10],
+  },
+  {
+    name: "Phrygian",
+    type: "min",
+    degree: "III",
+    special_notes: [1],
+    scale: [0, 1, 3, 5, 7, 8, 10],
+  },
+  {
+    name: "Lydian",
+    type: "Maj",
+    degree: "IV",
+    special_notes: [6],
+    scale: [0, 2, 4, 6, 7, 9, 11],
+  },
+  {
+    name: "Mixolidian",
+    type: "Maj",
+    degree: "V",
+    special_notes: [10],
+    scale: [0, 2, 4, 5, 7, 9, 10],
+  },
+  {
+    name: "Aeolian",
+    type: "min",
+    degree: "VI",
+    special_notes: [8],
+    scale: [0, 2, 3, 5, 7, 8, 10],
+  },
+  {
+    name: "Locrian",
+    type: "dim",
+    degree: "VII",
+    special_notes: [1, 6],
+    scale: [0, 1, 3, 5, 6, 8, 10],
+  },
+];
+
+
 export const SCALES = Object.keys(SCALES_LIST)
 export const INTERVALS_NAMES = Object.values(INTERVALS)
