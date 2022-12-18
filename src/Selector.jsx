@@ -8,6 +8,7 @@ import {ScaleTable} from './ScaleTable'
 import { NOTES, SCALES, SCALES_LIST } from './data'
 import { Triads } from './Triads'
 import { NeckTable } from './NeckTable'
+import { Modes } from "./Modes";
 import circle from './images/The-Circle-of-Fifths - BW.png';
 
 export class Selector extends Component {
@@ -59,32 +60,68 @@ export class Selector extends Component {
     const selected_scale_notes =  ScaleNotes({notes: NOTES, selected_note_index: this.state.selected_note_index, scale_intervals: this.state.selected_scale})
     const selected_note = NOTES[this.state.selected_note_index]
     const scale_intervals = SCALES_LIST[this.state.selected_scale_name]
-    return <div className='container'>
-      <div className='selector-top'>
-        <div className="selectors">
-          <NoteDropDown selected_note={selected_note} notes={NOTES} onChange={this.handleNoteChange}/>
-          <ScaleDropDown selected_scale={this.state.selected_scale_name} scales={SCALES} onChange={this.handleScaleChange}/>
-        </div>
-      </div>
-      <div className={columnClass}>
-        <div className='selector-left-side'>
-          <div className="scale-display">
-            <ScaleDisplay selected_scale={this.state.selected_scale} notes={NOTES} selected_note_index={this.state.selected_note_index} scale_intervals={scale_intervals} />
-          </div>
-          <div className="scale-table">
-            <ScaleTable selected_scale={this.state.selected_scale} notes={NOTES} selected_scale_notes={selected_scale_notes} selected_note={selected_note} selected_note_index={this.state.selected_note_index}/>
-          </div>
-            <NeckTable selected_scale_notes={selected_scale_notes} selected_note_index={this.state.selected_note_index} selected_scale={this.state.selected_scale} />
-          </div>
-        <div className='selector-right-side'>
-          <div className="triads-container">
-            <Triads selected_scale_notes={selected_scale_notes} selected_scale={this.state.selected_scale}/>
-          </div>
-          <div className="selector-circle">
-            <img className={circleDeployed} src={circle} alt="circle-of-fifth" onClick={this.deployCircle}/>
+    return (
+      <div className="container">
+        <div className="selector-top">
+          <div className="selectors">
+            <NoteDropDown
+              selected_note={selected_note}
+              notes={NOTES}
+              onChange={this.handleNoteChange}
+            />
+            <ScaleDropDown
+              selected_scale={this.state.selected_scale_name}
+              scales={SCALES}
+              onChange={this.handleScaleChange}
+            />
           </div>
         </div>
+        <div className={columnClass}>
+          <div className="selector-left-side">
+            <div className="scale-display">
+              <ScaleDisplay
+                selected_scale={this.state.selected_scale}
+                notes={NOTES}
+                selected_note_index={this.state.selected_note_index}
+                scale_intervals={scale_intervals}
+              />
+            </div>
+            <div className="scale-table">
+              <ScaleTable
+                selected_scale={this.state.selected_scale}
+                notes={NOTES}
+                selected_scale_notes={selected_scale_notes}
+                selected_note={selected_note}
+                selected_note_index={this.state.selected_note_index}
+              />
+            </div>
+            <NeckTable
+              selected_scale_notes={selected_scale_notes}
+              selected_note_index={this.state.selected_note_index}
+              selected_scale={this.state.selected_scale}
+            />
+          </div>
+          <div className="selector-right-side">
+            <div className="triads-container">
+              <Triads
+                selected_scale_notes={selected_scale_notes}
+                selected_scale={this.state.selected_scale}
+              />
+            </div>
+            <div className="selector-circle">
+              <img
+                className={circleDeployed}
+                src={circle}
+                alt="circle-of-fifth"
+                onClick={this.deployCircle}
+              />
+            </div>
+          </div>
+          <Modes
+            selected_note_index={this.state.selected_note_index}
+          />
+        </div>
       </div>
-    </div>
+    );
   }
 }
