@@ -1,16 +1,15 @@
 import React, { Component, Fragment } from "react";
-import { NOTES, MODES } from "./data";
+import { NOTES, MODES, INTERVALS } from "./data";
 import "./stylesheets/modes.css";
 
 function ModesRows({ mode, selected_note_index, notes }) {
   const rows = [];
   const ordered_notes = [...notes.slice(selected_note_index), ...notes.slice(0, selected_note_index)]
   mode.scale.forEach((index) => {
-    console.log(mode.special_notes.includes(index));
+    const key = `${mode.name}-${ordered_notes[index]}`;
     const className = mode.special_notes.includes(index) ? 'mode-special-note' : '';
-    console.log(className);
     rows.push(
-      <Fragment>
+      <Fragment key={key}>
         <th className={className} scope="col">{ordered_notes[index]}</th>
       </Fragment>
     );
@@ -19,17 +18,27 @@ function ModesRows({ mode, selected_note_index, notes }) {
 }
 
 
-function ModesBuilder ({ modes, selected_note, notes }) {
+function ModesBuilder({ modes, selected_note_index, notes }) {
   const rows = [];
-  console.log(modes);
   modes.forEach((mode) => {
+    const key = `${selected_note_index}-${mode.name}`;
+    const structure = mode.scale.map((index) => INTERVALS[index]).join(' ');
+    console.log(structure);
     rows.push(
       <tr>
         <th scope="col">{mode.degree}</th>
         <th scope="col">
           {mode.name} ({mode.type})
         </th>
-        <ModesRows mode={mode} selected_note={selected_note} notes={notes} />
+        <th scope="col">
+          {structure}
+        </th>
+        <ModesRows
+          key={key}
+          mode={mode}
+          selected_note_index={selected_note_index}
+          notes={notes}
+        />
       </tr>
     );
   });
@@ -53,6 +62,7 @@ export class Modes extends Component {
             <tr>
               <th scope="col">Degree</th>
               <th scope="col">Name</th>
+              <th scope="col">Structure</th>
               <th scope="col">T</th>
               <th scope="col">2</th>
               <th scope="col">3</th>
@@ -63,8 +73,9 @@ export class Modes extends Component {
             </tr>
           </thead>
           <ModesBuilder
+            key={this.props.selected_note_index}
             modes={MODES}
-            selected_note={this.props.selected_note}
+            selected_note_index={this.props.selected_note_index}
             notes={NOTES}
           />
         </table>
