@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import "../stylesheets/modes.css";
 import { ModesWidget } from "../components/ModesWidget";
 

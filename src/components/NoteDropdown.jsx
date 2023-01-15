@@ -13,7 +13,7 @@ class DropdownItems extends React.Component {
   }
 
   render () {
-    return <li><a className="dropdown-item" id={this.props.index} href="#" onClick={this.handleClick}>{this.props.note}</a></li>
+    return <li><span className="dropdown-item" id={this.props.index} onClick={this.handleClick}>{this.props.note}</span></li>
   }
 }
 

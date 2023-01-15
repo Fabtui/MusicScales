@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { SearchCheckboxes } from '../components/SearchCheckboxes'
 import { GuitarNeckBasic } from '../components/GuitarNeckBasic'
 import { SearchChordsToFretApi } from '../components/SearchChordsToFretApi'

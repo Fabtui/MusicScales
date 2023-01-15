@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import '../stylesheets/search_by_chords.css'
 import { ChordsDropDown } from '../components/ChordsDropDown'
 import { SearchToFretApi } from '../components/SearchToFretApi'
@@ -56,12 +56,12 @@ export class SearchByChords extends React.Component {
   render () {
     const selected_note_name = NOTES[this.state.selected_note_index]
     const apiNotes = this.state.selectedNotes.map(note => NOTES.indexOf(note))
-    const style = 'chords-search'
+    const styleName = 'chords-search'
     return <div className='search-container container mt-4'>
       <div className='left-side'>
         <h5>Choose your chords :</h5>
         <ChordsDropDown onChange={this.handleChange} selected_note_index={this.state.selected_note_index} selected_scale_name={this.state.selected_scale_name}/>
-        <SearchToFretApi style={style} selectedNotes={apiNotes} onClick={this.handleClick}/>
+        <SearchToFretApi style={styleName} selectedNotes={apiNotes} onClick={this.handleClick}/>
       </div>
       <div className='search-note-right-side'>
         {!this.state.scale_selected && <div id='right-side-hint'><h2 className='mt-4'>Select a scale to preview it</h2></div>}
