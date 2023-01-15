@@ -22,40 +22,69 @@ const Layout = () => {
   let match = useMatch({ path: '/', end: true });
   return (
     <>
-       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <h3 className="navbar-brand"><Link className="nav-link" to="/">GuitarScales</Link></h3>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <h3 className="navbar-brand">
+            <Link className="nav-link" to="/">
+              GuitarScales
+            </Link>
+          </h3>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <CustomLink className="nav-link" to="/MyScale">My Scale</CustomLink>
+                <CustomLink className="nav-link" to="/MyScale">
+                  My Scale
+                </CustomLink>
               </li>
               <li className="nav-item">
-                <CustomLink className="nav-link" to="/AllScales">All Scales</CustomLink>
+                <CustomLink className="nav-link" to="/AllScales">
+                  All Scales
+                </CustomLink>
               </li>
               <li className="nav-item">
-                <CustomLink className="nav-link" to="/SearchByNotes">Search by Notes</CustomLink>
+                <CustomLink className="nav-link" to="/SearchByNotes">
+                  Search by Notes
+                </CustomLink>
               </li>
               <li className="nav-item">
-                <CustomLink className="nav-link" to="/SearchByChords">Search by Chords</CustomLink>
+                <CustomLink className="nav-link" to="/SearchByChords">
+                  Search by Chords
+                </CustomLink>
               </li>
               <li className="nav-item">
-                <CustomLink className="nav-link" to="/ChordsSearch">Find a Chord</CustomLink>
+                <CustomLink className="nav-link" to="/ChordsSearch">
+                  Find a Chord
+                </CustomLink>
               </li>
               <li className="nav-item">
-                <CustomLink className="nav-link" to="/CircleOfFifth">Circle of Fifth</CustomLink>
+                <CustomLink className="nav-link" to="/Modes">
+                  Modes
+                </CustomLink>
+              </li>
+              <li className="nav-item">
+                <CustomLink className="nav-link" to="/CircleOfFifth">
+                  Circle of Fifth
+                </CustomLink>
               </li>
             </ul>
           </div>
         </div>
       </nav>
       <Outlet />
-      { match && <Home/>}
+      {match && <Home />}
     </>
-  )
+  );
 };
 
 export default Layout;
