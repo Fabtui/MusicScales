@@ -1,3 +1,7 @@
 .mode-special-note {
   color: red;
 }
+
+.modes-container{
+  display: flex;
+}

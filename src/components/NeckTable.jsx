@@ -2,7 +2,7 @@ import React from 'react'
 import '../stylesheets/guitar_neck.css'
 import { GuitarNeck } from './GuitarNeck'
 import { TuningDropDown } from './TuningDropDown'
-import { GUITAR_TUNING, NOTES } from '../data/data'
+import { GUITAR_TUNING } from '../data/data'
 import { ScaleNotes } from './ScaleDisplay'
 
 export class NeckTable extends React.Component {
@@ -34,7 +34,7 @@ export class NeckTable extends React.Component {
   render () {
     const noteLabelStyle = this.state.notes_displayed ? 'selected' : 'not-selected'
     const nameLabelStyle = this.state.notes_displayed ? 'not-selected' : 'selected'
-    const selected_scale_notes = ScaleNotes({notes: NOTES, selected_note_index: this.props.selected_note_index, scale_intervals: this.props.selected_scale})
+    const selected_scale_notes = ScaleNotes({selected_note_index: this.props.selected_note_index, scale_intervals: this.props.selected_scale})
     return <div className="neck-table">
         <div className="tuning-select">
           <div className='notes-checkbox-container'>

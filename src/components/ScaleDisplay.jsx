@@ -1,9 +1,10 @@
 import React from 'react';
 import { Intervals } from './Intervals'
 import propTypes from 'prop-types';
+import { NOTES } from '../data/data';
 
-export function ScaleNotes ({notes, selected_note_index, scale_intervals}) {
-  const ordered_notes = [...notes.slice(selected_note_index), ...notes.slice(0, selected_note_index)]
+export function ScaleNotes ({selected_note_index, scale_intervals}) {
+  const ordered_notes = [...NOTES.slice(selected_note_index), ...NOTES.slice(0, selected_note_index)]
   let scale_notes = []
   scale_intervals.forEach(scale_interval => {
     scale_notes.push(ordered_notes[scale_interval])
@@ -12,8 +13,6 @@ export function ScaleNotes ({notes, selected_note_index, scale_intervals}) {
 }
 
 export function Scale ({notes, scale_intervals}) {
-
-
   let scale_notes = []
   scale_intervals.forEach(scale_interval => {
     scale_notes.push(notes[scale_interval])

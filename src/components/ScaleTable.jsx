@@ -88,7 +88,7 @@ export class Table extends React.PureComponent {
   const intervals_name = Object.values(INTERVALS)
   return <table className='table'>
       <IntervalNameRows intervals={intervals_name}/>
-      <IntervalNotesRows selected_note_index={this.props.selected_note_index} selected_scale_notes={this.props.selected_scale_notes} notes={this.props.notes}/>
+      <IntervalNotesRows selected_note_index={this.props.selected_note_index} selected_scale_notes={this.props.selected_scale_notes} notes={NOTES}/>
     </table>
   }
 }
@@ -96,7 +96,7 @@ export class Table extends React.PureComponent {
 export class ScaleTable extends React.PureComponent {
   render () {
     return <div>
-      <Table selected_note_index={this.props.selected_note_index} selected_scale_notes={this.props.selected_scale_notes} selected_note={this.props.selected_note} intervals={INTERVALS} notes={this.props.notes}/>
+      <Table selected_note_index={this.props.selected_note_index} selected_scale_notes={this.props.selected_scale_notes} intervals={INTERVALS} notes={NOTES}/>
     </div>
   }
 }
