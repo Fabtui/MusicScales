@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './stylesheets/index.css';
 import reportWebVitals from './reportWebVitals';
-import {MyScale} from './MyScale'
-import { AllScales } from './AllScales'
-import { SearchByNotes } from './SearchByNotes'
-import { SearchByChords } from './SearchByChords'
-import { ChordsSearch } from './ChordsSearch'
-import { CircleOfFifth } from './CircleOfFifth';
-import { Compare } from './Compare';
-import { Modes } from './Modes';
-import Child from './Child'
-import Layout from './Layout'
+import {MyScale} from './containers/MyScale'
+import { AllScales } from './containers/AllScales'
+import { SearchByNotes } from './containers/SearchByNotes'
+import { SearchByChords } from './containers/SearchByChords'
+import { ChordsSearch } from './containers/ChordsSearch'
+import { CircleOfFifth } from './containers/CircleOfFifth';
+import { Compare } from './components/Compare';
+import { Modes } from './containers/Modes';
+import Child from './tools/Child'
+import Layout from './containers/Layout'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
