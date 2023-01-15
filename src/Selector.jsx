@@ -8,7 +8,7 @@ import {ScaleTable} from './ScaleTable'
 import { NOTES, SCALES, SCALES_LIST } from './data'
 import { Triads } from './Triads'
 import { NeckTable } from './NeckTable'
-import { Modes } from "./Modes";
+import { ModesWidget } from "./ModesWidget";
 import circle from './images/The-Circle-of-Fifths - BW.png';
 
 export class Selector extends Component {
@@ -117,9 +117,7 @@ export class Selector extends Component {
               />
             </div>
           </div>
-          <Modes
-            selected_note_index={this.state.selected_note_index}
-          />
+          <ModesWidget selected_note_index={this.state.selected_note_index} />
         </div>
       </div>
     );
