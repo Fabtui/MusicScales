@@ -8,7 +8,10 @@ function IntervalRow ({interval}) {
 
 class NotesRow extends React.Component {
   render () {
-    if (this.props.inScale) {
+    if (this.props.special) {
+      console.log("special", this.props, this.props.interval);
+      return <th className='in-scale mode-special-note'><p>{this.props.interval}</p></th>
+    } else if (this.props.inScale) {
       if (this.props.root) {
         return <th className='in-scale root-note'><p>{this.props.interval}</p></th>
       } else {
@@ -21,25 +24,26 @@ class NotesRow extends React.Component {
 }
 
 function IntervalNameRows ({intervals}) {
-  const rows = []
-  intervals.forEach(interval => {
-    rows.push(<IntervalRow key={interval} interval={interval}/>)
-  })
   return <thead>
           <tr>
-            {rows}
+            {intervals.map(interval => <IntervalRow key={interval} interval={interval}/>)}
           </tr>
          </thead>
 }
 
-export function IntervalNotesRows ({selected_note_index, selected_scale_notes, notes}) {
+export function IntervalNotesRows ({special_notes, selected_note_index, selected_scale_notes, notes}) {
   const ordered_notes = [...notes.slice(selected_note_index), ...notes.slice(0, selected_note_index)]
   const rows = []
   ordered_notes.push(ordered_notes[0])
   ordered_notes.forEach((note, index) => {
     const key = `${note}-${index}`
     if (selected_scale_notes.includes(note)) {
-      if (note === selected_scale_notes[0]) {
+      if (
+        special_notes &&
+        special_notes.map((note_index) => NOTES[note_index]).includes(note)
+      ) {
+        rows.push(<NotesRow root={true} inScale={true} special={true} key={key} interval={note}/>);
+      } else if (note === selected_scale_notes[0]) {
         rows.push(<NotesRow root={true} inScale={true} key={key} interval={note}/>)
       } else {
         rows.push(<NotesRow root={false} inScale={true} key={key} interval={note}/>)
@@ -83,20 +87,19 @@ export function IntervalNamesRows ({selected_note_index, guitarString, selected_
         </tbody>
 }
 
-export class Table extends React.PureComponent {
-  render () {
-  const intervals_name = Object.values(INTERVALS)
-  return <table className='table'>
-      <IntervalNameRows intervals={intervals_name}/>
-      <IntervalNotesRows selected_note_index={this.props.selected_note_index} selected_scale_notes={this.props.selected_scale_notes} notes={NOTES}/>
-    </table>
-  }
-}
-
 export class ScaleTable extends React.PureComponent {
-  render () {
-    return <div>
-      <Table selected_note_index={this.props.selected_note_index} selected_scale_notes={this.props.selected_scale_notes} intervals={INTERVALS} notes={NOTES}/>
-    </div>
+  render() {
+    const intervals_name = Object.values(INTERVALS);
+    return (
+      <table className="table">
+        <IntervalNameRows intervals={intervals_name} />
+        <IntervalNotesRows
+          selected_note_index={this.props.selected_note_index}
+          selected_scale_notes={this.props.selected_scale_notes}
+          notes={NOTES}
+          special_notes={this.props.special_notes}
+        />
+      </table>
+    );
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../stylesheets/modes.css";
-import { ModesWidget } from "../components/ModesWidget";
+// import { ModesWidget } from "../components/ModesWidget";
 import { NoteDropDown } from "../components/NoteDropdown";
 import { ScaleTable } from "../components/ScaleTable";
 import { ScaleNotes } from "../components/ScaleDisplay";
@@ -50,6 +50,7 @@ export class Modes extends Component {
                 selected_note_index={this.state.selected_note_index}
                 selected_scale_notes={selected_scale_notes}
                 selected_note={this.state.selected_note}
+                special_notes={MODES[0].special_notes}
               />
               <NeckTable
                 selected_scale_notes={selected_scale_notes}
@@ -73,6 +74,7 @@ export class Modes extends Component {
                       scale_intervals: mode.scale,
                     })}
                     selected_note={this.state.selected_note}
+                    special_notes={mode.special_notes}
                   />
                   <NeckTable
                     selected_scale_notes={selected_scale_notes}
