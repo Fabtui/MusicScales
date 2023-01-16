@@ -16,30 +16,33 @@ function GuitarNeckRows (special_notes, notes_displayed, selected_scale, selecte
   return rows
 }
 
-export function GuitarNeck ({special_notes, notes_displayed, selected_scale, selected_note_index,tuning, selected_scale_notes}) {
+export function GuitarNeck ({ghost_notes_displayed, special_notes, notes_displayed, selected_scale, selected_note_index,tuning, selected_scale_notes}) {
   const rows = GuitarNeckRows(special_notes, notes_displayed, selected_scale, selected_note_index, tuning, selected_scale_notes, NOTES)
-  return  <React.Fragment>
-            <table className="table guitar-neck-table">
-              {rows}
-            </table>
-            <table className='table fretboard-marks-table'>
-              <tbody>
-                <tr className='fretboard-marks'>
-                  <th>x</th>
-                  <th>1</th>
-                  <th>2</th>
-                  <th>3</th>
-                  <th>4</th>
-                  <th>5</th>
-                  <th>6</th>
-                  <th>7</th>
-                  <th>8</th>
-                  <th>9</th>
-                  <th>10</th>
-                  <th>11</th>
-                  <th>12</th>
-                </tr>
-              </tbody>
-            </table>
-          </React.Fragment>
+  const tableNeckClassName = ghost_notes_displayed
+  ? "table guitar-neck-table show-ghost-note"
+  : "table guitar-neck-table hide-ghost-note";
+  return (
+    <React.Fragment>
+      <table className={tableNeckClassName}>{rows}</table>
+      <table className="table fretboard-marks-table">
+        <tbody>
+          <tr className="fretboard-marks">
+            <th>x</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+          </tr>
+        </tbody>
+      </table>
+    </React.Fragment>
+  );
 }
