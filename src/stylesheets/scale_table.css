@@ -16,6 +16,10 @@
   color: rgba(0, 0, 0, 0.9);
 }
 
+.mode-special-note {
+  color: red;
+}
+
 .not-in-scale {
   color: rgba(128, 128, 128, 0.6);
 }
