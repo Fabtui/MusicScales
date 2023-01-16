@@ -3,8 +3,10 @@
 }
 
 .modes-container{
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  /* justify-content: space-around; */
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
 }
 
 .modes-left-side {
