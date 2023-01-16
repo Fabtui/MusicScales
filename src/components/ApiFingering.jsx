@@ -115,7 +115,6 @@ export async function ApiFingering(chord) {
       } else {
         const string = stringsNotes[index]
         const note = string + parseInt(e)
-        console.log(note);
         note >= 12 ? notes.push(NOTES[note - 12]) : notes.push(NOTES[note])
       }
     })

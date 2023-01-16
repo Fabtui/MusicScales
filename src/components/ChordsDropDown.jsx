@@ -17,7 +17,6 @@ class ChordDegree extends React.Component {
     }
   }
 
-
   render () {
     if (this.props.selected_note_index != null) {
       const scaleNotes = (EVERY_SCALES[NOTES[this.props.selected_note_index]][this.props.selected_scale_name]).split(' ')
