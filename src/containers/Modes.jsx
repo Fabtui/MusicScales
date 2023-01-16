@@ -12,8 +12,11 @@ export class Modes extends Component {
     super(props);
     this.state = {
       selected_note_index: 0,
+      selectedKeyShape: "Major",
     };
-    this.handleNoteChange = this.handleNoteChange.bind(this)
+    this.handleNoteChange = this.handleNoteChange.bind(this);
+    this.handleMajorClick = this.handleMajorClick.bind(this);
+    this.handleMinorClick = this.handleMinorClick.bind(this);
   }
 
   handleNoteChange(note) {
@@ -22,12 +25,25 @@ export class Modes extends Component {
     });
   }
 
+  handleMajorClick() {
+    this.setState({
+      selectedKeyShape: "Major",
+    });
+  }
+
+  handleMinorClick() {
+    this.setState({
+      selectedKeyShape: "Minor",
+    });
+  }
+
   render() {
     const selected_note = NOTES[this.state.selected_note_index];
     const selected_scale_notes = ScaleNotes({
       selected_note_index: this.state.selected_note_index,
-      scale_intervals: SCALES_LIST['Major'],
+      scale_intervals: SCALES_LIST[this.state.selectedKeyShape],
     });
+    const selected_scale = SCALES_LIST[this.state.selectedKeyShape]
     return (
       <div className="container">
         <div className="selector-top">
@@ -43,22 +59,23 @@ export class Modes extends Component {
         <div className="modes-container">
           <div className="modes-left-side">
             <div className="modes-card">
-              <h1>
-                {MODES[0].name} ({MODES[0].type})
+              <h1 onClick={this.handleMajorClick}>
+                {"Major"} ({MODES[0].name})
+              </h1>
+              <h1 onClick={this.handleMinorClick}>
+                {"minor"} ({MODES[5].name})
               </h1>
               <div className="scale-table">
                 <ScaleTable
                   selected_note_index={this.state.selected_note_index}
                   selected_scale_notes={selected_scale_notes}
                   selected_note={this.state.selected_note}
-                  special_notes={MODES[0].special_notes}
                 />
               </div>
               <NeckTable
                 selected_scale_notes={selected_scale_notes}
                 selected_note_index={this.state.selected_note_index}
-                selected_scale={MODES[0].scale}
-                special_notes={MODES[0].special_notes}
+                selected_scale={selected_scale}
               />
             </div>
           </div>
@@ -87,7 +104,7 @@ export class Modes extends Component {
                     selected_scale={mode.scale}
                     special_notes={mode.special_notes}
                   />
-                <span>{mode.description}</span>
+                  <span>{mode.description}</span>
                 </div>
               );
             })}
