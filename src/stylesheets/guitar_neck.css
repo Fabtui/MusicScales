@@ -44,9 +44,14 @@
   background-size: 100% 100%;
 }
 
-.guitar-neck-table .not-in-scale {
-  color: rgba(240, 240, 240, 0.8);
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+.show-ghost-note .not-in-scale {
+  color: rgba(240, 240, 240, 0.7);
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+.hide-ghost-note .not-in-scale {
+  color: rgba(240, 240, 240, 0);
+  text-shadow: none;
 }
 
 .guitar-neck-table > tbody > tr > th:nth-of-type(1) {
@@ -159,6 +164,33 @@ input:checked + .slider:before {
 .basic-guitar-neck-container .tuning-selector {
   display: flex;
   justify-content: flex-end;
+}
+
+
+/* DISPLAY GHOST NOTES CHECKBOX */
+
+.display-ghost-notes-checkbox {
+  width: fit-content;
+}
+
+.display-ghost-notes-checkbox:hover {
+  cursor: pointer;
+}
+
+.display-ghost-notes-checkbox label {
+  color: rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+}
+
+.form-check-input:checked {
+  background-color: #5C636A;
+  border-color: #5C636A;
+}
+
+.form-check-input:focus {
+  border-color: #5C636A;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #5c636a40;
 }
 
 @media screen and (max-width: 990px) {
