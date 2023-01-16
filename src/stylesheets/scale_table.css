@@ -18,6 +18,7 @@
 
 .mode-special-note {
   color: red;
+  text-shadow: 0 0 4px #ffffffcc;
 }
 
 .not-in-scale {
