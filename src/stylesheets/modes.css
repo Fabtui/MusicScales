@@ -27,3 +27,20 @@
   font-size: 1.5rem;
   margin-bottom: 24px;
 }
+
+.key-shape-selector {
+  display: flex;
+  justify-content: space-between;
+}
+
+.key-shape-selector-element {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.key-shape-selector-element:hover {
+  cursor: pointer;
+}
+
+.selected-key {
+  color: black;
+}

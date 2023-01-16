@@ -59,12 +59,18 @@ export class Modes extends Component {
         <div className="modes-container">
           <div className="modes-left-side">
             <div className="modes-card">
-              <h1 onClick={this.handleMajorClick}>
-                {"Major"} ({MODES[0].name})
-              </h1>
-              <h1 onClick={this.handleMinorClick}>
-                {"minor"} ({MODES[5].name})
-              </h1>
+              <div className="key-shape-selector">
+                <div className="key-shape-selector-element">
+                  <h1 onClick={this.handleMajorClick} className={this.state.selectedKeyShape === 'Major' ? 'selected-key' : ''}>
+                    {"Major"} ({MODES[0].name})
+                  </h1>
+                </div>
+                <div className="key-shape-selector-element">
+                  <h1 onClick={this.handleMinorClick} className={this.state.selectedKeyShape === 'Minor' ? 'selected-key' : ''}>
+                    {"minor"} ({MODES[5].name})
+                  </h1>
+                </div>
+              </div>
               <div className="scale-table">
                 <ScaleTable
                   selected_note_index={this.state.selected_note_index}
