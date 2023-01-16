@@ -44,3 +44,13 @@
 .selected-key {
   color: black;
 }
+
+@media screen and (max-width: 990px) {
+.modes-container {
+    grid-template-columns: 1fr;
+  }
+
+  .modes-left-side {
+    display: none;
+  }
+}
