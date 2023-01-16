@@ -46,12 +46,14 @@ export class Modes extends Component {
               <h1>
                 {MODES[0].name} ({MODES[0].type})
               </h1>
-              <ScaleTable
-                selected_note_index={this.state.selected_note_index}
-                selected_scale_notes={selected_scale_notes}
-                selected_note={this.state.selected_note}
-                special_notes={MODES[0].special_notes}
-              />
+              <div className="scale-table">
+                <ScaleTable
+                  selected_note_index={this.state.selected_note_index}
+                  selected_scale_notes={selected_scale_notes}
+                  selected_note={this.state.selected_note}
+                  special_notes={MODES[0].special_notes}
+                />
+              </div>
               <NeckTable
                 selected_scale_notes={selected_scale_notes}
                 selected_note_index={this.state.selected_note_index}
@@ -68,15 +70,17 @@ export class Modes extends Component {
                     {" "}
                     {mode.name} ({mode.type})
                   </h1>
-                  <ScaleTable
-                    selected_note_index={this.state.selected_note_index}
-                    selected_scale_notes={ScaleNotes({
-                      selected_note_index: this.state.selected_note_index,
-                      scale_intervals: mode.scale,
-                    })}
-                    selected_note={this.state.selected_note}
-                    special_notes={mode.special_notes}
-                  />
+                  <div className="scale-table">
+                    <ScaleTable
+                      selected_note_index={this.state.selected_note_index}
+                      selected_scale_notes={ScaleNotes({
+                        selected_note_index: this.state.selected_note_index,
+                        scale_intervals: mode.scale,
+                      })}
+                      selected_note={this.state.selected_note}
+                      special_notes={mode.special_notes}
+                    />
+                  </div>
                   <NeckTable
                     selected_scale_notes={selected_scale_notes}
                     selected_note_index={this.state.selected_note_index}
