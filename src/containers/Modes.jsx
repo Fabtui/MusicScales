@@ -30,34 +30,38 @@ export class Modes extends Component {
     });
     return (
       <div className="container">
-          <div className="selector-top">
-            <div className="selectors">
-              <NoteDropDown
-                selected_note={selected_note}
-                notes={NOTES}
-                onChange={this.handleNoteChange}
+        <div className="selector-top">
+          <div className="selectors">
+            <NoteDropDown
+              selected_note={selected_note}
+              notes={NOTES}
+              onChange={this.handleNoteChange}
+            />
+          </div>
+        </div>
+        {/* <ModesWidget selected_note_index={this.state.selected_note_index} /> */}
+        <div className="modes-container">
+          <div className="modes-left-side">
+            <div className="modes-card">
+              <h1>
+                {MODES[0].name} ({MODES[0].type})
+              </h1>
+              <ScaleTable
+                selected_note_index={this.state.selected_note_index}
+                selected_scale_notes={selected_scale_notes}
+                selected_note={this.state.selected_note}
+              />
+              <NeckTable
+                selected_scale_notes={selected_scale_notes}
+                selected_note_index={this.state.selected_note_index}
+                selected_scale={MODES[0].scale}
               />
             </div>
           </div>
-          {/* <ModesWidget selected_note_index={this.state.selected_note_index} /> */}
-        <div className="modes-container">
-          <div className="selector-left-side">
-            <h1>IONIEN (Major)</h1>
-            <ScaleTable
-              selected_note_index={this.state.selected_note_index}
-              selected_scale_notes={selected_scale_notes}
-              selected_note={this.state.selected_note}
-            />
-            <NeckTable
-              selected_scale_notes={selected_scale_notes}
-              selected_note_index={this.state.selected_note_index}
-              selected_scale={SCALES_LIST["Major"]}
-            />
-          </div>
-          <div className="selector-right-side">
+          <div className="modes-right-side">
             {MODES.map((mode) => {
               return (
-                <div className="mode">
+                <div className="modes-card">
                   <h1 key={`${mode.name} - ${mode.type}`}>
                     {" "}
                     {mode.name} ({mode.type})
