@@ -56,6 +56,7 @@ export class Modes extends Component {
                 selected_scale_notes={selected_scale_notes}
                 selected_note_index={this.state.selected_note_index}
                 selected_scale={MODES[0].scale}
+                special_notes={MODES[0].special_notes}
               />
             </div>
           </div>
@@ -80,6 +81,7 @@ export class Modes extends Component {
                     selected_scale_notes={selected_scale_notes}
                     selected_note_index={this.state.selected_note_index}
                     selected_scale={mode.scale}
+                    special_notes={mode.special_notes}
                   />
                 </div>
               );
