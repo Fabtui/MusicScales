@@ -62,12 +62,12 @@ export class Modes extends Component {
               <div className="key-shape-selector">
                 <div className="key-shape-selector-element">
                   <h1 onClick={this.handleMajorClick} className={this.state.selectedKeyShape === 'Major' ? 'selected-key' : ''}>
-                    {"Major"} ({MODES[0].name})
+                     {NOTES[this.state.selected_note_index]} {"Major"} ({MODES[0].name})
                   </h1>
                 </div>
                 <div className="key-shape-selector-element">
                   <h1 onClick={this.handleMinorClick} className={this.state.selectedKeyShape === 'Minor' ? 'selected-key' : ''}>
-                    {"minor"} ({MODES[5].name})
+                    {NOTES[this.state.selected_note_index]} {"minor"} ({MODES[5].name})
                   </h1>
                 </div>
               </div>
@@ -91,7 +91,7 @@ export class Modes extends Component {
                 <div className="modes-card">
                   <h1 key={`${mode.name} - ${mode.type}`}>
                     {" "}
-                    {mode.degree} - {mode.name} ({mode.type})
+                    {mode.degree} - {NOTES[this.state.selected_note_index]} {mode.name} ({mode.type})
                   </h1>
                   <div className="scale-table">
                     <ScaleTable
