@@ -94,6 +94,7 @@ export const MODES = [
     degree: "I",
     special_notes: [],
     scale: [0, 2, 4, 5, 7, 9, 11],
+    description: "Ionian is just another name for a plain old Major Scale.",
   },
   {
     name: "Dorian",
@@ -101,6 +102,7 @@ export const MODES = [
     degree: "II",
     special_notes: [9],
     scale: [0, 2, 3, 5, 7, 9, 10],
+    description: "Dorian is a popular minor mode often used by Carlos Santana among others."
   },
   {
     name: "Phrygian",
@@ -108,6 +110,7 @@ export const MODES = [
     degree: "III",
     special_notes: [1],
     scale: [0, 1, 3, 5, 7, 8, 10],
+    description: "Phrygian is a cool sounding mode when you’re trying to get a dark, almost Spanish sound."
   },
   {
     name: "Lydian",
@@ -115,6 +118,7 @@ export const MODES = [
     degree: "IV",
     special_notes: [6],
     scale: [0, 2, 4, 6, 7, 9, 11],
+    description: "Lydian is a great mode that exploits the b5 (#11) sound and is widely used by guitarists such as Steve Vai and Joe Satriani."
   },
   {
     name: "Mixolidian",
@@ -122,6 +126,7 @@ export const MODES = [
     degree: "V",
     special_notes: [10],
     scale: [0, 2, 4, 5, 7, 9, 10],
+    description: "Mixolydian works great over dominant 7th and 9ths. Try this scale over a D7 or D9 chord or backing track."
   },
   {
     name: "Aeolian",
@@ -129,6 +134,7 @@ export const MODES = [
     degree: "VI",
     special_notes: [8],
     scale: [0, 2, 3, 5, 7, 8, 10],
+    description: "The natural minor scale works great over any minor type chord and any time you want to take some of the “happy” out of your solos."
   },
   {
     name: "Locrian",
@@ -136,6 +142,7 @@ export const MODES = [
     degree: "VII",
     special_notes: [1, 6],
     scale: [0, 1, 3, 5, 6, 8, 10],
+    description: "Having both a flatted 3rd, 5th and 7th makes for a very exotic and dark sound."
   },
 ];
 

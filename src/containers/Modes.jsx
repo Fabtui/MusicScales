@@ -68,7 +68,7 @@ export class Modes extends Component {
                 <div className="modes-card">
                   <h1 key={`${mode.name} - ${mode.type}`}>
                     {" "}
-                    {mode.name} ({mode.type})
+                    {mode.degree} - {mode.name} ({mode.type})
                   </h1>
                   <div className="scale-table">
                     <ScaleTable
@@ -87,6 +87,7 @@ export class Modes extends Component {
                     selected_scale={mode.scale}
                     special_notes={mode.special_notes}
                   />
+                <span>{mode.description}</span>
                 </div>
               );
             })}
