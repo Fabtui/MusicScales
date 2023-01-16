@@ -2,10 +2,6 @@ import React from 'react'
 import { INTERVALS, INTERVALS_NAMES, NOTES } from '../data/data'
 import '../stylesheets/scale_table.css'
 
-function IntervalRow ({interval}) {
-  return <th>{interval}</th>
-}
-
 class NotesRow extends React.Component {
   render () {
     if (this.props.special) {
@@ -20,14 +16,6 @@ class NotesRow extends React.Component {
       return <th className='not-in-scale'><p>{this.props.interval}</p></th>
     }
   }
-}
-
-function IntervalNameRows ({intervals}) {
-  return <thead>
-          <tr>
-            {intervals.map(interval => <IntervalRow key={interval} interval={interval}/>)}
-          </tr>
-         </thead>
 }
 
 export function IntervalNotesRows ({special_notes, selected_note_index, selected_scale_notes, notes}) {
@@ -91,7 +79,11 @@ export class ScaleTable extends React.PureComponent {
     const intervals_name = Object.values(INTERVALS);
     return (
       <table className="table">
-        <IntervalNameRows intervals={intervals_name} />
+        <thead>
+          <tr>
+            { intervals_name.map((interval) => ( <th key={interval}>{interval}</th> )) }
+          </tr>
+        </thead>
         <IntervalNotesRows
           selected_note_index={this.props.selected_note_index}
           selected_scale_notes={this.props.selected_scale_notes}
