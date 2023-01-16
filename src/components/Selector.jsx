@@ -57,7 +57,7 @@ export class Selector extends Component {
   render () {
     const columnClass = this.props.inline ? "selector-columns-inline" : "selector-columns"
     const circleDeployed = this.state.circle_deployed ? 'deployed' : ''
-    const selected_scale_notes =  ScaleNotes({notes: NOTES, selected_note_index: this.state.selected_note_index, scale_intervals: this.state.selected_scale})
+    const selected_scale_notes =  ScaleNotes({selected_note_index: this.state.selected_note_index, scale_intervals: this.state.selected_scale})
     const selected_note = NOTES[this.state.selected_note_index]
     const scale_intervals = SCALES_LIST[this.state.selected_scale_name]
     return (
@@ -89,9 +89,9 @@ export class Selector extends Component {
             <div className="scale-table">
               <ScaleTable
                 selected_scale={this.state.selected_scale}
-                notes={NOTES}
+                // notes={NOTES}
                 selected_scale_notes={selected_scale_notes}
-                selected_note={selected_note}
+                // selected_note={selected_note}
                 selected_note_index={this.state.selected_note_index}
               />
             </div>

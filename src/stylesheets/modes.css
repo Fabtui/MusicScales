@@ -1,3 +1,27 @@
 .mode-special-note {
   color: red;
 }
+
+.modes-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.modes-left-side {
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.modes-card {
+  padding: 12px;
+  border-radius: 8px;
+  background-color: whitesmoke;
+  margin-bottom: 48px;
+  box-shadow: 4px 4px 12px #00000012;
+}
+
+.modes-card h1 {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
