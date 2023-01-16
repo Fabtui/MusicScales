@@ -9,7 +9,6 @@ function IntervalRow ({interval}) {
 class NotesRow extends React.Component {
   render () {
     if (this.props.special) {
-      console.log("special", this.props, this.props.interval);
       return <th className='in-scale mode-special-note'><p>{this.props.interval}</p></th>
     } else if (this.props.inScale) {
       if (this.props.root) {
