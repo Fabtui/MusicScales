@@ -109,10 +109,11 @@ export class NeckTable extends React.Component {
             value=""
             id="flexCheckDefault"
             checked={this.state.ghost_notes_displayed}
+            onChange={this.handleGhostNoteDisplayed}
           />
           <label
             className="form-check-label"
-            for="flexCheckDefault"
+            htmlFor="flexCheckDefault"
             onClick={this.handleGhostNoteDisplayed}
           >
             Show out of scale notes
