@@ -81,13 +81,12 @@ export class ScaleTable extends React.PureComponent {
       <table className="table">
         <thead>
           <tr>
-            {intervals_name.map((interval) => {
-              if (this.props.selected_scale.includes(intervals_name.indexOf(interval))) {
-                return (<th key={interval} >{interval}</th>)
-              } else {
-                return (<th className='not-in-scale' key={interval}>{interval}</th>)
-              }
-            })}
+            {intervals_name.map((interval) =>
+              ( <th className={this.props.selected_scale.includes(intervals_name.indexOf(interval)) ? "" : "not-in-scale"} key={interval}>
+                {interval}
+                </th>
+              )
+            )}
           </tr>
         </thead>
         <IntervalNotesRows
