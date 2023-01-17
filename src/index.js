@@ -28,6 +28,7 @@ function App() {
           <Route path="CircleOfFifth" element={<CircleOfFifth />} />
           <Route path="Compare" element={<Compare />} />
           <Route path="Modes" element={<Modes />} />
+          <Route path="SelectedModes" element={<Child />} />
         </Route>
       </Routes>
     </BrowserRouter>

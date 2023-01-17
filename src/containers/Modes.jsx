@@ -11,7 +11,7 @@ export class Modes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected_note_index: 0,
+      selected_note_index: this.props.selected_note_index || 0,
       selectedKeyShape: "Major",
     };
     this.handleNoteChange = this.handleNoteChange.bind(this);
