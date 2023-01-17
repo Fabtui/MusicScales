@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { NOTES, MODES, INTERVALS } from "../data/data";
+import { Link } from "react-router-dom";
 import "../stylesheets/modes-widget.css";
 
 function ModesRows({ mode, selected_note_index, notes }) {
@@ -52,7 +53,13 @@ export class ModesWidget extends Component {
   render() {
     return (
       <div className="modes-widget-container">
-        <h1>{NOTES[this.props.selected_note_index]} modes</h1>
+        <Link
+          className="compare-link"
+          to="/SelectedModes"
+          state={{ selected_note_index: this.props.selected_note_index }}
+        >
+          <h1>{NOTES[this.props.selected_note_index]} modes</h1>
+        </Link>
         <table className="table">
           <thead>
             <tr>
