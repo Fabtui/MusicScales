@@ -90,7 +90,6 @@ export class Modes extends Component {
               return (
                 <div className="modes-card">
                   <h1 key={`${mode.name} - ${mode.type}`}>
-                    {" "}
                     {mode.degree} - {NOTES[this.state.selected_note_index]} {mode.name} ({mode.type})
                   </h1>
                   <div className="scale-table">
