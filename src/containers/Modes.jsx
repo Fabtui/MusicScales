@@ -55,7 +55,6 @@ export class Modes extends Component {
             />
           </div>
         </div>
-        {/* <ModesWidget selected_note_index={this.state.selected_note_index} /> */}
         <div className="modes-container">
           <div className="modes-left-side">
             <div className="modes-card">
@@ -76,6 +75,7 @@ export class Modes extends Component {
                   selected_note_index={this.state.selected_note_index}
                   selected_scale_notes={selected_scale_notes}
                   selected_note={this.state.selected_note}
+                  selected_scale={selected_scale}
                 />
               </div>
               <NeckTable
@@ -88,12 +88,13 @@ export class Modes extends Component {
           <div className="modes-right-side">
             {MODES.map((mode) => {
               return (
-                <div className="modes-card">
+                <div className="modes-card" key={mode.name}>
                   <h1 key={`${mode.name} - ${mode.type}`}>
                     {mode.degree} - {NOTES[this.state.selected_note_index]} {mode.name} ({mode.type})
                   </h1>
                   <div className="scale-table">
                     <ScaleTable
+                      selected_scale={selected_scale}
                       selected_note_index={this.state.selected_note_index}
                       selected_scale_notes={ScaleNotes({
                         selected_note_index: this.state.selected_note_index,
