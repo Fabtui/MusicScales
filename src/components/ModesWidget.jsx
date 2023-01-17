@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { NOTES, MODES, INTERVALS } from "../data/data";
-import "../stylesheets/modes.css";
+import "../stylesheets/modes-widget.css";
 
 function ModesRows({ mode, selected_note_index, notes }) {
   const rows = [];
@@ -51,7 +51,7 @@ export class ModesWidget extends Component {
 
   render() {
     return (
-      <div className="modes-container">
+      <div className="modes-widget-container">
         <h1>{NOTES[this.props.selected_note_index]} modes</h1>
         <table className="table">
           <thead>
