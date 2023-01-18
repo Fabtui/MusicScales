@@ -19,6 +19,10 @@ export class Modes extends Component {
     this.handleMinorClick = this.handleMinorClick.bind(this);
   }
 
+  componentDidMount() {
+    window.scroll(0, 0)
+  }
+
   handleNoteChange(note) {
     this.setState({
       selected_note_index: parseInt(note),
@@ -43,7 +47,7 @@ export class Modes extends Component {
       selected_note_index: this.state.selected_note_index,
       scale_intervals: SCALES_LIST[this.state.selectedKeyShape],
     });
-    const selected_scale = SCALES_LIST[this.state.selectedKeyShape]
+    const selected_scale = SCALES_LIST[this.state.selectedKeyShape];
     return (
       <div className="container">
         <div className="selector-top">
@@ -60,13 +64,29 @@ export class Modes extends Component {
             <div className="modes-card">
               <div className="key-shape-selector">
                 <div className="key-shape-selector-element">
-                  <h1 onClick={this.handleMajorClick} className={this.state.selectedKeyShape === 'Major' ? 'selected-key' : ''}>
-                     {NOTES[this.state.selected_note_index]} {"Major"} ({MODES[0].name})
+                  <h1
+                    onClick={this.handleMajorClick}
+                    className={
+                      this.state.selectedKeyShape === "Major"
+                        ? "selected-key"
+                        : ""
+                    }
+                  >
+                    {NOTES[this.state.selected_note_index]} {"Major"} (
+                    {MODES[0].name})
                   </h1>
                 </div>
                 <div className="key-shape-selector-element">
-                  <h1 onClick={this.handleMinorClick} className={this.state.selectedKeyShape === 'Minor' ? 'selected-key' : ''}>
-                    {NOTES[this.state.selected_note_index]} {"minor"} ({MODES[5].name})
+                  <h1
+                    onClick={this.handleMinorClick}
+                    className={
+                      this.state.selectedKeyShape === "Minor"
+                        ? "selected-key"
+                        : ""
+                    }
+                  >
+                    {NOTES[this.state.selected_note_index]} {"minor"} (
+                    {MODES[5].name})
                   </h1>
                 </div>
               </div>
@@ -90,7 +110,8 @@ export class Modes extends Component {
               return (
                 <div className="modes-card" key={mode.name}>
                   <h1 key={`${mode.name} - ${mode.type}`}>
-                    {mode.degree} - {NOTES[this.state.selected_note_index]} {mode.name} ({mode.type})
+                    {mode.degree} - {NOTES[this.state.selected_note_index]}{" "}
+                    {mode.name} ({mode.type})
                   </h1>
                   <div className="scale-table">
                     <ScaleTable
