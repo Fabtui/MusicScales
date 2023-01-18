@@ -56,19 +56,54 @@ export class SearchByChords extends React.Component {
   render () {
     const selected_note_name = NOTES[this.state.selected_note_index]
     const apiNotes = this.state.selectedNotes.map(note => NOTES.indexOf(note))
-    const styleName = 'chords-search'
-    return <div className='search-container container mt-4'>
-      <div className='left-side'>
-        <h5>Choose your chords :</h5>
-        <ChordsDropDown onChange={this.handleChange} selected_note_index={this.state.selected_note_index} selected_scale_name={this.state.selected_scale_name}/>
-        <SearchToFretApi style={styleName} selectedNotes={apiNotes} onClick={this.handleClick}/>
+    return (
+      <div className="search-container container mt-4">
+        <div className="left-side">
+          <h5>Choose your chords :</h5>
+          <ChordsDropDown
+            onChange={this.handleChange}
+            selected_note_index={this.state.selected_note_index}
+            selected_scale_name={this.state.selected_scale_name}
+          />
+          <SearchToFretApi
+            className="chords-search"
+            selectedNotes={apiNotes}
+            onClick={this.handleClick}
+          />
+        </div>
+        <div className="search-note-right-side">
+          {!this.state.scale_selected && (
+            <div id="right-side-hint">
+              <h2 className="mt-4">Select a scale to preview it</h2>
+            </div>
+          )}
+          {this.state.scale_selected && (
+            <div id="right-side-result-hint">
+              {lightbulb} Click to see more details
+            </div>
+          )}
+          {this.state.scale_selected && (
+            <Link
+              onMouseEnter={this.linkOnMouseEnter}
+              onMouseLeave={this.linkOnMouseLeave}
+              id="right-side-link"
+              to="/MyScaleResult"
+              state={{
+                selected_note_index: this.state.selected_note_index,
+                selected_scale_name: this.state.selected_scale_name,
+              }}
+            >
+              {selected_note_name} {this.state.selected_scale_name}
+            </Link>
+          )}
+          {this.state.scale_selected && (
+            <Selector
+              selected_note_index={this.state.selected_note_index}
+              selected_scale_name={this.state.selected_scale_name}
+            />
+          )}
+        </div>
       </div>
-      <div className='search-note-right-side'>
-        {!this.state.scale_selected && <div id='right-side-hint'><h2 className='mt-4'>Select a scale to preview it</h2></div>}
-        {this.state.scale_selected && <div id='right-side-result-hint'>{lightbulb} Click to see more details</div>}
-        {this.state.scale_selected && <Link onMouseEnter={this.linkOnMouseEnter} onMouseLeave={this.linkOnMouseLeave} id='right-side-link' to="/MyScaleResult" state={{selected_note_index: this.state.selected_note_index, selected_scale_name: this.state.selected_scale_name}}>{selected_note_name} {this.state.selected_scale_name}</Link>}
-        {this.state.scale_selected && <Selector selected_note_index={this.state.selected_note_index} selected_scale_name={this.state.selected_scale_name}/>}
-      </div>
-    </div>
+    );
   }
 }
