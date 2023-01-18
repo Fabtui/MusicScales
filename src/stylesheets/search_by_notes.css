@@ -37,6 +37,10 @@
   display: none;
 }
 
+.search-note-right-side .modes-widget-container {
+  display: none;
+}
+
 #right-side-hint {
   width: 100%;
   display: flex;

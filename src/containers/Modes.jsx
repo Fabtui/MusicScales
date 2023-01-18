@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../stylesheets/modes.css";
-// import { ModesWidget } from "../components/ModesWidget";
 import { NoteDropDown } from "../components/NoteDropdown";
 import { ScaleTable } from "../components/ScaleTable";
 import { ScaleNotes } from "../components/ScaleDisplay";
